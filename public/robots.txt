@@ -1,0 +1,14 @@
+# Robots.txt - DRIPP CONCEITO (São Carlos - SP)
+User-agent: *
+Allow: /
+Allow: /loja.html
+Allow: /produto.html
+Allow: /carrinho.html
+Allow: /login.html
+
+# Proteger áreas administrativas de indexação pública
+Disallow: /admin/
+Disallow: /api/admin/
+
+# Sitemap Oficial
+Sitemap: https://dripp-conceito.loca.lt/sitemap.xml
