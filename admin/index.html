@@ -22,9 +22,14 @@
             <span class="brand-badge">ADMIN</span>
           </div>
         </a>
-        <button class="sidebar-toggle-btn" title="Recolher Menu">
-          <i class="fa-solid fa-bars-staggered"></i>
-        </button>
+        <div style="display: flex; align-items: center; gap: 0.35rem;">
+          <button class="sidebar-toggle-btn" title="Recolher / Fechar Menu Lateral">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="sidebar-close-btn" title="Fechar Menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <nav class="sidebar-nav">
@@ -88,7 +93,7 @@
       <!-- TOP BAR -->
       <header class="admin-topbar">
         <div class="topbar-left">
-          <button class="mobile-sidebar-toggle">
+          <button class="admin-sidebar-toggle mobile-sidebar-toggle" id="btn-toggle-sidebar" title="Abrir / Fechar Menu Lateral">
             <i class="fa-solid fa-bars"></i>
           </button>
           <div class="page-headline">
