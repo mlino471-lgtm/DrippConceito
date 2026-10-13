@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta | DRIPP CONCEITO</title>
+  <meta name="description" content="Painel do cliente DRIPP CONCEITO. Acompanhe seus pedidos streetwear, gerencie seus endereços em São Carlos e atualize seus dados cadastrais.">
+  <link rel="icon" type="image/png" href="uploads/logo.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-ticker">
+        <i class="fa-solid fa-user-shield text-gold"></i>
+        <span>PAINEL DO CLIENTE DRIPP CONCEITO | HISTÓRICO DE PEDIDOS E DADOS PESSOAIS</span>
+      </div>
+      <div class="top-bar-info">
+        <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="top-bar-link">
+          <i class="fa-brands fa-whatsapp text-gold"></i> Suporte WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Abrir menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+      <a href="index.html" class="brand-logo">
+        <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-acc-fallback').style.display='flex';">
+        <div id="text-acc-fallback" class="brand-logo-text" style="display: none;">
+          DRIPP<span>CONCEITO</span>
+          <span class="sub">MODA MASCULINA</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="loja.html" class="nav-link">Loja</a>
+        <a href="index.html#sobre" class="nav-link">Sobre</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="header-user-menu">
+          <button class="user-icon-btn" id="user-menu-btn" aria-label="Minha Conta">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="user-dropdown" id="header-user-dropdown"></div>
+        </div>
+
+        <button class="header-cart-btn open-cart-drawer" aria-label="Carrinho de Compras">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo-text">
+        DRIPP<span>CONCEITO</span>
+        <span class="sub">SÃO CARLOS - SP</span>
+      </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close">&times;</button>
+    </div>
+    <div class="mobile-drawer-nav">
+      <a href="index.html" class="mobile-drawer-link">Início <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html" class="mobile-drawer-link">Loja <i class="fa-solid fa-angle-right"></i></a>
+      <a href="conta.html" class="mobile-drawer-link active">Minha Conta <i class="fa-solid fa-angle-right"></i></a>
+      <a href="carrinho.html" class="mobile-drawer-link">Carrinho <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Cart Slideout Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <i class="fa-solid fa-bag-shopping text-gold"></i>
+        <span>MEU CARRINHO</span>
+      </div>
+      <button class="mobile-drawer-close" id="cart-drawer-close">&times;</button>
+    </div>
+    <div class="cart-drawer-items" id="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-subtotal">
+        <span>Subtotal:</span>
+        <strong id="cart-drawer-subtotal-val">R$ 0,00</strong>
+      </div>
+      <div class="cart-drawer-actions">
+        <a href="carrinho.html" class="btn btn-secondary btn-block">VER CARRINHO</a>
+        <a href="checkout.html" class="btn btn-primary btn-block">FINALIZAR COMPRA</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- MAIN ACCOUNT DASHBOARD -->
+  <main class="account-page">
+    <div class="container">
+      <div class="shop-breadcrumb">
+        <a href="index.html">Início</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <span>Painel do Cliente</span>
+      </div>
+
+      <div class="account-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="account-sidebar">
+          <div class="account-user-card">
+            <div class="account-avatar" id="acc-avatar">D</div>
+            <div>
+              <div class="account-user-name" id="acc-user-name">CLIENTE DRIPP</div>
+              <div class="account-user-email" id="acc-user-email">cliente@dripp.com.br</div>
+            </div>
+          </div>
+
+          <nav class="account-nav-list">
+            <div class="account-nav-item active" data-tab="tab-orders">
+              <i class="fa-solid fa-box-open"></i>
+              <span>Meus Pedidos</span>
+            </div>
+            <div class="account-nav-item" data-tab="tab-profile">
+              <i class="fa-solid fa-user-pen"></i>
+              <span>Dados Cadastrais</span>
+            </div>
+            <div class="account-nav-item" data-tab="tab-addresses">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Meus Endereços</span>
+            </div>
+            <div class="account-nav-item" data-tab="tab-security">
+              <i class="fa-solid fa-lock"></i>
+              <span>Segurança & Senha</span>
+            </div>
+            <div class="account-nav-item logout" onclick="drippAuth.logout()">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span>Sair da Conta</span>
+            </div>
+          </nav>
+        </aside>
+
+        <!-- Main Account Content Area -->
+        <div class="account-content-card">
+
+          <!-- TAB 1: MEUS PEDIDOS -->
+          <section id="tab-orders" class="account-tab-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h2 style="font-size: 1.45rem; color: #FFF; margin-bottom: 0.25rem;">MEUS PEDIDOS</h2>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Acompanhe o status e rastreamento das suas compras.</p>
+              </div>
+              <a href="loja.html" class="btn btn-outline-gold btn-sm">
+                NOVO PEDIDO &rarr;
+              </a>
+            </div>
+
+            <div style="overflow-x: auto;">
+              <table class="orders-table">
+                <thead>
+                  <tr>
+                    <th>PEDIDO</th>
+                    <th>DATA</th>
+                    <th>ITENS</th>
+                    <th>STATUS</th>
+                    <th>TOTAL</th>
+                    <th style="text-align: right;">AÇÕES</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table-body">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Empty Orders State (if none) -->
+            <div id="no-orders-message" style="display: none; text-align: center; padding: 3rem 1rem;">
+              <i class="fa-solid fa-bag-shopping" style="font-size: 2.5rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+              <h4 style="color: #FFF;">Você ainda não possui pedidos</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Aproveite nossos lançamentos streetwear com frete rápido.</p>
+              <a href="loja.html" class="btn btn-primary btn-sm">VER CATÁLOGO</a>
+            </div>
+          </section>
+
+          <!-- TAB 2: DADOS CADASTRAIS -->
+          <section id="tab-profile" class="account-tab-panel" style="display: none;">
+            <h2 style="font-size: 1.45rem; color: #FFF; margin-bottom: 0.25rem;">DADOS CADASTRAIS</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Mantenha suas informações sempre atualizadas para facilitar novas entregas.</p>
+
+            <form id="form-edit-profile" onsubmit="event.preventDefault(); saveProfileData();">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Nome Completo</label>
+                  <input type="text" id="prof-name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">E-mail</label>
+                  <input type="email" id="prof-email" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">WhatsApp / Telefone</label>
+                  <input type="text" id="prof-phone" class="form-input" data-mask="phone" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">CPF</label>
+                  <input type="text" id="prof-cpf" class="form-input" data-mask="cpf" required>
+                </div>
+              </div>
+
+              <div style="margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary">
+                  SALVAR ALTERAÇÕES
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- TAB 3: ENDEREÇOS -->
+          <section id="tab-addresses" class="account-tab-panel" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <div>
+                <h2 style="font-size: 1.45rem; color: #FFF; margin-bottom: 0.25rem;">MEUS ENDEREÇOS</h2>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Endereços cadastrados para envio de compras.</p>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" onclick="addNewAddress()">
+                + NOVO ENDEREÇO
+              </button>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;" id="addresses-grid">
+              <!-- Default Address Card -->
+              <div style="background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 6px; padding: 1.5rem; position: relative;">
+                <span class="product-badge badge-gold" style="margin-bottom: 0.75rem; display: inline-block;">PRINCIPAL</span>
+                <h4 style="color: #FFF; margin-bottom: 0.5rem;">Residência São Carlos</h4>
+                <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+                  Av. Regit Arab, 703<br>
+                  São Carlos - SP<br>
+                  CEP: 13573-060
+                </div>
+                <div style="margin-top: 1rem; display: flex; gap: 0.75rem;">
+                  <button type="button" class="btn btn-dark btn-sm" onclick="Toast.info('Editar Endereço', 'Preencha os campos para atualizar.')">Editar</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TAB 4: SEGURANÇA & SENHA -->
+          <section id="tab-security" class="account-tab-panel" style="display: none;">
+            <h2 style="font-size: 1.45rem; color: #FFF; margin-bottom: 0.25rem;">SEGURANÇA & SENHA</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Altere sua senha de acesso periodicamente.</p>
+
+            <form id="form-change-password" onsubmit="event.preventDefault(); changePasswordSubmit();" style="max-width: 500px;">
+              <div class="form-group">
+                <label class="form-label">Senha Atual</label>
+                <input type="password" id="sec-current-pwd" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Nova Senha</label>
+                <input type="password" id="sec-new-pwd" class="form-input" minlength="6" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Confirmar Nova Senha</label>
+                <input type="password" id="sec-confirm-pwd" class="form-input" minlength="6" required>
+              </div>
+
+              <div style="margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary">
+                  ATUALIZAR SENHA
+                </button>
+              </div>
+            </form>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ORDER DETAIL MODAL -->
+  <div class="modal-overlay" id="order-detail-modal">
+    <div class="modal-card" style="padding: 2.5rem; max-width: 600px;">
+      <button class="modal-close-btn" onclick="closeOrderModal()">&times;</button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="color:#FFF;" id="modal-order-title">DETALHES DO PEDIDO</h3>
+        <span id="modal-order-badge" class="status-badge status-aprovado">Aprovado</span>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;" id="modal-order-body">
+        <!-- Injected via JS -->
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="closeOrderModal()">FECHAR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-footer-fallback').style.display='flex';">
+            <div id="text-footer-fallback" class="brand-logo-text" style="display: none;">
+              DRIPP<span>CONCEITO</span>
+              <span class="sub">MODA MASCULINA</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            A DRIPP CONCEITO é referência em moda streetwear masculina na cidade de São Carlos e para todo o Brasil.
+          </p>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Av. Regit Arab, 703, São Carlos - SP</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">CATEGORIAS</h4>
+          <ul class="footer-links">
+            <li><a href="loja.html?cat=camisetas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Camisetas Oversized</a></li>
+            <li><a href="loja.html?cat=hoodies" class="footer-link"><i class="fa-solid fa-angle-right"></i> Hoodies & Moletons</a></li>
+            <li><a href="loja.html?cat=calcas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Calças Cargo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">SUPORTE</h4>
+          <ul class="footer-links">
+            <li><a href="conta.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Minha Conta</a></li>
+            <li><a href="carrinho.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Meu Carrinho</a></li>
+            <li><a href="admin/" class="footer-link" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-gauge-high"></i> Painel Administrativo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">ATENDIMENTO VIP</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Dúvidas sobre o pedido? Fale conosco no WhatsApp oficial.
+          </p>
+          <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block btn-sm">
+            <i class="fa-brands fa-whatsapp"></i> SUPORTE WHATSAPP
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 <strong>DRIPP CONCEITO</strong> • São Carlos - SP.</div>
+        <div class="payment-badges">
+          <span class="pay-badge"><i class="fa-brands fa-pix text-gold"></i> PIX (5% OFF)</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-visa"></i> VISA</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-mastercard"></i> MASTERCARD</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp VIP Button -->
+  <div class="whatsapp-floating">
+    <div class="whatsapp-tooltip">Atendimento VIP São Carlos</div>
+    <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Atendimento WhatsApp DRIPP CONCEITO">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Check user login or initialize dummy
+      if (!drippAuth.isLoggedIn()) {
+        drippAuth.login("cliente@dripp.com.br", "123456");
+      }
+
+      const u = drippAuth.user;
+      document.getElementById("acc-user-name").textContent = u.name;
+      document.getElementById("acc-user-email").textContent = u.email;
+      document.getElementById("acc-avatar").textContent = u.avatar || u.name.charAt(0);
+
+      // Pre-fill profile
+      document.getElementById("prof-name").value = u.name;
+      document.getElementById("prof-email").value = u.email;
+      document.getElementById("prof-phone").value = u.phone || "(16) 99876-5432";
+      document.getElementById("prof-cpf").value = u.cpf || "123.456.789-00";
+
+      // 2. Render Orders
+      renderOrdersList();
+
+      // 3. Tab navigation
+      const navItems = document.querySelectorAll(".account-nav-item[data-tab]");
+      navItems.forEach(item => {
+        item.addEventListener("click", () => {
+          navItems.forEach(i => i.classList.remove("active"));
+          document.querySelectorAll(".account-tab-panel").forEach(p => p.style.display = "none");
+
+          item.classList.add("active");
+          const target = document.getElementById(item.dataset.tab);
+          if (target) target.style.display = "block";
+        });
+      });
+
+      // Check URL hash (#pedidos)
+      if (window.location.hash === "#pedidos") {
+        document.querySelector("[data-tab='tab-orders']")?.click();
+      }
+    });
+
+    function renderOrdersList() {
+      const orders = OrderManager.getOrders();
+      const tbody = document.getElementById("orders-table-body");
+      const noOrders = document.getElementById("no-orders-message");
+
+      if (orders.length === 0) {
+        tbody.innerHTML = "";
+        noOrders.style.display = "block";
+        return;
+      }
+
+      noOrders.style.display = "none";
+      tbody.innerHTML = orders.map(ord => `
+        <tr class="order-row">
+          <td style="font-weight: 800; color: #FFF;">${ord.id}</td>
+          <td style="color: var(--text-muted);">${ord.date}</td>
+          <td style="color: #FFF; font-size: 0.8rem; max-width: 250px;">${ord.itemsSummary || ord.itemsCount + ' produto(s)'}</td>
+          <td><span class="status-badge ${ord.statusClass}">${ord.status}</span></td>
+          <td style="font-weight: 700; color: var(--color-accent);">${Formatters.currency(ord.total)}</td>
+          <td style="text-align: right;">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="viewOrderDetails('${ord.id}')">
+              DETALHES
+            </button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function viewOrderDetails(orderId) {
+      const order = OrderManager.getOrders().find(o => o.id === orderId);
+      if (!order) return;
+
+      document.getElementById("modal-order-title").textContent = `PEDIDO ${order.id}`;
+      const badge = document.getElementById("modal-order-badge");
+      badge.textContent = order.status;
+      badge.className = `status-badge ${order.statusClass}`;
+
+      document.getElementById("modal-order-body").innerHTML = `
+        <p><strong style="color:#FFF;">Data do Pedido:</strong> ${order.date}</p>
+        <p><strong style="color:#FFF;">Forma de Pagamento:</strong> ${order.paymentMethod}</p>
+        <p><strong style="color:#FFF;">Produtos:</strong> ${order.itemsSummary}</p>
+        <p><strong style="color:#FFF;">Valor Total:</strong> ${Formatters.currency(order.total)}</p>
+        ${order.trackingCode ? `<p><strong style="color:#FFF;">Código de Rastreio:</strong> <span style="font-family:monospace; color:var(--color-accent);">${order.trackingCode}</span> (Correios / Transportadora)</p>` : ''}
+        ${order.address ? `<p><strong style="color:#FFF;">Endereço de Entrega:</strong> ${order.address}</p>` : ''}
+      `;
+
+      document.getElementById("order-detail-modal").classList.add("active");
+    }
+
+    function closeOrderModal() {
+      document.getElementById("order-detail-modal").classList.remove("active");
+    }
+
+    function saveProfileData() {
+      const updated = {
+        ...drippAuth.user,
+        name: document.getElementById("prof-name").value.trim(),
+        email: document.getElementById("prof-email").value.trim(),
+        phone: document.getElementById("prof-phone").value.trim(),
+        cpf: document.getElementById("prof-cpf").value.trim()
+      };
+      localStorage.setItem("dripp_user", JSON.stringify(updated));
+      drippAuth.user = updated;
+      drippAuth.updateUserUI();
+
+      document.getElementById("acc-user-name").textContent = updated.name;
+      document.getElementById("acc-user-email").textContent = updated.email;
+
+      Toast.success("Dados Salvos", "Suas informações foram atualizadas com sucesso.");
+    }
+
+    function changePasswordSubmit() {
+      const cur = document.getElementById("sec-current-pwd").value;
+      const n1 = document.getElementById("sec-new-pwd").value;
+      const n2 = document.getElementById("sec-confirm-pwd").value;
+
+      if (n1 !== n2) {
+        Toast.error("Senhas divergentes", "A confirmação da nova senha não confere.");
+        return;
+      }
+
+      Toast.success("Senha Atualizada", "Sua senha foi redefinida com segurança.");
+      document.getElementById("form-change-password").reset();
+    }
+
+    function addNewAddress() {
+      Toast.info("Novo Endereço", "Preencha o CEP para cadastrar novo endereço de entrega.");
+    }
+  </script>
+</body>
+</html>

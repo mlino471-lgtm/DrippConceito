@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto | DRIPP CONCEITO - Streetwear Masculino</title>
+  <meta name="description" content="Detalhes do produto streetwear exclusivo DRIPP CONCEITO. Malha de alta densidade, corte oversized e estilo urbano autêntico.">
+  <link rel="icon" type="image/png" href="uploads/logo.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-ticker">
+        <i class="fa-solid fa-truck-fast text-gold"></i>
+        <span>ENVIO EXPRESSO PARA SÃO CARLOS E BRASIL | RETIRADA DISPONÍVEL NA AV. REGIT ARAB, 703</span>
+      </div>
+      <div class="top-bar-info">
+        <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="top-bar-link">
+          <i class="fa-brands fa-whatsapp text-gold"></i> Grupo VIP WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Abrir menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+      <a href="index.html" class="brand-logo">
+        <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-logo-fallback').style.display='flex';">
+        <div id="text-logo-fallback" class="brand-logo-text" style="display: none;">
+          DRIPP<span>CONCEITO</span>
+          <span class="sub">MODA MASCULINA</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="loja.html" class="nav-link active">Loja</a>
+        <a href="index.html#sobre" class="nav-link">Sobre</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="header-search">
+          <div class="header-search-bar">
+            <input type="text" class="dripp-search-input" placeholder="Buscar no catálogo..." autocomplete="off">
+            <button type="button" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+          <div class="search-results-dropdown"></div>
+        </div>
+
+        <div class="header-user-menu">
+          <button class="user-icon-btn" id="user-menu-btn" aria-label="Minha Conta">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="user-dropdown" id="header-user-dropdown"></div>
+        </div>
+
+        <button class="header-cart-btn open-cart-drawer" aria-label="Carrinho de Compras">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo-text">
+        DRIPP<span>CONCEITO</span>
+        <span class="sub">SÃO CARLOS - SP</span>
+      </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close">&times;</button>
+    </div>
+    <div class="mobile-drawer-nav">
+      <a href="index.html" class="mobile-drawer-link">Início <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html" class="mobile-drawer-link">Loja Completa <i class="fa-solid fa-angle-right"></i></a>
+      <a href="conta.html" class="mobile-drawer-link">Minha Conta <i class="fa-solid fa-angle-right"></i></a>
+      <a href="carrinho.html" class="mobile-drawer-link">Carrinho de Compras <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Cart Slideout Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <i class="fa-solid fa-bag-shopping text-gold"></i>
+        <span>MEU CARRINHO</span>
+      </div>
+      <button class="mobile-drawer-close" id="cart-drawer-close">&times;</button>
+    </div>
+    <div class="cart-drawer-items" id="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-subtotal">
+        <span>Subtotal:</span>
+        <strong id="cart-drawer-subtotal-val">R$ 0,00</strong>
+      </div>
+      <div class="cart-drawer-actions">
+        <a href="carrinho.html" class="btn btn-secondary btn-block">VER CARRINHO</a>
+        <a href="checkout.html" class="btn btn-primary btn-block">FINALIZAR COMPRA</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- MAIN PRODUCT DETAIL -->
+  <main class="product-detail-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <div class="shop-breadcrumb" id="product-breadcrumb">
+        <a href="index.html">Início</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="loja.html">Loja</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <span id="breadcrumb-category">Categoria</span>
+        <i class="fa-solid fa-angle-right"></i>
+        <span id="breadcrumb-product-name" style="color: #FFF;">Carregando...</span>
+      </div>
+
+      <!-- Detail Grid: Gallery + Info -->
+      <div class="product-detail-grid">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="gallery-thumbs" id="gallery-thumbs-container">
+            <!-- Thumbs injected via JS -->
+          </div>
+          <div class="gallery-main" id="gallery-main-wrap">
+            <img id="gallery-main-img" src="" alt="Produto">
+          </div>
+        </div>
+
+        <!-- Product Information Block -->
+        <div class="product-info-block">
+          <div class="product-info-category" id="prod-category-label">DRIPP CONCEITO</div>
+          <h1 class="product-info-title" id="prod-title">Carregando...</h1>
+          <div class="product-info-sku" id="prod-sku">REF: DRP-001 • Em Estoque em São Carlos</div>
+
+          <div class="product-info-price-wrap">
+            <span class="product-detail-price" id="prod-price">R$ 0,00</span>
+            <span class="product-detail-compare" id="prod-compare-price"></span>
+          </div>
+          <div class="product-detail-installments" id="prod-installments">
+            ou em até 6x sem juros no cartão
+          </div>
+
+          <!-- Color Selector -->
+          <div class="selector-group">
+            <div class="selector-label-row">
+              <span class="selector-label">Cor: <strong id="selected-color-label" style="color:#FFF;">Preto</strong></span>
+            </div>
+            <div class="color-swatches-row" id="prod-colors-container">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <!-- Size Selector -->
+          <div class="selector-group">
+            <div class="selector-label-row">
+              <span class="selector-label">Tamanho: <strong id="selected-size-label" style="color:#FFF;">G</strong></span>
+              <span class="size-guide-btn" onclick="openSizeGuideModal()">Guia de Medidas</span>
+            </div>
+            <div class="size-buttons-row" id="prod-sizes-container">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <!-- Quantity Stepper & Add to Cart -->
+          <div class="qty-and-actions">
+            <div class="detail-qty-stepper">
+              <button type="button" id="btn-qty-minus">-</button>
+              <input type="text" id="input-qty" value="1" readonly>
+              <button type="button" id="btn-qty-plus">+</button>
+            </div>
+            <button type="button" class="btn btn-secondary btn-add-cart-large" id="btn-add-to-cart">
+              <i class="fa-solid fa-bag-shopping"></i> ADICIONAR AO CARRINHO
+            </button>
+          </div>
+
+          <!-- Buy Now CTA -->
+          <button type="button" class="btn btn-primary btn-block btn-buy-now" id="btn-buy-now">
+            <i class="fa-solid fa-bolt"></i> COMPRAR AGORA NO SITE
+          </button>
+
+          <!-- Marketplaces Oficiais Box -->
+          <div class="marketplace-channels-box" style="margin-top: 1.15rem; margin-bottom: 0.5rem; padding: 1.15rem; background: #121215; border: 1px solid var(--border-dark); border-radius: 8px;">
+            <div style="font-size: 0.8rem; font-weight: 800; color: #FFF; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+              <span><i class="fa-solid fa-store" style="color: #FFFFFF; margin-right: 5px;"></i> Disponível Também na Shopee e Mercado Livre</span>
+              <span style="font-size: 0.7rem; color: #10B981; font-weight: 700;"><i class="fa-solid fa-circle-check"></i> Estoque Oficial</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: #EE4D2D; color: #FFF; padding: 0.7rem 0.5rem; border-radius: 6px; font-weight: 800; font-size: 0.8rem; text-decoration: none; box-shadow: 0 4px 10px rgba(238, 77, 45, 0.25); transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                <i class="fa-solid fa-bag-shopping"></i> Comprar na Shopee
+              </a>
+              <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: #FFE600; color: #2D3277; padding: 0.7rem 0.5rem; border-radius: 6px; font-weight: 800; font-size: 0.8rem; text-decoration: none; box-shadow: 0 4px 10px rgba(255, 230, 0, 0.2); transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                <i class="fa-solid fa-handshake"></i> Mercado Livre Full
+              </a>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center; margin-top: 0.65rem;">
+              <i class="fa-solid fa-truck-fast"></i> Envio com nota fiscal e garantia de autenticidade DRIPP CONCEITO
+            </div>
+          </div>
+
+          <!-- Shipping Calculator (ViaCEP API) -->
+          <div class="shipping-calc-box">
+            <div class="shipping-calc-title">
+              <i class="fa-solid fa-truck-fast text-gold"></i>
+              <span>Calcular Frete e Prazo de Entrega</span>
+            </div>
+            <div class="shipping-input-group">
+              <input type="text" id="shipping-cep-input" placeholder="00000-000" data-mask="cep" maxlength="9">
+              <button type="button" class="btn btn-dark btn-sm" id="btn-calc-shipping">CALCULAR</button>
+            </div>
+            <div class="shipping-result" id="shipping-result-box">
+              <div class="shipping-option">
+                <span><i class="fa-solid fa-store text-gold"></i> Retirada na Loja (Av. Regit Arab, 703)</span>
+                <strong>Grátis (Hoje)</strong>
+              </div>
+              <div class="shipping-option">
+                <span><i class="fa-solid fa-bolt"></i> Sedex Expresso São Carlos</span>
+                <strong id="sedex-price">R$ 14,90 (1 dia útil)</strong>
+              </div>
+              <div class="shipping-option">
+                <span><i class="fa-solid fa-truck"></i> PAC Econômico</span>
+                <strong id="pac-price">R$ 9,90 (2 a 4 dias úteis)</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div style="display: flex; gap: 1.5rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-dark); padding-top: 1.25rem;">
+            <div><i class="fa-solid fa-shield-halved text-gold"></i> Compra 100% Segura</div>
+            <div><i class="fa-solid fa-rotate-left text-gold"></i> 30 Dias para Troca</div>
+            <div><i class="fa-solid fa-award text-gold"></i> Original Dripp</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS SECTION -->
+      <div class="product-tabs-container">
+        <div class="tabs-nav">
+          <button type="button" class="tab-btn active" data-tab="tab-desc">Descrição Detalhada</button>
+          <button type="button" class="tab-btn" data-tab="tab-specs">Informações Técnicas</button>
+          <button type="button" class="tab-btn" data-tab="tab-frete">Frete & Devoluções</button>
+        </div>
+
+        <div class="tab-content active" id="tab-desc">
+          <p id="tab-desc-text" style="font-size: 1rem; line-height: 1.8; color: var(--text-muted);">
+            Carregando descrição completa do produto...
+          </p>
+          <div style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+            <div style="background: #15151A; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dark);">
+              <strong style="color: #FFF; display: block; margin-bottom: 0.25rem;">Caimento Estruturado</strong>
+              <span style="font-size: 0.85rem;">Não deforma na lavagem e mantém o ombro relaxado.</span>
+            </div>
+            <div style="background: #15151A; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dark);">
+              <strong style="color: #FFF; display: block; margin-bottom: 0.25rem;">Alta Gramatura</strong>
+              <span style="font-size: 0.85rem;">Malha pesada autêntica do streetwear mundial.</span>
+            </div>
+            <div style="background: #15151A; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dark);">
+              <strong style="color: #FFF; display: block; margin-bottom: 0.25rem;">Acabamento Ouro</strong>
+              <span style="font-size: 0.85rem;">Etiquetas exclusivas e costura dupla pespontada.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-specs">
+          <div style="max-width: 600px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+              <tr style="border-bottom: 1px solid var(--border-dark);">
+                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF; width: 40%;">Composição:</td>
+                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-composicao">100% Algodão Premium</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-dark);">
+                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Gramatura:</td>
+                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-gramatura">240g a 380g/m²</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-dark);">
+                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Modelagem:</td>
+                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-modelagem">Boxy Streetwear</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-dark);">
+                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Origem / Fabricação:</td>
+                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-origem">São Carlos - SP, Brasil</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Cuidados:</td>
+                <td style="padding: 0.75rem 0; color: var(--text-muted);">Lavar do avesso, água fria, não passar ferro sobre estampas.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-content" id="tab-frete">
+          <div style="max-width: 750px; font-size: 0.95rem; line-height: 1.8;">
+            <h4 style="color: #FFF; margin-bottom: 0.5rem;">ENTREGA EM SÃO CARLOS & REGIÃO:</h4>
+            <p style="margin-bottom: 1rem;">
+              Pedidos feitos até as 14h com opção de retirada na loja física (Av. Regit Arab, 703) ficam disponíveis para retirada no mesmo dia sem custo algum. Para entregas locais via motoboy parceiro, consulte pelo WhatsApp.
+            </p>
+            <h4 style="color: #FFF; margin-bottom: 0.5rem;">ENVIO PARA TODO O BRASIL:</h4>
+            <p style="margin-bottom: 1rem;">
+              Enviamos via Correios (Sedex e PAC) e transportadoras certificadas com código de rastreamento fornecido por e-mail logo após o despacho.
+            </p>
+            <h4 style="color: #FFF; margin-bottom: 0.5rem;">POLÍTICA DE TROCA DE TAMANHO:</h4>
+            <p>
+              A primeira troca por tamanho é 100% gratuita em até 30 dias após o recebimento. A peça deve estar com etiquetas originais e sem marcas de uso.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RELATED PRODUCTS SECTION -->
+      <div style="margin-top: 6rem;">
+        <span class="section-tag">Complete seu Drop</span>
+        <h2 class="section-title">PRODUTOS RELACIONADOS</h2>
+        <div class="products-grid" id="related-products-grid">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- SIZE GUIDE MODAL -->
+  <div class="modal-overlay" id="size-guide-modal">
+    <div class="modal-card" style="max-width: 600px; padding: 2rem;">
+      <button class="modal-close-btn" onclick="closeSizeGuideModal()">&times;</button>
+      <h3 style="color:#FFF; margin-bottom: 0.5rem;">TABELA DE MEDIDAS STREETWEAR</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Nossas modelagens seguem o padrão Oversized / Boxy com caimento mais amplo.</p>
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
+        <thead>
+          <tr style="background: #181820; color: var(--color-accent); font-weight: 800;">
+            <th style="padding: 0.75rem;">TAMANHO</th>
+            <th>LARGURA (TÓRAX)</th>
+            <th>COMPRIMENTO</th>
+            <th>MANGA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-dark);">
+            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">P</td>
+            <td>56 cm</td>
+            <td>74 cm</td>
+            <td>24 cm</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-dark);">
+            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">M</td>
+            <td>59 cm</td>
+            <td>77 cm</td>
+            <td>25 cm</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-dark);">
+            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">G</td>
+            <td>62 cm</td>
+            <td>80 cm</td>
+            <td>26 cm</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-dark);">
+            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">GG</td>
+            <td>65 cm</td>
+            <td>83 cm</td>
+            <td>27 cm</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">XGG</td>
+            <td>68 cm</td>
+            <td>86 cm</td>
+            <td>28 cm</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeSizeGuideModal()">ENTENDI</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-footer-fallback').style.display='flex';">
+            <div id="text-footer-fallback" class="brand-logo-text" style="display: none;">
+              DRIPP<span>CONCEITO</span>
+              <span class="sub">MODA MASCULINA</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            A DRIPP CONCEITO é referência em moda streetwear masculina na cidade de São Carlos e para todo o Brasil.
+          </p>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Av. Regit Arab, 703, São Carlos - SP</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">CATEGORIAS</h4>
+          <ul class="footer-links">
+            <li><a href="loja.html?cat=camisetas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Camisetas Oversized</a></li>
+            <li><a href="loja.html?cat=hoodies" class="footer-link"><i class="fa-solid fa-angle-right"></i> Hoodies & Moletons</a></li>
+            <li><a href="loja.html?cat=calcas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Calças Cargo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">SUPORTE</h4>
+          <ul class="footer-links">
+            <li><a href="conta.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Minha Conta</a></li>
+            <li><a href="conta.html#pedidos" class="footer-link"><i class="fa-solid fa-angle-right"></i> Rastrear Pedido</a></li>
+            <li><a href="carrinho.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Meu Carrinho</a></li>
+            <li><a href="admin/" class="footer-link" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-gauge-high"></i> Painel Administrativo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">ATENDIMENTO VIP</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Dúvidas sobre o produto ou caimento? Fale diretamente com nossa equipe.
+          </p>
+          <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block btn-sm">
+            <i class="fa-brands fa-whatsapp"></i> CONVERSAR NO WHATSAPP
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 <strong>DRIPP CONCEITO</strong> • São Carlos - SP.</div>
+        <div class="payment-badges">
+          <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="pay-badge" style="background: #EE4D2D; color: #FFF; font-weight: 800; text-decoration: none;"><i class="fa-solid fa-bag-shopping"></i> SHOPEE</a>
+          <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" class="pay-badge" style="background: #FFE600; color: #2D3277; font-weight: 800; text-decoration: none;"><i class="fa-solid fa-handshake"></i> MERCADO LIVRE</a>
+          <span class="pay-badge"><i class="fa-brands fa-pix text-gold"></i> PIX (5% OFF)</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-visa"></i> VISA</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-mastercard"></i> MASTERCARD</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp VIP Button -->
+  <div class="whatsapp-floating">
+    <div class="whatsapp-tooltip">Atendimento VIP São Carlos</div>
+    <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Atendimento WhatsApp DRIPP CONCEITO">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+  <!-- Product Detail Script Logic -->
+  <script>
+    let currentProduct = null;
+    let selectedSize = null;
+    let selectedColor = null;
+    let quantity = 1;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Get Product ID from URL (?id=...)
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodId = parseInt(urlParams.get("id")) || 1;
+      currentProduct = MOCK_PRODUCTS.find(p => p.id === prodId) || MOCK_PRODUCTS[0];
+
+      // 2. Populate Page Info
+      document.title = `${currentProduct.name} | DRIPP CONCEITO`;
+      document.getElementById("breadcrumb-category").textContent = currentProduct.categoryName;
+      document.getElementById("breadcrumb-product-name").textContent = currentProduct.name;
+      document.getElementById("prod-category-label").textContent = currentProduct.categoryName;
+      document.getElementById("prod-title").textContent = currentProduct.name;
+      document.getElementById("prod-price").textContent = Formatters.currency(currentProduct.price);
+      if (currentProduct.comparePrice) {
+        document.getElementById("prod-compare-price").textContent = Formatters.currency(currentProduct.comparePrice);
+      }
+      document.getElementById("prod-installments").textContent = `ou 6x de ${Formatters.currency(currentProduct.price / 6)} sem juros`;
+      document.getElementById("tab-desc-text").textContent = currentProduct.description;
+
+      // Specs
+      if (currentProduct.specs) {
+        document.getElementById("spec-composicao").textContent = currentProduct.specs.composicao || "100% Algodão";
+        document.getElementById("spec-gramatura").textContent = currentProduct.specs.gramatura || "240g/m²";
+        document.getElementById("spec-modelagem").textContent = currentProduct.specs.modelagem || "Oversized Street";
+        document.getElementById("spec-origem").textContent = currentProduct.specs.origem || "São Carlos - SP";
+      }
+
+      // 3. Populate Gallery
+      const mainImg = document.getElementById("gallery-main-img");
+      const mainWrap = document.getElementById("gallery-main-wrap");
+      const thumbsContainer = document.getElementById("gallery-thumbs-container");
+      mainImg.src = currentProduct.images[0];
+
+      thumbsContainer.innerHTML = currentProduct.images.map((imgUrl, idx) => `
+        <div class="thumb-item ${idx === 0 ? 'active' : ''}" onclick="changeGalleryImage('${imgUrl}', this)">
+          <img src="${imgUrl}" alt="Thumbnail">
+        </div>
+      `).join("");
+
+      // Main image zoom on hover
+      mainWrap.addEventListener("mouseenter", () => mainWrap.classList.add("zoomed"));
+      mainWrap.addEventListener("mouseleave", () => mainWrap.classList.remove("zoomed"));
+
+      // 4. Color Swatches
+      const colorsContainer = document.getElementById("prod-colors-container");
+      const colorLabel = document.getElementById("selected-color-label");
+      selectedColor = currentProduct.colors[0].name;
+      colorLabel.textContent = selectedColor;
+
+      colorsContainer.innerHTML = currentProduct.colors.map((c, idx) => `
+        <div class="color-select-btn ${idx === 0 ? 'active' : ''}" 
+             data-color="${c.name}" 
+             style="background-color: ${c.code}; border: 2px solid ${c.code === '#FFFFFF' ? '#666' : 'transparent'};" 
+             title="${c.name}" 
+             onclick="selectColor('${c.name}', this)">
+        </div>
+      `).join("");
+
+      // 5. Sizes Buttons
+      const sizesContainer = document.getElementById("prod-sizes-container");
+      const sizeLabel = document.getElementById("selected-size-label");
+      selectedSize = currentProduct.sizes[0];
+      sizeLabel.textContent = selectedSize;
+
+      sizesContainer.innerHTML = currentProduct.sizes.map((s, idx) => `
+        <button type="button" class="size-select-btn ${idx === 0 ? 'active' : ''}" onclick="selectSize('${s}', this)">
+          ${s}
+        </button>
+      `).join("");
+
+      // 6. Quantity Stepper
+      const inputQty = document.getElementById("input-qty");
+      document.getElementById("btn-qty-minus").addEventListener("click", () => {
+        if (quantity > 1) {
+          quantity--;
+          inputQty.value = quantity;
+        }
+      });
+      document.getElementById("btn-qty-plus").addEventListener("click", () => {
+        quantity++;
+        inputQty.value = quantity;
+      });
+
+      // 7. Add to Cart & Buy Now Buttons
+      document.getElementById("btn-add-to-cart").addEventListener("click", () => {
+        drippCart.addItem(currentProduct, selectedSize, selectedColor, quantity);
+      });
+
+      document.getElementById("btn-buy-now").addEventListener("click", () => {
+        drippCart.addItem(currentProduct, selectedSize, selectedColor, quantity);
+        window.location.href = "checkout.html";
+      });
+
+      // 8. Shipping Calculator (ViaCEP)
+      const btnCalcShipping = document.getElementById("btn-calc-shipping");
+      const cepInput = document.getElementById("shipping-cep-input");
+      const shippingResultBox = document.getElementById("shipping-result-box");
+
+      btnCalcShipping.addEventListener("click", async () => {
+        const rawCep = cepInput.value.trim();
+        if (rawCep.replace(/\D/g, "").length !== 8) {
+          Toast.error("CEP Inválido", "Digite um CEP válido com 8 dígitos.");
+          return;
+        }
+
+        btnCalcShipping.disabled = true;
+        btnCalcShipping.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i>`;
+
+        try {
+          const res = await api.lookupCep(rawCep);
+          shippingResultBox.classList.add("active");
+          Toast.success("Frete Calculado", `Entrega para ${res.localidade} - ${res.uf} (${res.bairro || 'Centro'}).`);
+        } catch (err) {
+          Toast.error("Erro no CEP", err.message);
+        } finally {
+          btnCalcShipping.disabled = false;
+          btnCalcShipping.textContent = "CALCULAR";
+        }
+      });
+
+      // 9. Tabs Switching
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabBtns.forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".tab-content").forEach(tc => tc.classList.remove("active"));
+          btn.classList.add("active");
+          const target = document.getElementById(btn.dataset.tab);
+          if (target) target.classList.add("active");
+        });
+      });
+
+      // 10. Related Products
+      const relatedGrid = document.getElementById("related-products-grid");
+      const relatedList = MOCK_PRODUCTS.filter(p => p.id !== currentProduct.id).slice(0, 4);
+      relatedGrid.innerHTML = relatedList.map(p => `
+        <div class="product-card">
+          <div class="product-card-thumb">
+            <img src="${p.images[0]}" alt="${p.name}" class="product-card-img img-main">
+            <img src="${p.images[1] || p.images[0]}" alt="${p.name}" class="product-card-img img-hover">
+            <div class="product-card-actions">
+              <button type="button" class="btn-quick-view" onclick="openQuickView(${p.id})">
+                <i class="fa-regular fa-eye"></i> ESPIADA RÁPIDA
+              </button>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">${p.categoryName}</span>
+            <h3 class="product-card-name"><a href="produto.html?id=${p.id}">${p.name}</a></h3>
+            <div class="product-card-price-row">
+              <span class="product-price-current">${Formatters.currency(p.price)}</span>
+            </div>
+            <button type="button" class="btn btn-primary btn-card-add" onclick="drippCart.addItem(MOCK_PRODUCTS.find(x => x.id === ${p.id}), '${p.sizes[0]}')">
+              <i class="fa-solid fa-bag-shopping"></i> ADICIONAR
+            </button>
+          </div>
+        </div>
+      `).join("");
+    });
+
+    function changeGalleryImage(url, thumbEl) {
+      document.getElementById("gallery-main-img").src = url;
+      document.querySelectorAll(".thumb-item").forEach(t => t.classList.remove("active"));
+      thumbEl.classList.add("active");
+    }
+
+    function selectSize(size, btnEl) {
+      selectedSize = size;
+      document.getElementById("selected-size-label").textContent = size;
+      document.querySelectorAll(".size-select-btn").forEach(b => b.classList.remove("active"));
+      btnEl.classList.add("active");
+    }
+
+    function selectColor(colorName, swatchEl) {
+      selectedColor = colorName;
+      document.getElementById("selected-color-label").textContent = colorName;
+      document.querySelectorAll(".color-select-btn").forEach(s => s.classList.remove("active"));
+      swatchEl.classList.add("active");
+    }
+
+    function openSizeGuideModal() {
+      document.getElementById("size-guide-modal").classList.add("active");
+    }
+
+    function closeSizeGuideModal() {
+      document.getElementById("size-guide-modal").classList.remove("active");
+    }
+  </script>
+</body>
+</html>

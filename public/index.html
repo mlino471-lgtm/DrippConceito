@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRIPP CONCEITO | Moda Masculina & Streetwear em São Carlos - SP</title>
+  <meta name="description" content="Loja oficial da DRIPP CONCEITO em São Carlos, SP. O melhor do streetwear masculino brasileiro: Camisetas Oversized, Hoodies Heavyweight, Calças Cargo e Acessórios. Vista-se com atitude.">
+  <link rel="icon" type="image/png" href="uploads/logo.png">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-ticker">
+        <i class="fa-solid fa-bolt text-gold"></i>
+        <span>FRETE GRÁTIS EM SÃO CARLOS ACIMA DE R$ 199 | DISPONÍVEL TAMBÉM NA <strong>SHOPEE</strong> & <strong>MERCADO LIVRE</strong></span>
+      </div>
+      <div class="top-bar-info">
+        <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="top-bar-link">
+          <i class="fa-brands fa-whatsapp text-gold"></i> Comunidade VIP WhatsApp
+        </a>
+        <span class="top-bar-link">
+          <i class="fa-solid fa-location-dot text-gold"></i> Av. Regit Arab, 703 - São Carlos, SP
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <!-- Mobile Toggle -->
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Abrir menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo">
+        <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-logo-fallback').style.display='flex';">
+        <div id="text-logo-fallback" class="brand-logo-text" style="display: none;">
+          DRIPP<span>CONCEITO</span>
+          <span class="sub">MODA MASCULINA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active">Início</a>
+        <a href="loja.html" class="nav-link">Loja</a>
+        <a href="index.html#sobre" class="nav-link">Sobre</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Search Bar with Autocomplete -->
+        <div class="header-search">
+          <div class="header-search-bar">
+            <input type="text" class="dripp-search-input" placeholder="Buscar streetwear..." autocomplete="off">
+            <button type="button" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+          <div class="search-results-dropdown"></div>
+        </div>
+
+        <!-- User Menu -->
+        <div class="header-user-menu">
+          <button class="user-icon-btn" id="user-menu-btn" aria-label="Minha Conta">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="user-dropdown" id="header-user-dropdown">
+            <!-- Populated dynamically by app.js -->
+          </div>
+        </div>
+
+        <!-- Cart Button -->
+        <button class="header-cart-btn open-cart-drawer" aria-label="Carrinho de Compras">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo-text">
+        DRIPP<span>CONCEITO</span>
+        <span class="sub">SÃO CARLOS - SP</span>
+      </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close">&times;</button>
+    </div>
+    <div style="margin-bottom: 1.5rem;">
+      <div class="header-search-bar" style="display: flex; width: 100%;">
+        <input type="text" class="dripp-search-input" placeholder="Buscar na loja..." style="width:100%;">
+        <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+    <div class="mobile-drawer-nav">
+      <a href="index.html" class="mobile-drawer-link active">Início <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html" class="mobile-drawer-link">Loja Completa <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html?cat=camisetas" class="mobile-drawer-link">Camisetas Oversized <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html?cat=hoodies" class="mobile-drawer-link">Hoodies & Moletons <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html?cat=calcas" class="mobile-drawer-link">Calças Cargo <i class="fa-solid fa-angle-right"></i></a>
+      <a href="index.html#sobre" class="mobile-drawer-link">Sobre a Marca <i class="fa-solid fa-angle-right"></i></a>
+      <a href="conta.html" class="mobile-drawer-link">Minha Conta <i class="fa-solid fa-angle-right"></i></a>
+      <a href="carrinho.html" class="mobile-drawer-link">Carrinho de Compras <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" class="btn btn-primary btn-block btn-sm">
+        <i class="fa-brands fa-whatsapp"></i> GRUPO VIP DRIPP
+      </a>
+    </div>
+  </div>
+
+  <!-- Cart Slideout Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <i class="fa-solid fa-bag-shopping text-gold"></i>
+        <span>MEU CARRINHO</span>
+      </div>
+      <button class="mobile-drawer-close" id="cart-drawer-close">&times;</button>
+    </div>
+    <div class="cart-drawer-items" id="cart-drawer-items">
+      <!-- Injected by app.js -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-subtotal">
+        <span>Subtotal:</span>
+        <strong id="cart-drawer-subtotal-val">R$ 0,00</strong>
+      </div>
+      <div class="cart-drawer-actions">
+        <a href="carrinho.html" class="btn btn-secondary btn-block">VER CARRINHO</a>
+        <a href="checkout.html" class="btn btn-primary btn-block">FINALIZAR COMPRA</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer Backdrop -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-background"></div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-particles"></div>
+
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-certificate"></i> DRIPP CONCEITO • SÃO CARLOS - SP
+      </div>
+      <h1 class="hero-title">
+        DRIPP <span>CONCEITO</span>
+      </h1>
+      <div class="hero-subtitle">
+        VISTA-SE COM ATITUDE
+      </div>
+      <p class="hero-description">
+        O auge do streetwear masculino contemporâneo. Modelagens oversized exclusivas, malhas pesadas de alta gramatura e corte premium feitos para quem impõe presença na rua.
+      </p>
+      <div class="hero-actions">
+        <a href="loja.html" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-bag-shopping"></i> EXPLORAR COLEÇÃO
+        </a>
+        <a href="#destaques" class="btn btn-secondary btn-lg">
+          VER LANÇAMENTOS
+        </a>
+      </div>
+
+      <div class="hero-features">
+        <div class="hero-feat-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>100% Algodão Premium 240g</span>
+        </div>
+        <div class="hero-feat-item">
+          <i class="fa-solid fa-truck-fast"></i>
+          <span>Entrega Rápida em São Carlos</span>
+        </div>
+        <div class="hero-feat-item">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>Troca Fácil em até 30 Dias</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKETPLACES OFFICIAL STORES BANNER -->
+  <section class="marketplaces-banner" style="background: #101014; border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); padding: 1.6rem 0;">
+    <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <div style="width: 44px; height: 44px; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <i class="fa-solid fa-store" style="font-size: 1.25rem; color: #FFFFFF;"></i>
+        </div>
+        <div>
+          <div style="font-weight: 800; font-size: 0.95rem; color: #FFFFFF; text-transform: uppercase; letter-spacing: 0.05em;">LOJAS OFICIAIS NOS MARKETPLACES</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted);">Compre pelo nosso site com cupom ou diretamente nas nossas lojas certificadas com estoque integrado:</div>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem;">
+        <!-- Shopee Badge/Link -->
+        <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="marketplace-btn-shopee" style="display: inline-flex; align-items: center; gap: 0.65rem; background: #EE4D2D; color: #FFFFFF; padding: 0.65rem 1.35rem; border-radius: 6px; font-weight: 800; font-size: 0.82rem; text-decoration: none; box-shadow: 0 4px 14px rgba(238, 77, 45, 0.3); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+          <i class="fa-solid fa-bag-shopping" style="font-size: 1rem;"></i>
+          <span>COMPRE NA <strong>SHOPEE</strong></span>
+        </a>
+        <!-- Mercado Livre Badge/Link -->
+        <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" class="marketplace-btn-meli" style="display: inline-flex; align-items: center; gap: 0.65rem; background: #FFE600; color: #2D3277; padding: 0.65rem 1.35rem; border-radius: 6px; font-weight: 800; font-size: 0.82rem; text-decoration: none; box-shadow: 0 4px 14px rgba(255, 230, 0, 0.25); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+          <i class="fa-solid fa-handshake" style="font-size: 1rem;"></i>
+          <span>MERCADO LÍDER NO <strong>MERCADO LIVRE</strong></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES GRID SECTION -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Coleções Urbanas</span>
+        <h2 class="section-title">EXPLORE POR CATEGORIA</h2>
+        <p class="section-subtitle">Peças estruturadas com identidade forte para compor o seu visual do dia a dia ao rolê underground.</p>
+      </div>
+
+      <div class="categories-grid">
+        <!-- 1. Camisetas Oversized -->
+        <a href="loja.html?cat=camisetas" class="category-card">
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop" alt="Camisetas Oversized" class="category-card-bg">
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <span class="category-card-count">12 MODELOS</span>
+            <h3 class="category-card-title">CAMISETAS OVERSIZED</h3>
+            <span class="category-card-link">VER COLEÇÃO &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 2. Hoodies & Moletons -->
+        <a href="loja.html?cat=hoodies" class="category-card">
+          <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop" alt="Hoodies e Moletons" class="category-card-bg">
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <span class="category-card-count">08 MODELOS</span>
+            <h3 class="category-card-title">HOODIES & MOLETONS</h3>
+            <span class="category-card-link">VER COLEÇÃO &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 3. Calças Cargo -->
+        <a href="loja.html?cat=calcas" class="category-card">
+          <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=800&auto=format&fit=crop" alt="Calças Cargo Streetwear" class="category-card-bg">
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <span class="category-card-count">06 MODELOS</span>
+            <h3 class="category-card-title">CALÇAS CARGO</h3>
+            <span class="category-card-link">VER COLEÇÃO &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 4. Corta-Ventos & Jaquetas -->
+        <a href="loja.html?cat=corta-vento" class="category-card">
+          <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop" alt="Corta-Ventos & Jaquetas" class="category-card-bg">
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <span class="category-card-count">05 MODELOS</span>
+            <h3 class="category-card-title">CORTA-VENTOS & JAQUETAS</h3>
+            <span class="category-card-link">VER COLEÇÃO &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 5. Bermudas Street -->
+        <a href="loja.html?cat=bermudas" class="category-card">
+          <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=800&auto=format&fit=crop" alt="Bermudas Streetwear" class="category-card-bg">
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <span class="category-card-count">07 MODELOS</span>
+            <h3 class="category-card-title">BERMUDAS STREET</h3>
+            <span class="category-card-link">VER COLEÇÃO &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 6. Bonés & Acessórios -->
+        <a href="loja.html?cat=acessorios" class="category-card">
+          <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop" alt="Bonés e Acessórios" class="category-card-bg">
+          <div class="category-card-overlay"></div>
+          <div class="category-card-content">
+            <span class="category-card-count">10 MODELOS</span>
+            <h3 class="category-card-title">BONÉS & ACESSÓRIOS</h3>
+            <span class="category-card-link">VER COLEÇÃO &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS SECTION -->
+  <section class="products-section" id="destaques">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="section-tag">Seleção Dripp</span>
+          <h2 class="section-title" style="margin-bottom: 0;">DROPS EM DESTAQUE</h2>
+        </div>
+        <a href="loja.html" class="btn btn-outline-gold">
+          VER TODOS OS DROPS &rarr;
+        </a>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-badge-group">
+            <span class="product-badge badge-gold">MAIS VENDIDO</span>
+            <span class="product-badge badge-discount">-20%</span>
+          </div>
+          <div class="product-card-thumb">
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1000&auto=format&fit=crop" alt="Camiseta Oversized Tokyo Underground" class="product-card-img img-main">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000&auto=format&fit=crop" alt="Camiseta Oversized Costas" class="product-card-img img-hover">
+            <div class="product-card-actions">
+              <button class="btn-quick-view" onclick="openQuickView(1)">
+                <i class="fa-regular fa-eye"></i> ESPIADA RÁPIDA
+              </button>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">Camisetas Oversized</span>
+            <h3 class="product-card-name">
+              <a href="produto.html?id=1">Camiseta Oversized Acid Wash 'Tokyo Underground'</a>
+            </h3>
+            <div class="product-card-sizes">
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[0], 'P')">P</span>
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[0], 'M')">M</span>
+              <span class="size-pill active" onclick="drippCart.addItem(MOCK_PRODUCTS[0], 'G')">G</span>
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[0], 'GG')">GG</span>
+            </div>
+            <div class="product-card-price-row">
+              <span class="product-price-current">R$ 159,90</span>
+              <span class="product-price-compare">R$ 199,90</span>
+            </div>
+            <div class="product-installments">ou 3x de R$ 53,30 sem juros</div>
+            <button class="btn btn-primary btn-card-add" onclick="drippCart.addItem(MOCK_PRODUCTS[0], 'G')">
+              <i class="fa-solid fa-bag-shopping"></i> ADICIONAR
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-badge-group">
+            <span class="product-badge badge-gold">DESTAQUE</span>
+          </div>
+          <div class="product-card-thumb">
+            <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop" alt="Moletom Hoodie Heavyweight" class="product-card-img img-main">
+            <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=1000&auto=format&fit=crop" alt="Moletom Hoodie Costas" class="product-card-img img-hover">
+            <div class="product-card-actions">
+              <button class="btn-quick-view" onclick="openQuickView(2)">
+                <i class="fa-regular fa-eye"></i> ESPIADA RÁPIDA
+              </button>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">Hoodies & Moletons</span>
+            <h3 class="product-card-name">
+              <a href="produto.html?id=2">Moletom Hoodie Heavyweight 'Dripp Signature' Ouro</a>
+            </h3>
+            <div class="product-card-sizes">
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[1], 'M')">M</span>
+              <span class="size-pill active" onclick="drippCart.addItem(MOCK_PRODUCTS[1], 'G')">G</span>
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[1], 'GG')">GG</span>
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[1], 'XGG')">XGG</span>
+            </div>
+            <div class="product-card-price-row">
+              <span class="product-price-current">R$ 329,90</span>
+              <span class="product-price-compare">R$ 389,90</span>
+            </div>
+            <div class="product-installments">ou 6x de R$ 54,98 sem juros</div>
+            <button class="btn btn-primary btn-card-add" onclick="drippCart.addItem(MOCK_PRODUCTS[1], 'G')">
+              <i class="fa-solid fa-bag-shopping"></i> ADICIONAR
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-badge-group">
+            <span class="product-badge badge-black">NOVO</span>
+          </div>
+          <div class="product-card-thumb">
+            <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=1000&auto=format&fit=crop" alt="Calça Cargo Tática Ripstop" class="product-card-img img-main">
+            <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?q=80&w=1000&auto=format&fit=crop" alt="Calça Cargo Detalhes" class="product-card-img img-hover">
+            <div class="product-card-actions">
+              <button class="btn-quick-view" onclick="openQuickView(3)">
+                <i class="fa-regular fa-eye"></i> ESPIADA RÁPIDA
+              </button>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">Calças Cargo</span>
+            <h3 class="product-card-name">
+              <a href="produto.html?id=3">Calça Cargo Tática Ripstop 'Night Ops'</a>
+            </h3>
+            <div class="product-card-sizes">
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[2], '40')">40</span>
+              <span class="size-pill active" onclick="drippCart.addItem(MOCK_PRODUCTS[2], '42')">42</span>
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[2], '44')">44</span>
+            </div>
+            <div class="product-card-price-row">
+              <span class="product-price-current">R$ 249,90</span>
+              <span class="product-price-compare">R$ 289,90</span>
+            </div>
+            <div class="product-installments">ou 5x de R$ 49,98 sem juros</div>
+            <button class="btn btn-primary btn-card-add" onclick="drippCart.addItem(MOCK_PRODUCTS[2], '42')">
+              <i class="fa-solid fa-bag-shopping"></i> ADICIONAR
+            </button>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div class="product-badge-group">
+            <span class="product-badge badge-discount">-17%</span>
+          </div>
+          <div class="product-card-thumb">
+            <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop" alt="Jaqueta Corta-Vento Windbreaker" class="product-card-img img-main">
+            <img src="https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?q=80&w=1000&auto=format&fit=crop" alt="Jaqueta Windbreaker Verso" class="product-card-img img-hover">
+            <div class="product-card-actions">
+              <button class="btn-quick-view" onclick="openQuickView(4)">
+                <i class="fa-regular fa-eye"></i> ESPIADA RÁPIDA
+              </button>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">Corta-Ventos & Jaquetas</span>
+            <h3 class="product-card-name">
+              <a href="produto.html?id=4">Jaqueta Corta-Vento Windbreaker 'Reflex 3M'</a>
+            </h3>
+            <div class="product-card-sizes">
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[3], 'M')">M</span>
+              <span class="size-pill active" onclick="drippCart.addItem(MOCK_PRODUCTS[3], 'G')">G</span>
+              <span class="size-pill" onclick="drippCart.addItem(MOCK_PRODUCTS[3], 'GG')">GG</span>
+            </div>
+            <div class="product-card-price-row">
+              <span class="product-price-current">R$ 289,90</span>
+              <span class="product-price-compare">R$ 349,90</span>
+            </div>
+            <div class="product-installments">ou 5x de R$ 57,98 sem juros</div>
+            <button class="btn btn-primary btn-card-add" onclick="drippCart.addItem(MOCK_PRODUCTS[3], 'G')">
+              <i class="fa-solid fa-bag-shopping"></i> ADICIONAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION (SOBRE NÓS) -->
+  <section class="about-section" id="sobre">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1200&auto=format&fit=crop" alt="DRIPP CONCEITO Streetwear Estilo" class="about-image-main">
+          <div class="about-badge-floating">
+            <div class="about-badge-number">016</div>
+            <div class="about-badge-text">Nascida em São Carlos, SP</div>
+          </div>
+        </div>
+
+        <div class="about-story">
+          <span class="section-tag">Nossa Trajetória</span>
+          <h2 class="section-title">DRIPP CONCEITO: A CULTURA DE RUA ELEVADA AO MÁXIMO</h2>
+          <p>
+            Criada no coração do interior paulista, em <strong>São Carlos - SP</strong>, a DRIPP CONCEITO nasceu da necessidade de entregar aos homens um vestuário que traduzisse a verdadeira essência do streetwear: conforto extremo, cortes assertivos e autenticidade inegociável.
+          </p>
+          <p>
+            Não criamos apenas roupas; construímos uma armadura urbana. Cada peça é confeccionada com tecidos de gramatura nobre, acabamentos manuais e costuras reforçadas pensadas para durar anos, sem perder a estrutura e a cor.
+          </p>
+
+          <div class="about-highlights">
+            <div class="about-highlight-card">
+              <i class="fa-solid fa-feather-pointed about-highlight-icon"></i>
+              <div class="about-highlight-title">Algodão 260g/m²</div>
+              <div class="about-highlight-desc">Toque encorpado com caimento que não marca o corpo.</div>
+            </div>
+            <div class="about-highlight-card">
+              <i class="fa-solid fa-scissors about-highlight-icon"></i>
+              <div class="about-highlight-title">Corte Boxy Oversized</div>
+              <div class="about-highlight-desc">Modelagem desenvolvida sob medida para a silhueta moderna.</div>
+            </div>
+            <div class="about-highlight-card">
+              <i class="fa-solid fa-certificate about-highlight-icon"></i>
+              <div class="about-highlight-title">Detalhes Metálicos</div>
+              <div class="about-highlight-desc">Puxadores, botões e bordados dourados de alta definição.</div>
+            </div>
+            <div class="about-highlight-card">
+              <i class="fa-solid fa-handshake-simple about-highlight-icon"></i>
+              <div class="about-highlight-title">Atendimento Direto</div>
+              <div class="about-highlight-desc">Suporte humanizado em nossa loja física e pelo WhatsApp.</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2.5rem;">
+            <a href="loja.html" class="btn btn-primary">
+              CONHECER OS PRODUTOS
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM FEED SECTION -->
+  <section class="instagram-section">
+    <div class="container">
+      <div class="insta-header">
+        <span class="section-tag">Comunidade Dripp</span>
+        <h2 class="section-title">SIGA NOSSO FEED</h2>
+        <a href="https://instagram.com/dripp.conceito" target="_blank" rel="noopener noreferrer" class="insta-handle">
+          <i class="fa-brands fa-instagram"></i> @dripp.conceito
+        </a>
+      </div>
+
+      <div class="insta-grid">
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=600&auto=format&fit=crop" alt="Streetwear Post" class="insta-img">
+          <div class="insta-overlay">
+            <span class="insta-stat"><i class="fa-solid fa-heart"></i> 412</span>
+            <span class="insta-stat"><i class="fa-solid fa-comment"></i> 34</span>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=600&auto=format&fit=crop" alt="Streetwear Post" class="insta-img">
+          <div class="insta-overlay">
+            <span class="insta-stat"><i class="fa-solid fa-heart"></i> 589</span>
+            <span class="insta-stat"><i class="fa-solid fa-comment"></i> 62</span>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" alt="Streetwear Post" class="insta-img">
+          <div class="insta-overlay">
+            <span class="insta-stat"><i class="fa-solid fa-heart"></i> 320</span>
+            <span class="insta-stat"><i class="fa-solid fa-comment"></i> 19</span>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=600&auto=format&fit=crop" alt="Streetwear Post" class="insta-img">
+          <div class="insta-overlay">
+            <span class="insta-stat"><i class="fa-solid fa-heart"></i> 640</span>
+            <span class="insta-stat"><i class="fa-solid fa-comment"></i> 81</span>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=600&auto=format&fit=crop" alt="Streetwear Post" class="insta-img">
+          <div class="insta-overlay">
+            <span class="insta-stat"><i class="fa-solid fa-heart"></i> 275</span>
+            <span class="insta-stat"><i class="fa-solid fa-comment"></i> 14</span>
+          </div>
+        </div>
+        <div class="insta-item">
+          <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=600&auto=format&fit=crop" alt="Streetwear Post" class="insta-img">
+          <div class="insta-overlay">
+            <span class="insta-stat"><i class="fa-solid fa-heart"></i> 810</span>
+            <span class="insta-stat"><i class="fa-solid fa-comment"></i> 95</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER SECTION -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-box">
+        <span class="section-tag">Acesso Exclusivo</span>
+        <h2 class="section-title" style="margin-bottom: 0.5rem;">ENTRE PARA O CLUBE DRIPP</h2>
+        <p class="section-subtitle" style="margin-bottom: 1.5rem;">
+          Cadastre seu e-mail e ganhe <strong>15% OFF NA PRIMEIRA COMPRA</strong> + acesso antecipado a todos os drops exclusivos.
+        </p>
+
+        <form class="newsletter-form">
+          <input type="email" class="newsletter-input" placeholder="Digite seu melhor e-mail..." required>
+          <button type="submit" class="btn btn-primary">
+            GARANTIR DESCONTO
+          </button>
+        </form>
+        <span class="newsletter-disclaimer">Sem spam. Apenas drops raros, cupons e convites vip. Cancele quando quiser.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-footer-fallback').style.display='flex';">
+            <div id="text-footer-fallback" class="brand-logo-text" style="display: none;">
+              DRIPP<span>CONCEITO</span>
+              <span class="sub">MODA MASCULINA</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            A DRIPP CONCEITO é referência em moda streetwear masculina na cidade de São Carlos e para todo o Brasil. Estilo underground com acabamento de alta alfaiataria.
+          </p>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Av. Regit Arab, 703, São Carlos - SP, 13573-060</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>(16) 99876-5432 / Atendimento de Seg a Sáb</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>contato@drippconceito.com.br</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Categorias -->
+        <div>
+          <h4 class="footer-col-title">CATEGORIAS</h4>
+          <ul class="footer-links">
+            <li><a href="loja.html?cat=camisetas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Camisetas Oversized</a></li>
+            <li><a href="loja.html?cat=hoodies" class="footer-link"><i class="fa-solid fa-angle-right"></i> Hoodies & Moletons</a></li>
+            <li><a href="loja.html?cat=calcas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Calças Cargo</a></li>
+            <li><a href="loja.html?cat=corta-vento" class="footer-link"><i class="fa-solid fa-angle-right"></i> Corta-Ventos</a></li>
+            <li><a href="loja.html?cat=bermudas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Bermudas Street</a></li>
+            <li><a href="loja.html?cat=acessorios" class="footer-link"><i class="fa-solid fa-angle-right"></i> Bonés & Acessórios</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Ajuda & Suporte -->
+        <div>
+          <h4 class="footer-col-title">AJUDA & SUPORTE</h4>
+          <ul class="footer-links">
+            <li><a href="conta.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Minha Conta</a></li>
+            <li><a href="conta.html#pedidos" class="footer-link"><i class="fa-solid fa-angle-right"></i> Rastrear Pedido</a></li>
+            <li><a href="carrinho.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Meu Carrinho</a></li>
+            <li><a href="index.html#sobre" class="footer-link"><i class="fa-solid fa-angle-right"></i> Guia de Tamanhos</a></li>
+            <li><a href="index.html#sobre" class="footer-link"><i class="fa-solid fa-angle-right"></i> Política de Trocas</a></li>
+            <li><a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" class="footer-link"><i class="fa-solid fa-angle-right"></i> Fale Conosco</a></li>
+            <li><a href="admin/" class="footer-link" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-gauge-high"></i> Painel Administrativo</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Redes & Localização -->
+        <div>
+          <h4 class="footer-col-title">REDES & COMUNIDADE</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Entre para o grupo vip exclusivo no WhatsApp e receba cupons secretos.
+          </p>
+          <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block btn-sm">
+            <i class="fa-brands fa-whatsapp"></i> ENTRAR NO GRUPO VIP
+          </a>
+          <div class="social-links">
+            <a href="https://instagram.com/dripp.conceito" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+          </div>
+
+          <!-- São Carlos Map Embed / Location Card -->
+          <div style="margin-top: 1.5rem; border: 1px solid var(--border-dark); border-radius: 6px; padding: 0.75rem; background: #101014;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: #FFF; margin-bottom: 0.25rem;">
+              <i class="fa-solid fa-store text-gold"></i> LOJA FÍSICA EM SÃO CARLOS
+            </div>
+            <div style="font-size: 0.7rem; color: var(--text-muted);">
+              Av. Regit Arab, 703 • Retirada grátis no mesmo dia!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <strong>DRIPP CONCEITO</strong>. Todos os direitos reservados. CNPJ: 45.892.102/0001-90.
+        </div>
+        <div class="payment-badges">
+          <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="pay-badge" style="background: #EE4D2D; color: #FFF; font-weight: 800; text-decoration: none;"><i class="fa-solid fa-bag-shopping"></i> SHOPEE OFICIAL</a>
+          <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" class="pay-badge" style="background: #FFE600; color: #2D3277; font-weight: 800; text-decoration: none;"><i class="fa-solid fa-handshake"></i> MERCADO LÍDER</a>
+          <span class="pay-badge"><i class="fa-brands fa-pix text-gold"></i> PIX (5% OFF)</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-visa"></i> VISA</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-mastercard"></i> MASTERCARD</span>
+          <span class="pay-badge"><i class="fa-solid fa-barcode"></i> BOLETO</span>
+          <span class="pay-badge"><i class="fa-solid fa-lock text-gold"></i> SSL 256-BIT</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp VIP Button with Pulse Animation -->
+  <div class="whatsapp-floating">
+    <div class="whatsapp-tooltip">Atendimento VIP São Carlos</div>
+    <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Atendimento WhatsApp DRIPP CONCEITO">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>

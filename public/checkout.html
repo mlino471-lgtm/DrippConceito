@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout Seguro | DRIPP CONCEITO - São Carlos</title>
+  <meta name="description" content="Finalize seu pedido com total segurança na DRIPP CONCEITO. PIX com 5% de desconto, Cartão de Crédito em até 6x sem juros ou Boleto Bancário.">
+  <link rel="icon" type="image/png" href="uploads/logo.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-color: #08080A;">
+
+  <!-- Simple Header for Checkout (Distraction-free) -->
+  <header style="background: #0E0E12; border-bottom: 1px solid var(--border-dark); padding: 1.25rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="brand-logo">
+        <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-chk-fallback').style.display='flex';">
+        <div id="text-chk-fallback" class="brand-logo-text" style="display: none;">
+          DRIPP<span>CONCEITO</span>
+          <span class="sub">CHECKOUT SEGURO</span>
+        </div>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 1.5rem; font-size: 0.8rem; color: var(--text-muted);">
+        <span style="display: flex; align-items: center; gap: 0.5rem; color: var(--success); font-weight: 700;">
+          <i class="fa-solid fa-lock"></i> AMBIENTE 100% CRIPTOGRAFADO
+        </span>
+        <a href="carrinho.html" style="color: #FFFFFF; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 0.8rem; border-radius: 4px;">
+          <i class="fa-solid fa-angle-left"></i> Voltar ao Carrinho
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="checkout-page">
+    <div class="container">
+
+      <!-- Step Progress Indicator -->
+      <div class="checkout-progress">
+        <div class="step-indicator active" id="step-ind-1">
+          <div class="step-circle">1</div>
+          <span class="step-name">Identificação</span>
+        </div>
+        <div class="step-line" id="step-line-1"></div>
+
+        <div class="step-indicator" id="step-ind-2">
+          <div class="step-circle">2</div>
+          <span class="step-name">Entrega</span>
+        </div>
+        <div class="step-line" id="step-line-2"></div>
+
+        <div class="step-indicator" id="step-ind-3">
+          <div class="step-circle">3</div>
+          <span class="step-name">Pagamento</span>
+        </div>
+        <div class="step-line" id="step-line-3"></div>
+
+        <div class="step-indicator" id="step-ind-4">
+          <div class="step-circle">4</div>
+          <span class="step-name">Confirmação</span>
+        </div>
+      </div>
+
+      <!-- Checkout Container -->
+      <div class="checkout-layout" id="checkout-main-grid">
+        <!-- Steps Column -->
+        <div class="checkout-step-container">
+          
+          <!-- STEP 1: IDENTIFICATION -->
+          <div id="checkout-step-1" class="checkout-step-view">
+            <h2 style="font-size: 1.45rem; margin-bottom: 0.5rem; color: #FFF;">1. SEUS DADOS PESSOAIS</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Utilizamos seus dados para envio de notificações do pedido e emissão fiscal.</p>
+
+            <form id="form-step-1" onsubmit="event.preventDefault(); nextStep(2);">
+              <div class="form-group">
+                <label class="form-label">E-mail para Notificações *</label>
+                <input type="email" id="chk-email" class="form-input" placeholder="seuemail@exemplo.com" required>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Nome Completo *</label>
+                  <input type="text" id="chk-name" class="form-input" placeholder="Ex: Lucas Henrique" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">WhatsApp / Celular *</label>
+                  <input type="text" id="chk-phone" class="form-input" data-mask="phone" placeholder="(16) 99999-9999" maxlength="15" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">CPF (Para Nota Fiscal) *</label>
+                <input type="text" id="chk-cpf" class="form-input" data-mask="cpf" placeholder="000.000.000-00" maxlength="14" required>
+              </div>
+
+              <div style="margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                  CONTINUAR PARA ENTREGA &rarr;
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- STEP 2: SHIPPING ADDRESS -->
+          <div id="checkout-step-2" class="checkout-step-view" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h2 style="font-size: 1.45rem; color: #FFF;">2. ENDEREÇO DE ENTREGA</h2>
+              <button type="button" onclick="nextStep(1)" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: underline;">
+                Editar Identificação
+              </button>
+            </div>
+
+            <form id="form-step-2" onsubmit="event.preventDefault(); nextStep(3);">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">CEP *</label>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="chk-cep" class="form-input" data-mask="cep" placeholder="13573-060" maxlength="9" required>
+                    <button type="button" class="btn btn-dark btn-sm" id="btn-chk-lookup-cep">BUSCAR</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Cidade / Estado *</label>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <input type="text" id="chk-cidade" class="form-input" placeholder="São Carlos" required style="flex:2;">
+                    <input type="text" id="chk-uf" class="form-input" placeholder="SP" maxlength="2" required style="flex:1;">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label class="form-label">Rua / Avenida *</label>
+                  <input type="text" id="chk-rua" class="form-input" placeholder="Ex: Av. Regit Arab" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Número *</label>
+                  <input type="text" id="chk-numero" class="form-input" placeholder="703" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Complemento</label>
+                  <input type="text" id="chk-complemento" class="form-input" placeholder="Apto, Bloco...">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Bairro *</label>
+                <input type="text" id="chk-bairro" class="form-input" placeholder="Bairro" required>
+              </div>
+
+              <!-- Shipping Method Options -->
+              <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-dark); padding-top: 1.5rem;">
+                <label class="form-label" style="margin-bottom: 0.75rem; display: block;">Modalidade de Envio *</label>
+                
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 4px; cursor: pointer;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <input type="radio" name="shipping_method" value="retirada" checked onchange="updateShippingChoice(0, 'Retirada na Loja Física (São Carlos)')">
+                      <div>
+                        <strong style="color: #FFF; font-size: 0.9rem;">Retirada na Loja Oficial (São Carlos - SP)</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Av. Regit Arab, 703 • Disponível no mesmo dia</div>
+                      </div>
+                    </div>
+                    <span style="color: var(--success); font-weight: 800; font-size: 0.85rem;">GRÁTIS</span>
+                  </label>
+
+                  <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 4px; cursor: pointer;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <input type="radio" name="shipping_method" value="sedex" onchange="updateShippingChoice(14.90, 'Sedex Expresso')">
+                      <div>
+                        <strong style="color: #FFF; font-size: 0.9rem;">Sedex Expresso</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Entrega rápida com código de rastreamento (1 a 2 dias úteis)</div>
+                      </div>
+                    </div>
+                    <span style="color: var(--color-accent); font-weight: 800; font-size: 0.85rem;">R$ 14,90</span>
+                  </label>
+
+                  <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 4px; cursor: pointer;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                      <input type="radio" name="shipping_method" value="pac" onchange="updateShippingChoice(9.90, 'PAC Econômico')">
+                      <div>
+                        <strong style="color: #FFF; font-size: 0.9rem;">PAC Econômico Correios</strong>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">Entrega econômica (3 a 6 dias úteis)</div>
+                      </div>
+                    </div>
+                    <span style="color: #FFF; font-weight: 800; font-size: 0.85rem;">R$ 9,90</span>
+                  </label>
+                </div>
+              </div>
+
+              <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                <button type="button" class="btn btn-secondary" onclick="nextStep(1)">VOLTAR</button>
+                <button type="submit" class="btn btn-primary" style="flex:1;">
+                  IR PARA PAGAMENTO &rarr;
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- STEP 3: PAYMENT METHOD -->
+          <div id="checkout-step-3" class="checkout-step-view" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h2 style="font-size: 1.45rem; color: #FFF;">3. FORMA DE PAGAMENTO</h2>
+              <button type="button" onclick="nextStep(2)" style="font-size: 0.8rem; color: var(--color-accent); text-decoration: underline;">
+                Editar Endereço
+              </button>
+            </div>
+
+            <!-- Payment Tabs -->
+            <div class="payment-tabs">
+              <button type="button" class="payment-tab-btn active" id="tab-pay-pix" onclick="selectPayTab('pix')">
+                <i class="fa-brands fa-pix text-gold"></i>
+                <span>PIX (5% OFF)</span>
+              </button>
+              <button type="button" class="payment-tab-btn" id="tab-pay-card" onclick="selectPayTab('card')">
+                <i class="fa-regular fa-credit-card"></i>
+                <span>Cartão de Crédito</span>
+              </button>
+              <button type="button" class="payment-tab-btn" id="tab-pay-boleto" onclick="selectPayTab('boleto')">
+                <i class="fa-solid fa-barcode"></i>
+                <span>Boleto Bancário</span>
+              </button>
+            </div>
+
+            <!-- PIX VIEW -->
+            <div id="pay-view-pix" class="pay-method-view">
+              <div class="pix-box">
+                <span class="product-badge badge-gold" style="margin-bottom: 1rem; display: inline-block;">APROVAÇÃO IMEDIATA</span>
+                <h3 style="color:#FFF; margin-bottom: 0.5rem;">Pague com PIX e ganhe 5% de Desconto</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                  Escaneie o QR Code abaixo pelo aplicativo do seu banco ou copie o código Copia e Cola.
+                </p>
+
+                <!-- QR Code Simulation -->
+                <div style="background: #FFF; width: 180px; height: 180px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; border-radius: 6px; padding: 10px;">
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=00020126580014br.gov.bcb.pix0136dripp-conceito-sao-carlos-pix5204000053039865802BR5925DRIPP+CONCEITO+MODA+MASC6010SAO+CARLOS62070503***6304" alt="QR Code PIX Dripp Conceito" style="width: 100%; height: 100%;">
+                </div>
+
+                <div class="pix-code-copy">
+                  <input type="text" id="pix-copy-code" class="pix-input" value="00020126580014br.gov.bcb.pix0136dripp-conceito-sao-carlos-pix5204000053039865802BR" readonly>
+                  <button type="button" class="btn btn-primary btn-sm" onclick="copyPixCode()">
+                    <i class="fa-regular fa-copy"></i> COPIAR
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD VIEW -->
+            <div id="pay-view-card" class="pay-method-view" style="display: none;">
+              <!-- Interactive Card Preview -->
+              <div class="credit-card-preview">
+                <div class="card-top">
+                  <div class="card-chip"></div>
+                  <div class="card-brand" id="card-brand-label">DRIPP VIP</div>
+                </div>
+                <div class="card-number-display" id="card-preview-number">•••• •••• •••• ••••</div>
+                <div class="card-bottom">
+                  <div>
+                    <div style="font-size: 0.65rem; color: var(--text-muted);">TITULAR</div>
+                    <div class="card-holder-name" id="card-preview-name">SEU NOME</div>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.65rem; color: var(--text-muted); text-align: right;">VALIDADE</div>
+                    <div id="card-preview-exp">MM/AA</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Inputs -->
+              <div class="form-group">
+                <label class="form-label">Número do Cartão</label>
+                <input type="text" id="card-input-number" class="form-input" placeholder="0000 0000 0000 0000" maxlength="19">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Nome Gravado no Cartão</label>
+                <input type="text" id="card-input-name" class="form-input" placeholder="COMO NO CARTÃO">
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Validade (MM/AA)</label>
+                  <input type="text" id="card-input-exp" class="form-input" placeholder="12/28" maxlength="5">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">CVV / Segurança</label>
+                  <input type="password" id="card-input-cvv" class="form-input" placeholder="123" maxlength="4">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Parcelamento</label>
+                <select id="card-input-installments" class="form-input">
+                  <option value="1">1x sem juros</option>
+                  <option value="2">2x sem juros</option>
+                  <option value="3">3x sem juros</option>
+                  <option value="4">4x sem juros</option>
+                  <option value="5">5x sem juros</option>
+                  <option value="6">6x sem juros</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- BOLETO VIEW -->
+            <div id="pay-view-boleto" class="pay-method-view" style="display: none;">
+              <div class="pix-box">
+                <i class="fa-solid fa-barcode text-gold" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                <h3 style="color:#FFF; margin-bottom: 0.5rem;">Boleto Bancário</h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                  O boleto tem vencimento em 3 dias úteis. Pode ser pago em qualquer banco ou aplicativo.
+                </p>
+                <div style="font-size: 0.8rem; background: #000; padding: 1rem; border-radius: 4px; border: 1px dashed var(--border-dark);">
+                  Código de Barras será gerado após confirmação final.
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 2.5rem; display: flex; gap: 1rem;">
+              <button type="button" class="btn btn-secondary" onclick="nextStep(2)">VOLTAR</button>
+              <button type="button" class="btn btn-primary" style="flex:1;" onclick="nextStep(4)">
+                REVISAR PEDIDO &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: REVIEW & CONFIRM -->
+          <div id="checkout-step-4" class="checkout-step-view" style="display: none;">
+            <h2 style="font-size: 1.45rem; margin-bottom: 0.5rem; color: #FFF;">4. REVISÃO E CONFIRMAÇÃO</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Confira todos os dados antes de finalizar seu pedido.</p>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <!-- Customer Review Card -->
+              <div style="background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 6px; padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <strong style="color: var(--color-accent); font-size: 0.85rem; text-transform: uppercase;">1. Cliente</strong>
+                  <button type="button" onclick="nextStep(1)" style="color: var(--text-muted); font-size: 0.75rem; text-decoration: underline;">Alterar</button>
+                </div>
+                <div id="rev-customer-name" style="font-weight: 700; color: #FFF;">-</div>
+                <div id="rev-customer-details" style="font-size: 0.8rem; color: var(--text-muted);">-</div>
+              </div>
+
+              <!-- Shipping Review Card -->
+              <div style="background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 6px; padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <strong style="color: var(--color-accent); font-size: 0.85rem; text-transform: uppercase;">2. Entrega</strong>
+                  <button type="button" onclick="nextStep(2)" style="color: var(--text-muted); font-size: 0.75rem; text-decoration: underline;">Alterar</button>
+                </div>
+                <div id="rev-shipping-address" style="font-weight: 700; color: #FFF;">-</div>
+                <div id="rev-shipping-method" style="font-size: 0.8rem; color: var(--text-muted);">-</div>
+              </div>
+
+              <!-- Payment Review Card -->
+              <div style="background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 6px; padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                  <strong style="color: var(--color-accent); font-size: 0.85rem; text-transform: uppercase;">3. Pagamento</strong>
+                  <button type="button" onclick="nextStep(3)" style="color: var(--text-muted); font-size: 0.75rem; text-decoration: underline;">Alterar</button>
+                </div>
+                <div id="rev-payment-method" style="font-weight: 700; color: #FFF;">PIX com 5% de Desconto</div>
+                <div id="rev-payment-details" style="font-size: 0.8rem; color: var(--text-muted);">Aprovação em segundos</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 2.5rem; display: flex; gap: 1rem;">
+              <button type="button" class="btn btn-secondary" onclick="nextStep(3)">VOLTAR</button>
+              <button type="button" class="btn btn-primary btn-lg" style="flex:1;" id="btn-final-confirm-order" onclick="confirmAndPlaceOrder()">
+                <i class="fa-solid fa-check"></i> CONFIRMAR E CONCLUIR PEDIDO
+              </button>
+            </div>
+          </div>
+
+          <!-- SUCCESS SCREEN (SHOWN AFTER ORDER IS PLACED) -->
+          <div id="checkout-step-success" class="checkout-step-view" style="display: none; text-align: center; padding: 3rem 1rem;">
+            <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.15); border: 2px solid var(--success); border-radius: 9999px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--success); font-size: 2.5rem;">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <span class="product-badge badge-gold" style="margin-bottom: 0.75rem; display: inline-block;">PEDIDO CONFIRMADO COM SUCESSO</span>
+            <h2 style="font-size: 2rem; color: #FFF; margin-bottom: 0.5rem;">PARABÉNS! SEU DROP ESTÁ GARANTIDO.</h2>
+            <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem;">
+              Obrigado por comprar na <strong>DRIPP CONCEITO</strong>. Enviamos a confirmação detalhada para seu e-mail.
+            </p>
+
+            <div style="background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 8px; padding: 1.5rem; max-width: 480px; margin: 0 auto 2.5rem; text-align: left;">
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                <span style="color: var(--text-muted);">Número do Pedido:</span>
+                <strong style="color: var(--color-accent);" id="success-order-id">DRP-0000</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.75rem; margin-bottom: 0.75rem;">
+                <span style="color: var(--text-muted);">Status:</span>
+                <strong style="color: var(--success);">Pagamento Aprovado</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-muted);">Previsão de Envio:</span>
+                <strong style="color: #FFF;">Próximo dia útil (São Carlos)</strong>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+              <a href="conta.html#pedidos" class="btn btn-primary">
+                <i class="fa-solid fa-box-open"></i> ACOMPANHAR MEU PEDIDO
+              </a>
+              <a href="index.html" class="btn btn-secondary">
+                VOLTAR AO INÍCIO
+              </a>
+            </div>
+          </div>
+
+          <div class="trust-badges-bar">
+            <div class="trust-badge-item"><i class="fa-solid fa-lock"></i> Compra Protegida</div>
+            <div class="trust-badge-item"><i class="fa-solid fa-certificate"></i> Garantia Dripp Conceito</div>
+            <div class="trust-badge-item"><i class="fa-solid fa-headset"></i> Suporte São Carlos - SP</div>
+          </div>
+        </div>
+
+        <!-- Order Summary Sidebar (Always Visible during steps) -->
+        <aside id="checkout-summary-col">
+          <div class="cart-summary-card">
+            <h3 class="summary-title">RESUMO DA COMPRA</h3>
+
+            <div id="checkout-summary-items" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem; max-height: 250px; overflow-y: auto;">
+              <!-- Items list injected via JS -->
+            </div>
+
+            <div class="summary-line">
+              <span>Subtotal:</span>
+              <strong id="chk-summary-subtotal">R$ 0,00</strong>
+            </div>
+
+            <div class="summary-line" id="chk-summary-discount-row" style="display: none;">
+              <span>Desconto:</span>
+              <strong class="highlight" id="chk-summary-discount">- R$ 0,00</strong>
+            </div>
+
+            <div class="summary-line">
+              <span>Frete:</span>
+              <strong id="chk-summary-shipping">Grátis</strong>
+            </div>
+
+            <div class="summary-total">
+              <span>TOTAL:</span>
+              <span class="total-val" id="chk-summary-total">R$ 0,00</span>
+            </div>
+
+            <!-- Security Notice -->
+            <div style="margin-top: 1.5rem; padding: 1rem; background: #0E0E12; border: 1px solid var(--border-dark); border-radius: 4px; font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+              <i class="fa-solid fa-shield-halved text-gold" style="margin-right: 4px;"></i>
+              Todos os pedidos são processados em servidor seguro. Os dados do seu cartão nunca são armazenados em texto claro.
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+  <script>
+    let currentStep = 1;
+    let selectedPaymentType = "pix";
+    let chosenShippingCost = 0;
+    let chosenShippingLabel = "Retirada na Loja Física (São Carlos)";
+
+    // Customer form data
+    let checkoutData = {
+      name: "",
+      email: "",
+      phone: "",
+      cpf: "",
+      cep: "",
+      rua: "",
+      numero: "",
+      complemento: "",
+      bairro: "",
+      cidade: "",
+      uf: ""
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // If cart is empty, add dummy default item for smooth demo experience
+      if (drippCart.items.length === 0) {
+        drippCart.addItem(MOCK_PRODUCTS[0], "G", "Preto Lavado", 1);
+      }
+
+      // Pre-fill user if logged in
+      if (drippAuth.isLoggedIn()) {
+        const u = drippAuth.user;
+        document.getElementById("chk-name").value = u.name || "";
+        document.getElementById("chk-email").value = u.email || "";
+        document.getElementById("chk-phone").value = u.phone || "";
+        document.getElementById("chk-cpf").value = u.cpf || "";
+      }
+
+      renderCheckoutSummary();
+
+      // Card input formatting & preview
+      const cardNum = document.getElementById("card-input-number");
+      const cardName = document.getElementById("card-input-name");
+      const cardExp = document.getElementById("card-input-exp");
+
+      cardNum.addEventListener("input", (e) => {
+        let v = e.target.value.replace(/\D/g, "").substring(0, 16);
+        let formatted = v.replace(/(\d{4})/g, "$1 ").trim();
+        e.target.value = formatted;
+        document.getElementById("card-preview-number").textContent = formatted || "•••• •••• •••• ••••";
+      });
+
+      cardName.addEventListener("input", (e) => {
+        document.getElementById("card-preview-name").textContent = e.target.value.toUpperCase() || "SEU NOME";
+      });
+
+      cardExp.addEventListener("input", (e) => {
+        let v = e.target.value.replace(/\D/g, "").substring(0, 4);
+        if (v.length >= 2) v = v.substring(0, 2) + "/" + v.substring(2);
+        e.target.value = v;
+        document.getElementById("card-preview-exp").textContent = v || "MM/AA";
+      });
+
+      // ViaCEP lookup
+      document.getElementById("btn-chk-lookup-cep").addEventListener("click", async () => {
+        const cepVal = document.getElementById("chk-cep").value.trim();
+        if (cepVal.replace(/\D/g, "").length !== 8) {
+          Toast.error("CEP Inválido", "Digite 8 dígitos.");
+          return;
+        }
+
+        try {
+          const res = await api.lookupCep(cepVal);
+          document.getElementById("chk-rua").value = res.logradouro || "";
+          document.getElementById("chk-bairro").value = res.bairro || "";
+          document.getElementById("chk-cidade").value = res.localidade || "";
+          document.getElementById("chk-uf").value = res.uf || "";
+          document.getElementById("chk-numero").focus();
+          Toast.success("Endereço Carregado", `${res.logradouro}, ${res.localidade} - ${res.uf}`);
+        } catch (err) {
+          Toast.error("Erro no CEP", err.message);
+        }
+      });
+    });
+
+    function renderCheckoutSummary() {
+      const itemsContainer = document.getElementById("checkout-summary-items");
+      const subtotalEl = document.getElementById("chk-summary-subtotal");
+      const discountRow = document.getElementById("chk-summary-discount-row");
+      const discountEl = document.getElementById("chk-summary-discount");
+      const shippingEl = document.getElementById("chk-summary-shipping");
+      const totalEl = document.getElementById("chk-summary-total");
+
+      itemsContainer.innerHTML = drippCart.items.map(item => `
+        <div style="display: flex; gap: 0.75rem; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem;">
+          <img src="${item.image}" alt="${item.name}" style="width: 44px; height: 44px; border-radius: 4px; object-fit: cover;">
+          <div style="flex:1; font-size: 0.8rem;">
+            <div style="font-weight: 700; color: #FFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 170px;">${item.name}</div>
+            <div style="color: var(--text-muted); font-size: 0.7rem;">Tam: ${item.size} • Qtd: ${item.quantity}</div>
+          </div>
+          <div style="font-weight: 700; color: var(--color-accent); font-size: 0.85rem;">
+            ${Formatters.currency(item.price * item.quantity)}
+          </div>
+        </div>
+      `).join("");
+
+      const subtotal = drippCart.getSubtotal();
+      let discount = drippCart.getDiscount();
+
+      // Extra 5% discount if PIX
+      if (selectedPaymentType === "pix") {
+        discount += (subtotal * 0.05);
+      }
+
+      subtotalEl.textContent = Formatters.currency(subtotal);
+
+      if (discount > 0) {
+        discountRow.style.display = "flex";
+        discountEl.textContent = `- ${Formatters.currency(discount)}`;
+      } else {
+        discountRow.style.display = "none";
+      }
+
+      shippingEl.textContent = chosenShippingCost === 0 ? "Grátis" : Formatters.currency(chosenShippingCost);
+      const total = Math.max(0, subtotal - discount + chosenShippingCost);
+      totalEl.textContent = Formatters.currency(total);
+    }
+
+    function nextStep(stepNumber) {
+      // Validation per step
+      if (stepNumber === 2) {
+        checkoutData.name = document.getElementById("chk-name").value.trim();
+        checkoutData.email = document.getElementById("chk-email").value.trim();
+        checkoutData.phone = document.getElementById("chk-phone").value.trim();
+        checkoutData.cpf = document.getElementById("chk-cpf").value.trim();
+
+        if (!checkoutData.name || !checkoutData.email || !checkoutData.phone || !checkoutData.cpf) {
+          Toast.error("Atenção", "Preencha todos os campos obrigatórios.");
+          return;
+        }
+      }
+
+      if (stepNumber === 3) {
+        checkoutData.cep = document.getElementById("chk-cep").value.trim();
+        checkoutData.rua = document.getElementById("chk-rua").value.trim();
+        checkoutData.numero = document.getElementById("chk-numero").value.trim();
+        checkoutData.complemento = document.getElementById("chk-complemento").value.trim();
+        checkoutData.bairro = document.getElementById("chk-bairro").value.trim();
+        checkoutData.cidade = document.getElementById("chk-cidade").value.trim();
+        checkoutData.uf = document.getElementById("chk-uf").value.trim();
+
+        if (!checkoutData.cep || !checkoutData.rua || !checkoutData.numero || !checkoutData.bairro) {
+          Toast.error("Atenção", "Preencha os campos obrigatórios do endereço.");
+          return;
+        }
+      }
+
+      if (stepNumber === 4) {
+        // Populate Review Screen
+        document.getElementById("rev-customer-name").textContent = checkoutData.name;
+        document.getElementById("rev-customer-details").textContent = `${checkoutData.email} • ${checkoutData.phone} • CPF: ${checkoutData.cpf}`;
+        document.getElementById("rev-shipping-address").textContent = `${checkoutData.rua}, ${checkoutData.numero} ${checkoutData.complemento ? ' - ' + checkoutData.complemento : ''}`;
+        document.getElementById("rev-shipping-method").textContent = `${checkoutData.bairro}, ${checkoutData.cidade} - ${checkoutData.uf} (CEP: ${checkoutData.cep}) • [${chosenShippingLabel}]`;
+
+        if (selectedPaymentType === "pix") {
+          document.getElementById("rev-payment-method").textContent = "PIX Instantâneo com 5% de Desconto";
+          document.getElementById("rev-payment-details").textContent = "QR Code gerado e disponível para pagamento";
+        } else if (selectedPaymentType === "card") {
+          const inst = document.getElementById("card-input-installments").value;
+          document.getElementById("rev-payment-method").textContent = `Cartão de Crédito (${inst}x sem juros)`;
+          document.getElementById("rev-payment-details").textContent = `Final ${document.getElementById("card-input-number").value.slice(-4) || '••••'}`;
+        } else {
+          document.getElementById("rev-payment-method").textContent = "Boleto Bancário";
+          document.getElementById("rev-payment-details").textContent = "Vencimento em 3 dias úteis";
+        }
+      }
+
+      currentStep = stepNumber;
+
+      // Update Views
+      document.querySelectorAll(".checkout-step-view").forEach(v => v.style.display = "none");
+      const currentView = document.getElementById(`checkout-step-${stepNumber}`);
+      if (currentView) currentView.style.display = "block";
+
+      // Update Indicators
+      for (let i = 1; i <= 4; i++) {
+        const ind = document.getElementById(`step-ind-${i}`);
+        const line = document.getElementById(`step-line-${i}`);
+        if (ind) {
+          ind.classList.remove("active", "completed");
+          if (i < stepNumber) ind.classList.add("completed");
+          else if (i === stepNumber) ind.classList.add("active");
+        }
+        if (line) {
+          if (i < stepNumber) line.classList.add("completed");
+          else line.classList.remove("completed");
+        }
+      }
+
+      window.scrollTo({ top: 120, behavior: "smooth" });
+    }
+
+    function selectPayTab(type) {
+      selectedPaymentType = type;
+      document.querySelectorAll(".payment-tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".pay-method-view").forEach(v => v.style.display = "none");
+
+      document.getElementById(`tab-pay-${type}`).classList.add("active");
+      document.getElementById(`pay-view-${type}`).style.display = "block";
+
+      renderCheckoutSummary();
+    }
+
+    function updateShippingChoice(cost, label) {
+      chosenShippingCost = cost;
+      chosenShippingLabel = label;
+      renderCheckoutSummary();
+    }
+
+    function copyPixCode() {
+      const code = document.getElementById("pix-copy-code").value;
+      navigator.clipboard.writeText(code).then(() => {
+        Toast.success("Código Copiado!", "Cole no seu aplicativo do banco para pagar.");
+      });
+    }
+
+    function confirmAndPlaceOrder() {
+      const finalBtn = document.getElementById("btn-final-confirm-order");
+      finalBtn.disabled = true;
+      finalBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> PROCESSANDO PEDIDO...`;
+
+      setTimeout(() => {
+        const newOrder = OrderManager.addOrder({
+          total: drippCart.getTotal(),
+          itemsCount: drippCart.getCount(),
+          itemsSummary: drippCart.items.map(i => `${i.name} (${i.size})`).join(", "),
+          paymentMethod: selectedPaymentType === "pix" ? "PIX (5% OFF)" : (selectedPaymentType === "card" ? "Cartão de Crédito" : "Boleto"),
+          customerName: checkoutData.name,
+          customerEmail: checkoutData.email,
+          address: `${checkoutData.rua}, ${checkoutData.numero} - ${checkoutData.cidade}/${checkoutData.uf}`
+        });
+
+        // Clear cart
+        drippCart.clear();
+
+        // Show Success
+        document.querySelectorAll(".checkout-step-view").forEach(v => v.style.display = "none");
+        document.getElementById("checkout-step-success").style.display = "block";
+        document.getElementById("success-order-id").textContent = newOrder.id;
+        document.getElementById("checkout-summary-col").style.display = "none";
+
+        // Progress finished
+        for (let i = 1; i <= 4; i++) {
+          const ind = document.getElementById(`step-ind-${i}`);
+          if (ind) ind.classList.add("completed");
+        }
+
+        Toast.success("Pedido Confirmado!", `Seu pedido ${newOrder.id} foi registrado com sucesso.`);
+      }, 1200);
+    }
+  </script>
+
+  <!-- Simple Footer (Admin link at the bottom) -->
+  <footer style="text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--border-dark); background: #08080A; color: #71717A; font-size: 0.8rem; margin-top: 3rem;">
+    <div style="margin-bottom: 0.5rem;">DRIPP CONCEITO &copy; 2024 • Av. Regit Arab, 703 - São Carlos, SP</div>
+    <div>
+      <a href="admin/" style="color: #71717A; text-decoration: none; font-size: 0.75rem; transition: color 0.2s;" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#71717A'">
+        <i class="fa-solid fa-lock" style="font-size: 0.7rem; margin-right: 4px;"></i> Painel Administrativo
+      </a>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp VIP Button with Pulse Animation -->
+  <div class="whatsapp-floating">
+    <div class="whatsapp-tooltip">Atendimento VIP São Carlos</div>
+    <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Atendimento WhatsApp DRIPP CONCEITO">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+</body>
+</html>

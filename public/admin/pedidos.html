@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Pedidos | DRIPP ADMIN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-logo-icon">D</div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">DRIPP</span>
+            <span class="brand-badge">ADMIN</span>
+          </div>
+        </a>
+        <button class="sidebar-toggle-btn" title="Recolher Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <a href="index.html" class="nav-item">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="produtos.html" class="nav-item">
+          <i class="fa-solid fa-shirt"></i>
+          <span class="nav-text">Produtos</span>
+        </a>
+        <a href="pedidos.html" class="nav-item active">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="nav-text">Pedidos</span>
+        </a>
+        <a href="clientes.html" class="nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span class="nav-text">Clientes</span>
+        </a>
+
+        <div class="nav-section-title">Gestão</div>
+        <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="nav-text">Financeiro</span>
+        </a>
+        <a href="cupons.html" class="nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span class="nav-text">Cupons</span>
+        </a>
+        <a href="categorias.html" class="nav-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="nav-text">Categorias</span>
+        </a>
+
+        <div class="nav-section-title">Sistema</div>
+        <a href="/index.html" target="_blank" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Ver Loja Virtual</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">DC</div>
+          <div class="user-details">
+            <div class="name">Admin Master</div>
+            <div class="role">DRIPP CONCEITO</div>
+          </div>
+        </div>
+        <button class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Encerrar Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-headline">
+            <div class="page-title">
+              <i class="fa-solid fa-bag-shopping"></i>
+              Gestão de Pedidos
+            </div>
+            <div class="breadcrumb">
+              <a href="index.html">Admin</a>
+              <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+              <span>Pedidos de Clientes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="btn btn-gold-outline" onclick="exportOrdersCSV()">
+            <i class="fa-solid fa-file-csv"></i>
+            Exportar CSV
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="admin-content">
+        <!-- TOOLBAR & FILTERS -->
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchOrders" placeholder="Buscar por nº, cliente ou e-mail...">
+            </div>
+
+            <select id="filterOrderStatus" class="form-select-sm">
+              <option value="">Todos os Status de Envio</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Processando">Processando</option>
+              <option value="Enviado">Enviado</option>
+              <option value="Entregue">Entregue</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
+
+            <select id="filterPaymentStatus" class="form-select-sm">
+              <option value="">Todos os Pagamentos</option>
+              <option value="Pago">Pago</option>
+              <option value="PIX">PIX</option>
+              <option value="Cartão">Cartão de Crédito</option>
+              <option value="Boleto">Boleto Bancário</option>
+              <option value="Estornado">Estornado</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ORDERS TABLE -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nº Pedido</th>
+                  <th>Data</th>
+                  <th>Cliente</th>
+                  <th>Itens</th>
+                  <th>Total</th>
+                  <th>Pagamento</th>
+                  <th>Status do Pedido</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <!-- Renderizado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination-wrap" id="ordersPagination">
+          <!-- Renderizado via JS -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: DETALHES COMPLETOS DO PEDIDO -->
+  <div class="modal-overlay" id="orderDetailsModal">
+    <div class="modal-container large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-box-open"></i>
+          Pedido <span id="modalOrderNumber" style="color: #ffffff;">#DRP-0000</span>
+          <span id="modalOrderDate" style="font-size: 0.8rem; color: #94a3b8; font-weight: 400; margin-left: 0.5rem;"></span>
+        </div>
+        <button class="modal-close-btn" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="order-detail-grid">
+          <!-- LADO ESQUERDO: ITENS E ENDEREÇO -->
+          <div>
+            <!-- INFORMAÇÕES DO CLIENTE -->
+            <div class="card" style="margin-bottom: 1.25rem;">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #ffffff;">
+                <i class="fa-solid fa-user"></i> Dados do Comprador
+              </h4>
+              <div style="font-size: 0.875rem; line-height: 1.6;">
+                <div><strong>Nome:</strong> <span id="orderDetailCustomerName"></span></div>
+                <div><strong>E-mail:</strong> <span id="orderDetailCustomerEmail"></span></div>
+                <div><strong>Telefone:</strong> <span id="orderDetailCustomerPhone"></span></div>
+                <div><strong>Endereço de Entrega:</strong> <span id="orderDetailShippingAddress"></span></div>
+              </div>
+            </div>
+
+            <!-- ITENS DO PEDIDO -->
+            <div class="card">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #ffffff;">
+                <i class="fa-solid fa-shirt"></i> Itens Comprados
+              </h4>
+              <div id="orderDetailItemsList">
+                <!-- Renderizado via JS -->
+              </div>
+              <div style="display: flex; justify-content: flex-end; align-items: center; gap: 1rem; padding-top: 1rem;">
+                <span style="font-size: 0.9rem; color: #94a3b8;">Total do Pedido:</span>
+                <span id="orderDetailTotal" style="font-size: 1.3rem; font-weight: 800; color: #ffffff; font-family: 'Space Grotesk', sans-serif;"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- LADO DIREITO: STATUS, RASTREIO E TIMELINE -->
+          <div>
+            <div class="card" style="margin-bottom: 1.25rem;">
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #ffffff;">
+                <i class="fa-solid fa-sliders"></i> Atualizar Pedido
+              </h4>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label">Status do Pedido</label>
+                <select id="orderDetailStatusSelect" class="form-select">
+                  <option value="Pendente">Pendente</option>
+                  <option value="Processando">Processando</option>
+                  <option value="Enviado">Enviado</option>
+                  <option value="Entregue">Entregue</option>
+                  <option value="Cancelado">Cancelado</option>
+                </select>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label">Código de Rastreio (Correios / Jadlog)</label>
+                <input type="text" id="orderDetailTrackingCode" class="form-input" placeholder="Ex: BR984210398AA">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label class="form-label">Observações Internas</label>
+                <textarea id="orderDetailNotes" class="form-textarea" placeholder="Anotações para a equipe de expedição..."></textarea>
+              </div>
+
+              <div style="margin-bottom: 1rem;">
+                <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.25rem;">Método de Pagamento:</div>
+                <div style="font-weight: 600;" id="orderDetailPaymentMethod"></div>
+                <div id="orderDetailPaymentStatus" style="margin-top: 0.25rem;"></div>
+              </div>
+
+              <button type="button" class="btn btn-primary" style="width: 100%;" onclick="saveOrderStatusChange()">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Salvar Alterações
+              </button>
+            </div>
+
+            <!-- TIMELINE DE STATUS -->
+            <div class="card">
+              <h4 style="font-size: 0.95rem; margin-bottom: 1rem; color: #ffffff;">
+                <i class="fa-solid fa-timeline"></i> Histórico do Pedido
+              </h4>
+              <div class="order-timeline" id="orderDetailTimeline">
+                <!-- Renderizado via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-cancel-btn">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initOrdersPage();
+    });
+  </script>
+</body>
+</html>
+
