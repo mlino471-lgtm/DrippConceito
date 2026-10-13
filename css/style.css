@@ -1658,6 +1658,117 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
 }
 
+/* --- SEO LOCAL SECTION (SÃO CARLOS - SP) --- */
+.local-seo-section {
+  background-color: #0B0B0E;
+  padding: 5rem 0;
+  border-top: 1px solid var(--border-dark);
+}
+
+.seo-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.seo-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.seo-text-block h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.seo-text-block p {
+  color: var(--text-muted);
+  font-size: 0.925rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.seo-keyword-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.seo-keyword-pill {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-dark);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+  color: #D4D4D8;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.seo-keyword-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.seo-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.seo-faq-item {
+  background: #111115;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  padding: 1.35rem 1.5rem;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.seo-faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.seo-faq-question {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.seo-faq-answer {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .seo-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
 /* --- STORE LOCATION & GOOGLE MAPS (PARTE INFERIOR) --- */
 .store-location-section {
   background-color: #08080A;
