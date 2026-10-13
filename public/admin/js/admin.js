@@ -1,4 +1,4 @@
-﻿/**
+/**
  * DRIPP CONCEITO - PAINEL ADMINISTRATIVO
  * Streetwear Masculino de Luxo - São Carlos, SP
  * JavaScript Unificado & Completo
@@ -967,27 +967,132 @@ function exportToCSV(filename, rows) {
 // 6. CONTROLE DO SIDEBAR & AUTENTICAÇÃO
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Configura Sidebar Toggle
-  const toggleBtn = document.querySelector('.sidebar-toggle-btn');
-  const sidebar = document.querySelector('.admin-sidebar');
-  const mobileToggleBtn = document.querySelector('.mobile-sidebar-toggle');
+  // ==========================================
+  // CONFIGURAÇÃO COMPLETA: ABRIR E FECHAR MENU LATERAL (DESKTOP & MOBILE)
+  // ==========================================
+  function setupAdminSidebar() {
+    const sidebar = document.querySelector('.admin-sidebar');
+    if (!sidebar) return;
 
-  if (toggleBtn && sidebar) {
-    toggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-      localStorage.setItem('dripp_sidebar_collapsed', sidebar.classList.contains('collapsed'));
+    // Injeta backdrop para mobile se ainda não existir
+    let backdrop = document.querySelector('.sidebar-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'sidebar-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    // Atualiza ícones e títulos de acessibilidade
+    function updateToggleIcons() {
+      const isCollapsed = sidebar.classList.contains('collapsed');
+      const isMobileOpen = sidebar.classList.contains('mobile-open');
+
+      // Botões no topo (topbar)
+      document.querySelectorAll('.admin-sidebar-toggle, .mobile-sidebar-toggle').forEach(btn => {
+        const titleText = isCollapsed ? 'Abrir / Expandir Menu Lateral' : 'Recolher / Fechar Menu Lateral';
+        btn.setAttribute('title', titleText);
+        btn.setAttribute('aria-label', titleText);
+        const icon = btn.querySelector('i');
+        if (icon) {
+          icon.className = isCollapsed ? 'fa-solid fa-bars-staggered' : 'fa-solid fa-bars';
+        }
+      });
+
+      // Botão interno no cabeçalho do sidebar
+      document.querySelectorAll('.sidebar-toggle-btn').forEach(btn => {
+        const titleText = isCollapsed ? 'Abrir Menu Lateral' : 'Fechar / Recolher Menu Lateral';
+        btn.setAttribute('title', titleText);
+        btn.setAttribute('aria-label', titleText);
+        const icon = btn.querySelector('i');
+        if (icon) {
+          icon.className = isCollapsed ? 'fa-solid fa-chevron-right' : 'fa-solid fa-chevron-left';
+        }
+      });
+    }
+
+    // Alternar Desktop (Recolher / Abrir)
+    function toggleDesktopSidebar() {
+      const willCollapse = !sidebar.classList.contains('collapsed');
+      sidebar.classList.toggle('collapsed', willCollapse);
+      localStorage.setItem('dripp_sidebar_collapsed', willCollapse ? 'true' : 'false');
+      updateToggleIcons();
+    }
+
+    // Alternar Mobile (Abrir / Fechar gaveta lateral)
+    function toggleMobileSidebar(forceClose = false) {
+      if (forceClose) {
+        sidebar.classList.remove('mobile-open');
+        backdrop.classList.remove('active');
+      } else {
+        const isOpen = sidebar.classList.toggle('mobile-open');
+        backdrop.classList.toggle('active', isOpen);
+      }
+      updateToggleIcons();
+    }
+
+    // Clique nos botões da barra superior (topbar)
+    document.querySelectorAll('.admin-sidebar-toggle, .mobile-sidebar-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+          toggleMobileSidebar();
+        } else {
+          toggleDesktopSidebar();
+        }
+      });
     });
 
-    if (localStorage.getItem('dripp_sidebar_collapsed') === 'true') {
+    // Clique no botão interno da sidebar
+    document.querySelectorAll('.sidebar-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.innerWidth <= 768) {
+          toggleMobileSidebar(true);
+        } else {
+          toggleDesktopSidebar();
+        }
+      });
+    });
+
+    // Clique no botão de fechar móvel [X]
+    document.querySelectorAll('.sidebar-close-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMobileSidebar(true);
+      });
+    });
+
+    // Clique no backdrop fecha no mobile
+    backdrop.addEventListener('click', () => {
+      toggleMobileSidebar(true);
+    });
+
+    // Tecla ESC fecha no mobile
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleMobileSidebar(true);
+      }
+    });
+
+    // Clicar em link de navegação fecha a gaveta no mobile
+    sidebar.querySelectorAll('.nav-item').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          toggleMobileSidebar(true);
+        }
+      });
+    });
+
+    // Recupera preferência salva do usuário (desktop)
+    if (window.innerWidth > 768 && localStorage.getItem('dripp_sidebar_collapsed') === 'true') {
       sidebar.classList.add('collapsed');
     }
+    updateToggleIcons();
   }
 
-  if (mobileToggleBtn && sidebar) {
-    mobileToggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('mobile-open');
-    });
-  }
+  setupAdminSidebar();
 
   // Logout Handler
   const logoutBtns = document.querySelectorAll('.logout-btn');
