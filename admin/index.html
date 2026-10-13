@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | DRIPP ADMIN - Streetwear Conceito</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-logo-icon">D</div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">DRIPP</span>
+            <span class="brand-badge">ADMIN</span>
+          </div>
+        </a>
+        <button class="sidebar-toggle-btn" title="Recolher Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <a href="index.html" class="nav-item active">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="produtos.html" class="nav-item">
+          <i class="fa-solid fa-shirt"></i>
+          <span class="nav-text">Produtos</span>
+        </a>
+        <a href="pedidos.html" class="nav-item">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="nav-text">Pedidos</span>
+          <span class="nav-badge">Novo</span>
+        </a>
+        <a href="clientes.html" class="nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span class="nav-text">Clientes</span>
+        </a>
+
+        <div class="nav-section-title">Gestão</div>
+        <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="nav-text">Financeiro</span>
+        </a>
+        <a href="cupons.html" class="nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span class="nav-text">Cupons</span>
+        </a>
+        <a href="categorias.html" class="nav-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="nav-text">Categorias</span>
+        </a>
+
+        <div class="nav-section-title">Sistema</div>
+        <a href="/index.html" target="_blank" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Ver Loja Virtual</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">DC</div>
+          <div class="user-details">
+            <div class="name">Admin Master</div>
+            <div class="role">DRIPP CONCEITO</div>
+          </div>
+        </div>
+        <button class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Encerrar Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-headline">
+            <div class="page-title">
+              <i class="fa-solid fa-gauge-high"></i>
+              Painel Geral
+            </div>
+            <div class="breadcrumb">
+              <span>Admin</span>
+              <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+              <span>Dashboard</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-center">
+          <div class="global-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Buscar pedido, cliente, produto...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="/index.html" target="_blank" class="btn-view-store">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Ver Loja</span>
+          </a>
+          <button class="topbar-action-btn" title="Notificações">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-badge-pulse"></span>
+          </button>
+          <div class="user-avatar" style="width: 38px; height: 38px;">AD</div>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="admin-content">
+        <!-- QUICK ACTIONS ROW -->
+        <div class="quick-actions-bar">
+          <a href="produtos.html?action=new" class="quick-action-card">
+            <div class="quick-action-icon">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="quick-action-info">
+              <h4>Adicionar Produto</h4>
+              <p>Cadastrar novo drop streetwear</p>
+            </div>
+          </a>
+          <a href="pedidos.html" class="quick-action-card">
+            <div class="quick-action-icon">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <div class="quick-action-info">
+              <h4>Ver Pedidos</h4>
+              <p>Gerenciar entregas e despachos</p>
+            </div>
+          </a>
+          <a href="financeiro.html" class="quick-action-card">
+            <div class="quick-action-icon">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div class="quick-action-info">
+              <h4>Relatório Financeiro</h4>
+              <p>Análise de receitas e lucros</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- STATS CARDS ROW -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Total Vendas</span>
+              <div class="stat-icon gold">
+                <i class="fa-solid fa-sack-dollar"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="statTotalSales">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +18.4%
+              </span>
+              <span class="trend-period">vs mês anterior</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Pedidos Hoje</span>
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-cart-shopping"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="statOrdersToday">0</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +12%
+              </span>
+              <span class="trend-period">em processamento</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Clientes Ativos</span>
+              <div class="stat-icon purple">
+                <i class="fa-solid fa-users"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="statCustomers">0</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +24.8%
+              </span>
+              <span class="trend-period">cadastros novos</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Ticket Médio</span>
+              <div class="stat-icon green">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="statAvgTicket">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +8.2%
+              </span>
+              <span class="trend-period">por transação</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHARTS & TOP PRODUCTS ROW -->
+        <div class="charts-grid-main">
+          <!-- REVENUE CHART -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  <i class="fa-solid fa-chart-line"></i>
+                  Evolução do Faturamento
+                </div>
+                <div class="card-subtitle">Receita líquida dos últimos 6 meses (R$)</div>
+              </div>
+              <div class="card-actions">
+                <span class="badge-status pendente">6 Meses</span>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+
+          <!-- TOP SELLING PRODUCTS -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  <i class="fa-solid fa-fire"></i>
+                  Mais Vendidos
+                </div>
+                <div class="card-subtitle">Peças com maior saída de estoque</div>
+              </div>
+              <div class="card-actions">
+                <a href="produtos.html" class="btn btn-sm btn-gold-outline">Ver Todos</a>
+              </div>
+            </div>
+            <div class="top-products-list" id="topProductsList">
+              <!-- Renderizado via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT ORDERS TABLE -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Últimos Pedidos
+              </div>
+              <div class="card-subtitle">Pedidos recebidos nas últimas horas</div>
+            </div>
+            <div class="card-actions">
+              <a href="pedidos.html" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-list-check"></i>
+                Gerenciar Pedidos
+              </a>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nº Pedido</th>
+                  <th>Data/Hora</th>
+                  <th>Cliente</th>
+                  <th>Status</th>
+                  <th>Total</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="recentOrdersTableBody">
+                <!-- Inserido dinamicamente pelo admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initDashboard();
+    });
+  </script>
+</body>
+</html>

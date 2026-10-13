@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes | DRIPP ADMIN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-logo-icon">D</div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">DRIPP</span>
+            <span class="brand-badge">ADMIN</span>
+          </div>
+        </a>
+        <button class="sidebar-toggle-btn" title="Recolher Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <a href="index.html" class="nav-item">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="produtos.html" class="nav-item">
+          <i class="fa-solid fa-shirt"></i>
+          <span class="nav-text">Produtos</span>
+        </a>
+        <a href="pedidos.html" class="nav-item">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="nav-text">Pedidos</span>
+        </a>
+        <a href="clientes.html" class="nav-item active">
+          <i class="fa-solid fa-users"></i>
+          <span class="nav-text">Clientes</span>
+        </a>
+
+        <div class="nav-section-title">Gestão</div>
+        <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="nav-text">Financeiro</span>
+        </a>
+        <a href="cupons.html" class="nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span class="nav-text">Cupons</span>
+        </a>
+        <a href="categorias.html" class="nav-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="nav-text">Categorias</span>
+        </a>
+
+        <div class="nav-section-title">Sistema</div>
+        <a href="/index.html" target="_blank" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Ver Loja Virtual</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">DC</div>
+          <div class="user-details">
+            <div class="name">Admin Master</div>
+            <div class="role">DRIPP CONCEITO</div>
+          </div>
+        </div>
+        <button class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Encerrar Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-headline">
+            <div class="page-title">
+              <i class="fa-solid fa-users"></i>
+              Base de Clientes
+            </div>
+            <div class="breadcrumb">
+              <a href="index.html">Admin</a>
+              <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+              <span>Clientes Cadastrados</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="btn btn-gold-outline" onclick="exportCustomersCSV()">
+            <i class="fa-solid fa-file-csv"></i>
+            Exportar CSV
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="admin-content">
+        <!-- TOOLBAR & FILTERS -->
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchCustomers" placeholder="Buscar cliente por nome, e-mail ou telefone...">
+            </div>
+          </div>
+        </div>
+
+        <!-- CUSTOMERS TABLE -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>Pedidos Feitos</th>
+                  <th>Total Gasto</th>
+                  <th>Data de Cadastro</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="customersTableBody">
+                <!-- Renderizado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination-wrap" id="customersPagination">
+          <!-- Renderizado via JS -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: DETALHES DO CLIENTE E HISTÓRICO -->
+  <div class="modal-overlay" id="customerDetailsModal">
+    <div class="modal-container large">
+      <div class="modal-header">
+        <div class="modal-title">
+          <i class="fa-solid fa-id-card"></i>
+          Perfil do Cliente: <span id="modalCustomerName" style="color: #ffffff;"></span>
+        </div>
+        <button class="modal-close-btn" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-grid" style="margin-bottom: 1.5rem;">
+          <div class="card">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #ffffff;">
+              <i class="fa-solid fa-address-book"></i> Dados Cadastrais
+            </h4>
+            <div style="font-size: 0.875rem; line-height: 1.7;">
+              <div><strong>E-mail:</strong> <span id="customerDetailEmail"></span></div>
+              <div><strong>Telefone:</strong> <span id="customerDetailPhone"></span></div>
+              <div><strong>CPF:</strong> <span id="customerDetailCpf"></span></div>
+              <div><strong>Endereço Principal:</strong> <span id="customerDetailAddress"></span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4 style="font-size: 0.95rem; margin-bottom: 0.75rem; color: #ffffff;">
+              <i class="fa-solid fa-chart-simple"></i> Resumo de Compras
+            </h4>
+            <div style="font-size: 0.875rem; line-height: 1.7;">
+              <div><strong>Volume de Compras:</strong> <span id="customerDetailOrdersCount"></span></div>
+              <div><strong>Total Gasto Acumulado:</strong> <span id="customerDetailTotalSpent" style="font-weight: 700; color: #10b981;"></span></div>
+              <div><strong>Nível de Fidelidade:</strong> <span class="badge-status pendente">Cliente Street VIP</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 0;">
+          <div style="padding: 1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.06); font-weight: 700; color: #fff;">
+            <i class="fa-solid fa-clock-rotate-left"></i> Histórico de Pedidos Realizados
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Nº Pedido</th>
+                  <th>Data</th>
+                  <th>Status</th>
+                  <th>Valor Total</th>
+                </tr>
+              </thead>
+              <tbody id="customerOrdersTableBody">
+                <!-- Renderizado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-cancel-btn">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initCustomersPage();
+    });
+  </script>
+</body>
+</html>
+

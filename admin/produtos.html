@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Produtos | DRIPP ADMIN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-logo-icon">D</div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">DRIPP</span>
+            <span class="brand-badge">ADMIN</span>
+          </div>
+        </a>
+        <button class="sidebar-toggle-btn" title="Recolher Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <a href="index.html" class="nav-item">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="produtos.html" class="nav-item active">
+          <i class="fa-solid fa-shirt"></i>
+          <span class="nav-text">Produtos</span>
+        </a>
+        <a href="pedidos.html" class="nav-item">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="nav-text">Pedidos</span>
+        </a>
+        <a href="clientes.html" class="nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span class="nav-text">Clientes</span>
+        </a>
+
+        <div class="nav-section-title">Gestão</div>
+        <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="nav-text">Financeiro</span>
+        </a>
+        <a href="cupons.html" class="nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span class="nav-text">Cupons</span>
+        </a>
+        <a href="categorias.html" class="nav-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="nav-text">Categorias</span>
+        </a>
+
+        <div class="nav-section-title">Sistema</div>
+        <a href="/index.html" target="_blank" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Ver Loja Virtual</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">DC</div>
+          <div class="user-details">
+            <div class="name">Admin Master</div>
+            <div class="role">DRIPP CONCEITO</div>
+          </div>
+        </div>
+        <button class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Encerrar Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-headline">
+            <div class="page-title">
+              <i class="fa-solid fa-shirt"></i>
+              Catálogo de Produtos
+            </div>
+            <div class="breadcrumb">
+              <a href="index.html">Admin</a>
+              <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+              <span>Produtos Streetwear</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="btn btn-primary" onclick="openNewProductModal()">
+            <i class="fa-solid fa-plus"></i>
+            NOVO PRODUTO
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="admin-content">
+        <!-- TOOLBAR & FILTERS -->
+        <div class="admin-toolbar">
+          <div class="toolbar-left">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="searchProducts" placeholder="Buscar por nome ou marca...">
+            </div>
+            <select id="filterCategory" class="form-select-sm">
+              <option value="">Todas as Categorias</option>
+            </select>
+            <select id="filterStatus" class="form-select-sm">
+              <option value="">Todos os Status</option>
+              <option value="active">Apenas Ativos</option>
+              <option value="inactive">Apenas Inativos</option>
+            </select>
+          </div>
+
+          <div class="toolbar-right">
+            <!-- BULK ACTIONS BAR (HIDDEN BY DEFAULT) -->
+            <div id="bulkActionsBar" style="display: none; align-items: center; gap: 0.5rem;">
+              <span id="selectedProductsCount" style="font-size: 0.8rem; color: #ffffff; font-weight: 700;">0 selecionados</span>
+              <button class="btn btn-sm btn-secondary" onclick="executeBulkAction('activate')">
+                <i class="fa-solid fa-check"></i> Ativar
+              </button>
+              <button class="btn btn-sm btn-secondary" onclick="executeBulkAction('deactivate')">
+                <i class="fa-solid fa-ban"></i> Desativar
+              </button>
+              <button class="btn btn-sm btn-danger" onclick="executeBulkAction('delete')">
+                <i class="fa-solid fa-trash"></i> Excluir
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCTS TABLE -->
+        <div class="card" style="padding: 0;">
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">
+                    <label class="custom-checkbox">
+                      <input type="checkbox" id="selectAllProducts">
+                    </label>
+                  </th>
+                  <th style="width: 60px;">Foto</th>
+                  <th>Produto</th>
+                  <th>Categoria</th>
+                  <th>Preço</th>
+                  <th>Estoque</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody">
+                <!-- Renderizado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination-wrap" id="productsPagination">
+          <!-- Renderizado via JS -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: CRIAR / EDITAR PRODUTO -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-container large">
+      <div class="modal-header">
+        <div class="modal-title" id="modalProductTitle">
+          <i class="fa-solid fa-plus"></i> Novo Produto
+        </div>
+        <button class="modal-close-btn" type="button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="productForm">
+        <input type="hidden" id="productId">
+        <input type="hidden" id="productMainImage">
+
+        <div class="modal-body">
+          <div class="form-grid">
+            <!-- NOME -->
+            <div class="form-group col-span-2">
+              <label class="form-label">Nome do Produto <span class="req">*</span></label>
+              <input type="text" id="productName" class="form-input" placeholder="Ex: Camiseta Oversized Dark Concept" required>
+            </div>
+
+            <!-- SLUG -->
+            <div class="form-group col-span-2">
+              <label class="form-label">Slug (URL amigável)</label>
+              <input type="text" id="productSlug" class="form-input" placeholder="camiseta-oversized-dark-concept">
+            </div>
+
+            <!-- CATEGORIA -->
+            <div class="form-group">
+              <label class="form-label">Categoria <span class="req">*</span></label>
+              <select id="productCategory" class="form-select" required>
+                <!-- Preenchido via JS -->
+              </select>
+            </div>
+
+            <!-- MARCA -->
+            <div class="form-group">
+              <label class="form-label">Marca / Linha</label>
+              <input type="text" id="productBrand" class="form-input" value="DRIPP">
+            </div>
+
+            <!-- PREÇO & PREÇO PROMOCIONAL -->
+            <div class="form-group">
+              <label class="form-label">Preço de Venda (R$) <span class="req">*</span></label>
+              <input type="number" step="0.01" id="productPrice" class="form-input" placeholder="189.90" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Preço Comparativo / De (R$)</label>
+              <input type="number" step="0.01" id="productComparePrice" class="form-input" placeholder="229.90">
+            </div>
+
+            <!-- ESTOQUE -->
+            <div class="form-group">
+              <label class="form-label">Quantidade em Estoque <span class="req">*</span></label>
+              <input type="number" id="productStock" class="form-input" value="20" required>
+            </div>
+
+            <!-- SELETOR DE CORES -->
+            <div class="form-group">
+              <label class="form-label">Cores Disponíveis</label>
+              <div class="color-picker-row">
+                <input type="color" id="productColorPicker" class="color-swatch-input" value="#FFFFFF">
+                <input type="text" class="form-input" id="productColorsText" value="#000000, #FFFFFF, #71717A" placeholder="Ex: #000000, #FFFFFF, #71717A">
+              </div>
+            </div>
+
+            <!-- GRADE DE TAMANHOS -->
+            <div class="form-group col-span-2">
+              <label class="form-label">Grade de Tamanhos</label>
+              <div class="sizes-selector-wrap">
+                <label class="size-pill-option">
+                  <input type="checkbox" name="sizes" value="PP">
+                  <span class="size-pill-label">PP</span>
+                </label>
+                <label class="size-pill-option">
+                  <input type="checkbox" name="sizes" value="P">
+                  <span class="size-pill-label">P</span>
+                </label>
+                <label class="size-pill-option">
+                  <input type="checkbox" name="sizes" value="M">
+                  <span class="size-pill-label">M</span>
+                </label>
+                <label class="size-pill-option">
+                  <input type="checkbox" name="sizes" value="G">
+                  <span class="size-pill-label">G</span>
+                </label>
+                <label class="size-pill-option">
+                  <input type="checkbox" name="sizes" value="GG">
+                  <span class="size-pill-label">GG</span>
+                </label>
+                <label class="size-pill-option">
+                  <input type="checkbox" name="sizes" value="XG">
+                  <span class="size-pill-label">XG</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- DESCRIÇÃO -->
+            <div class="form-group col-span-2">
+              <label class="form-label">Descrição Detalhada do Produto</label>
+              <textarea id="productDescription" class="form-textarea" placeholder="Informações de tecido, gramatura, modelagem, cuidados na lavagem..."></textarea>
+            </div>
+
+            <!-- UPLOAD DE IMAGENS -->
+            <div class="form-group col-span-2">
+              <label class="form-label">Imagens do Produto (Arraste ou Selecione)</label>
+              <div class="dropzone-container" id="imageDropzone">
+                <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+                <div class="dropzone-text">
+                  <strong>Clique para selecionar</strong> ou arraste fotos aqui
+                </div>
+                <div style="font-size: 0.75rem; color: #64748b; margin-top: 0.25rem;">
+                  PNG, JPG ou WEBP de alta resolução (fundo neutro recomendado)
+                </div>
+                <input type="file" id="productImageFile" accept="image/*" multiple style="display: none;">
+              </div>
+              <div class="image-previews-grid" id="imagePreviewsGrid"></div>
+            </div>
+
+            <!-- TOGGLES STATUS E DESTAQUE -->
+            <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+              <div>
+                <div style="font-weight: 700; font-size: 0.9rem;">Produto Ativo na Loja</div>
+                <div style="font-size: 0.75rem; color: #94a3b8;">Visível para compra imediatamente</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="productActive" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="form-group" style="flex-direction: row; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);">
+              <div>
+                <div style="font-weight: 700; font-size: 0.9rem;">Destacar na Página Inicial</div>
+                <div style="font-size: 0.75rem; color: #94a3b8;">Aparece no carrossel de lançamentos</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="productFeatured">
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancelar</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-floppy-disk"></i>
+            Salvar Produto
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initProductsPage();
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('action') === 'new') {
+        openNewProductModal();
+      }
+    });
+  </script>
+</body>
+</html>

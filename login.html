@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesse sua Conta ou Cadastre-se | DRIPP CONCEITO</title>
+  <meta name="description" content="Faça login ou cadastre-se na DRIPP CONCEITO para acompanhar seus pedidos streetwear, salvar endereços e receber drops exclusivos.">
+  <link rel="icon" type="image/png" href="uploads/logo.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-color: #0A0A0C;">
+
+  <!-- Simple Header -->
+  <header style="background: #0E0E12; border-bottom: 1px solid var(--border-dark); padding: 1.25rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="index.html" class="brand-logo">
+        <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-login-fallback').style.display='flex';">
+        <div id="text-login-fallback" class="brand-logo-text" style="display: none;">
+          DRIPP<span>CONCEITO</span>
+          <span class="sub">MODA MASCULINA</span>
+        </div>
+      </a>
+
+      <div>
+        <a href="index.html" style="font-size: 0.85rem; color: #FFFFFF; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.15); padding: 0.5rem 1rem; border-radius: 4px;">
+          <i class="fa-solid fa-arrow-left"></i> Voltar à Loja
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN AUTH PAGE -->
+  <main class="auth-page">
+    <div class="auth-card-wrapper">
+      
+      <!-- Left Panel: Forms (Login / Register Tabs) -->
+      <div class="auth-form-panel">
+        <div class="auth-tabs-nav">
+          <button type="button" class="auth-tab-btn active" id="tab-btn-login" onclick="switchAuthTab('login')">
+            ENTRAR
+          </button>
+          <button type="button" class="auth-tab-btn" id="tab-btn-register" onclick="switchAuthTab('register')">
+            CRIAR CONTA
+          </button>
+        </div>
+
+        <!-- Social Login Buttons (Visual only) -->
+        <div class="social-auth-group">
+          <button type="button" class="btn-social-auth" onclick="handleSocialAuth('Google')">
+            <i class="fa-brands fa-google text-gold"></i> Google
+          </button>
+          <button type="button" class="btn-social-auth" onclick="handleSocialAuth('Apple')">
+            <i class="fa-brands fa-apple"></i> Apple ID
+          </button>
+        </div>
+
+        <div class="auth-divider">ou use seu e-mail</div>
+
+        <!-- LOGIN FORM -->
+        <form id="form-login" onsubmit="event.preventDefault(); submitLogin();">
+          <div class="form-group">
+            <label class="form-label">E-mail</label>
+            <input type="email" id="login-email" class="form-input" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <label class="form-label">Senha</label>
+              <a href="#" onclick="event.preventDefault(); openForgotModal();" style="font-size: 0.75rem; color: var(--color-accent); text-decoration: underline;">
+                Esqueceu a senha?
+              </a>
+            </div>
+            <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+          </div>
+
+          <div style="margin-top: 1.75rem;">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-login-submit">
+              ENTRAR NA CONTA
+            </button>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: center; font-size: 0.85rem; color: var(--text-muted);">
+            Não tem uma conta ainda?
+            <a href="#" onclick="event.preventDefault(); switchAuthTab('register');" style="color: var(--color-accent); font-weight: 700; text-decoration: underline; margin-left: 4px;">
+              Cadastre-se grátis
+            </a>
+          </div>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <form id="form-register" onsubmit="event.preventDefault(); submitRegister();" style="display: none;">
+          <div class="form-group">
+            <label class="form-label">Nome Completo *</label>
+            <input type="text" id="reg-name" class="form-input" placeholder="Lucas Henrique" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">E-mail *</label>
+            <input type="email" id="reg-email" class="form-input" placeholder="seuemail@exemplo.com" required>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">WhatsApp *</label>
+              <input type="text" id="reg-phone" class="form-input" data-mask="phone" placeholder="(16) 99999-9999" maxlength="15" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">CPF *</label>
+              <input type="text" id="reg-cpf" class="form-input" data-mask="cpf" placeholder="000.000.000-00" maxlength="14" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Senha *</label>
+              <input type="password" id="reg-password" class="form-input" placeholder="Mínimo 6 dígitos" minlength="6" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirmar Senha *</label>
+              <input type="password" id="reg-password-confirm" class="form-input" placeholder="Repita a senha" minlength="6" required>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.75rem;">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-reg-submit">
+              CRIAR MINHA CONTA
+            </button>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: center; font-size: 0.85rem; color: var(--text-muted);">
+            Já possui cadastro?
+            <a href="#" onclick="event.preventDefault(); switchAuthTab('login');" style="color: var(--color-accent); font-weight: 700; text-decoration: underline; margin-left: 4px;">
+              Fazer login
+            </a>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- Right Panel: Brand Visual Hero -->
+      <div class="auth-hero-panel">
+        <div class="auth-hero-badge">
+          DRIPP CONCEITO • SÃO CARLOS, SP
+        </div>
+
+        <div>
+          <div class="auth-hero-quote">
+            "VISTA-SE COM ATITUDE. A RUA DEFINE QUEM NÓS SOMOS."
+          </div>
+          <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.6;">
+            Acesso exclusivo aos drops mais aguardados de streetwear em São Carlos, cupons antecipados e frete expresso.
+          </p>
+        </div>
+
+        <div class="auth-hero-footer">
+          <i class="fa-solid fa-location-dot text-gold"></i> Av. Regit Arab, 703 • São Carlos - SP
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FORGOT PASSWORD MODAL -->
+  <div class="modal-overlay" id="forgot-modal">
+    <div class="modal-card" style="padding: 2.5rem; max-width: 480px;">
+      <button class="modal-close-btn" onclick="closeForgotModal()">&times;</button>
+      <h3 style="color:#FFF; margin-bottom: 0.5rem;">RECUPERAR SENHA</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+        Digite seu e-mail cadastrado e enviaremos um link de recuperação instantâneo.
+      </p>
+
+      <form onsubmit="event.preventDefault(); submitForgot();">
+        <div class="form-group">
+          <label class="form-label">Seu E-mail Cadastrado</label>
+          <input type="email" id="forgot-email" class="form-input" placeholder="seuemail@exemplo.com" required>
+        </div>
+        <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeForgotModal()">CANCELAR</button>
+          <button type="submit" class="btn btn-primary btn-sm" style="flex:1;">ENVIAR INSTRUÇÕES</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+  <script>
+    function switchAuthTab(tab) {
+      const loginForm = document.getElementById("form-login");
+      const regForm = document.getElementById("form-register");
+      const loginTabBtn = document.getElementById("tab-btn-login");
+      const regTabBtn = document.getElementById("tab-btn-register");
+
+      if (tab === "login") {
+        loginForm.style.display = "block";
+        regForm.style.display = "none";
+        loginTabBtn.classList.add("active");
+        regTabBtn.classList.remove("active");
+      } else {
+        loginForm.style.display = "none";
+        regForm.style.display = "block";
+        regTabBtn.classList.add("active");
+        loginTabBtn.classList.remove("active");
+      }
+    }
+
+    function submitLogin() {
+      const email = document.getElementById("login-email").value.trim();
+      const pwd = document.getElementById("login-password").value;
+
+      const success = drippAuth.login(email, pwd);
+      if (success) {
+        setTimeout(() => {
+          // If redirected from checkout or cart, return
+          const params = new URLSearchParams(window.location.search);
+          const redirect = params.get("redirect") || "conta.html";
+          window.location.href = redirect;
+        }, 600);
+      }
+    }
+
+    function submitRegister() {
+      const name = document.getElementById("reg-name").value.trim();
+      const email = document.getElementById("reg-email").value.trim();
+      const phone = document.getElementById("reg-phone").value.trim();
+      const cpf = document.getElementById("reg-cpf").value.trim();
+      const pwd = document.getElementById("reg-password").value;
+      const pwdConf = document.getElementById("reg-password-confirm").value;
+
+      if (pwd !== pwdConf) {
+        Toast.error("Senhas divergentes", "A confirmação de senha deve ser idêntica.");
+        return;
+      }
+
+      const success = drippAuth.register({ name, email, phone, cpf, password: pwd });
+      if (success) {
+        setTimeout(() => {
+          window.location.href = "conta.html";
+        }, 800);
+      }
+    }
+
+    function handleSocialAuth(provider) {
+      Toast.info(`Login com ${provider}`, `Conectando com autenticação social ${provider}...`);
+      setTimeout(() => {
+        drippAuth.login(`usuario.${provider.toLowerCase()}@gmail.com`, "social-auth-pwd");
+        setTimeout(() => {
+          window.location.href = "conta.html";
+        }, 500);
+      }, 700);
+    }
+
+    function openForgotModal() {
+      document.getElementById("forgot-modal").classList.add("active");
+    }
+
+    function closeForgotModal() {
+      document.getElementById("forgot-modal").classList.remove("active");
+    }
+
+    function submitForgot() {
+      const email = document.getElementById("forgot-email").value.trim();
+      Toast.success("E-mail Enviado!", `Instruções de recuperação foram enviadas para ${email}.`);
+      closeForgotModal();
+    }
+  </script>
+
+  <!-- Simple Footer (Admin link at the bottom) -->
+  <footer style="text-align: center; padding: 2rem 1rem; border-top: 1px solid var(--border-dark); background: #0A0A0C; color: #71717A; font-size: 0.8rem; margin-top: 2rem;">
+    <div style="margin-bottom: 0.5rem;">DRIPP CONCEITO &copy; 2024 • Av. Regit Arab, 703 - São Carlos, SP</div>
+    <div>
+      <a href="admin/" style="color: #71717A; text-decoration: none; font-size: 0.75rem; transition: color 0.2s;" onmouseover="this.style.color='#FFFFFF'" onmouseout="this.style.color='#71717A'">
+        <i class="fa-solid fa-lock" style="font-size: 0.7rem; margin-right: 4px;"></i> Painel Administrativo
+      </a>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp VIP Button with Pulse Animation -->
+  <div class="whatsapp-floating">
+    <div class="whatsapp-tooltip">Atendimento VIP São Carlos</div>
+    <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Atendimento WhatsApp DRIPP CONCEITO">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+</body>
+</html>

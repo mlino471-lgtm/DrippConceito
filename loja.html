@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo Completo | DRIPP CONCEITO - Streetwear São Carlos</title>
+  <meta name="description" content="Explore todos os produtos streetwear da DRIPP CONCEITO: Camisetas Oversized, Hoodies, Calças Cargo, Bermudas e Bonés com cortes exclusivos e malha pesada.">
+  <link rel="icon" type="image/png" href="uploads/logo.png">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-ticker">
+        <i class="fa-solid fa-bolt text-gold"></i>
+        <span>CATÁLOGO OFICIAL DRIPP CONCEITO | PARCELE EM ATÉ 6X SEM JUROS NO CARTÃO</span>
+      </div>
+      <div class="top-bar-info">
+        <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="top-bar-link">
+          <i class="fa-brands fa-whatsapp text-gold"></i> Grupo VIP WhatsApp
+        </a>
+        <span class="top-bar-link">
+          <i class="fa-solid fa-location-dot text-gold"></i> Loja Física São Carlos, SP
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Abrir menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+      <a href="index.html" class="brand-logo">
+        <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-logo-fallback').style.display='flex';">
+        <div id="text-logo-fallback" class="brand-logo-text" style="display: none;">
+          DRIPP<span>CONCEITO</span>
+          <span class="sub">MODA MASCULINA</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="loja.html" class="nav-link active">Loja</a>
+        <a href="index.html#sobre" class="nav-link">Sobre</a>
+        <a href="#contato" class="nav-link">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="header-search">
+          <div class="header-search-bar">
+            <input type="text" class="dripp-search-input" placeholder="Buscar no catálogo..." autocomplete="off">
+            <button type="button" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+          <div class="search-results-dropdown"></div>
+        </div>
+
+        <div class="header-user-menu">
+          <button class="user-icon-btn" id="user-menu-btn" aria-label="Minha Conta">
+            <i class="fa-regular fa-user"></i>
+          </button>
+          <div class="user-dropdown" id="header-user-dropdown"></div>
+        </div>
+
+        <button class="header-cart-btn open-cart-drawer" aria-label="Carrinho de Compras">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo-text">
+        DRIPP<span>CONCEITO</span>
+        <span class="sub">SÃO CARLOS - SP</span>
+      </div>
+      <button class="mobile-drawer-close" id="mobile-drawer-close">&times;</button>
+    </div>
+    <div class="mobile-drawer-nav">
+      <a href="index.html" class="mobile-drawer-link">Início <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html" class="mobile-drawer-link active">Loja Completa <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html?cat=camisetas" class="mobile-drawer-link">Camisetas Oversized <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html?cat=hoodies" class="mobile-drawer-link">Hoodies & Moletons <i class="fa-solid fa-angle-right"></i></a>
+      <a href="loja.html?cat=calcas" class="mobile-drawer-link">Calças Cargo <i class="fa-solid fa-angle-right"></i></a>
+      <a href="conta.html" class="mobile-drawer-link">Minha Conta <i class="fa-solid fa-angle-right"></i></a>
+      <a href="carrinho.html" class="mobile-drawer-link">Carrinho de Compras <i class="fa-solid fa-angle-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Cart Slideout Drawer -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <i class="fa-solid fa-bag-shopping text-gold"></i>
+        <span>MEU CARRINHO</span>
+      </div>
+      <button class="mobile-drawer-close" id="cart-drawer-close">&times;</button>
+    </div>
+    <div class="cart-drawer-items" id="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-subtotal">
+        <span>Subtotal:</span>
+        <strong id="cart-drawer-subtotal-val">R$ 0,00</strong>
+      </div>
+      <div class="cart-drawer-actions">
+        <a href="carrinho.html" class="btn btn-secondary btn-block">VER CARRINHO</a>
+        <a href="checkout.html" class="btn btn-primary btn-block">FINALIZAR COMPRA</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+  <!-- MAIN SHOP CONTENT -->
+  <main class="shop-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <div class="shop-breadcrumb">
+        <a href="index.html">Início</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <span>Loja & Catálogo</span>
+      </div>
+
+      <!-- Shop Header Row -->
+      <div class="shop-header-row">
+        <div>
+          <h1 style="font-size: 2rem; margin-bottom: 0.25rem;">CATÁLOGO STREETWEAR</h1>
+          <div class="shop-total-count" id="shop-total-count">Carregando peças...</div>
+        </div>
+
+        <div class="shop-controls">
+          <button type="button" class="btn-filter-mobile" id="open-filter-drawer-btn">
+            <i class="fa-solid fa-sliders"></i> FILTROS
+          </button>
+
+          <select class="shop-sort-select" id="shop-sort-select">
+            <option value="featured">Destaques da Marca</option>
+            <option value="price-asc">Menor Preço</option>
+            <option value="price-desc">Maior Preço</option>
+            <option value="name-asc">Nome: A - Z</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Marketplace Announcement Strip -->
+      <div style="background: #121215; border: 1px solid var(--border-dark); border-radius: 8px; padding: 0.85rem 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: #FFF;">
+          <i class="fa-solid fa-store" style="color: #FFFFFF;"></i>
+          <span>Todas as peças do catálogo também disponíveis em pronta entrega na <strong>Shopee</strong> e <strong>Mercado Livre</strong>.</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" style="background: #EE4D2D; color: #FFF; padding: 0.4rem 0.85rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800; text-decoration: none;">
+            <i class="fa-solid fa-bag-shopping"></i> SHOPEE
+          </a>
+          <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" style="background: #FFE600; color: #2D3277; padding: 0.4rem 0.85rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800; text-decoration: none;">
+            <i class="fa-solid fa-handshake"></i> MERCADO LIVRE
+          </a>
+        </div>
+      </div>
+
+      <!-- Active Filter Tags -->
+      <div class="active-filters-row" id="active-filters-row" style="display: none;"></div>
+
+      <!-- Shop Layout: Sidebar + Grid -->
+      <div class="shop-layout">
+        <!-- Sidebar Filters -->
+        <aside class="shop-sidebar" id="shop-sidebar">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;" class="filter-header-mobile">
+            <h3 style="font-size: 1.1rem; color: #FFF;">FILTROS</h3>
+            <button id="close-filter-drawer-btn" style="color: var(--text-muted); font-size: 1.3rem; display: none;">&times;</button>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="filter-block">
+            <h4 class="filter-title">Categorias</h4>
+            <div class="filter-list">
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="camisetas" class="filter-category-input">
+                <span>Camisetas Oversized</span>
+                <span class="filter-count">(2)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="hoodies" class="filter-category-input">
+                <span>Hoodies & Moletons</span>
+                <span class="filter-count">(2)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="calcas" class="filter-category-input">
+                <span>Calças Cargo</span>
+                <span class="filter-count">(1)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="corta-vento" class="filter-category-input">
+                <span>Corta-Ventos & Jaquetas</span>
+                <span class="filter-count">(1)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="bermudas" class="filter-category-input">
+                <span>Bermudas Street</span>
+                <span class="filter-count">(1)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="acessorios" class="filter-category-input">
+                <span>Bonés & Acessórios</span>
+                <span class="filter-count">(2)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Range Slider -->
+          <div class="filter-block">
+            <h4 class="filter-title">Faixa de Preço</h4>
+            <div class="price-slider-wrap">
+              <div class="price-range-inputs">
+                <div class="price-input-box">R$ 0</div>
+                <span style="color: var(--text-muted);">até</span>
+                <div class="price-input-box" id="price-slider-label">R$ 400</div>
+              </div>
+              <input type="range" class="price-range-slider" id="price-range-slider" min="50" max="400" step="10" value="400">
+            </div>
+          </div>
+
+          <!-- Size Filter -->
+          <div class="filter-block">
+            <h4 class="filter-title">Tamanhos</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="filter-sizes-wrap">
+              <button type="button" class="size-pill filter-size-btn" data-size="P">P</button>
+              <button type="button" class="size-pill filter-size-btn" data-size="M">M</button>
+              <button type="button" class="size-pill filter-size-btn" data-size="G">G</button>
+              <button type="button" class="size-pill filter-size-btn" data-size="GG">GG</button>
+              <button type="button" class="size-pill filter-size-btn" data-size="XGG">XGG</button>
+              <button type="button" class="size-pill filter-size-btn" data-size="40">40</button>
+              <button type="button" class="size-pill filter-size-btn" data-size="42">42</button>
+              <button type="button" class="size-pill filter-size-btn" data-size="Único">Único</button>
+            </div>
+          </div>
+
+          <!-- Colors Filter -->
+          <div class="filter-block">
+            <h4 class="filter-title">Cores</h4>
+            <div class="filter-colors-grid" id="filter-colors-wrap">
+              <div class="color-swatch-item filter-color-btn" data-color="Preto" title="Preto" style="background-color: #000000; border: 1px solid #444;"></div>
+              <div class="color-swatch-item filter-color-btn" data-color="Branco" title="Branco" style="background-color: #FFFFFF; border: 1px solid #CCC;"></div>
+              <div class="color-swatch-item filter-color-btn" data-color="Cinza" title="Cinza Claro" style="background-color: #E4E4E7; border: 1px solid #BBB;"></div>
+              <div class="color-swatch-item filter-color-btn" data-color="Grafite" title="Cinza Chumbo / Grafite" style="background-color: #3F3F46;"></div>
+              <div class="color-swatch-item filter-color-btn" data-color="Off-White" title="Off-White" style="background-color: #F4F4F5; border: 1px solid #DDD;"></div>
+              <div class="color-swatch-item filter-color-btn" data-color="Militar" title="Verde Militar" style="background-color: #2E3B2E;"></div>
+            </div>
+          </div>
+
+          <!-- Reset Button -->
+          <button type="button" class="btn btn-dark btn-block btn-sm" id="btn-reset-filters">
+            <i class="fa-solid fa-rotate-left"></i> LIMPAR FILTROS
+          </button>
+        </aside>
+
+        <!-- Product Grid Area -->
+        <div>
+          <!-- Skeleton Loading (Hidden after render) -->
+          <div class="products-grid" id="shop-skeleton-grid" style="display: none;">
+            <div class="skeleton" style="height: 380px;"></div>
+            <div class="skeleton" style="height: 380px;"></div>
+            <div class="skeleton" style="height: 380px;"></div>
+            <div class="skeleton" style="height: 380px;"></div>
+          </div>
+
+          <!-- Real Products Grid -->
+          <div class="products-grid" id="shop-products-grid">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-state" id="shop-empty-state" style="display: none;">
+            <i class="fa-solid fa-tags empty-state-icon"></i>
+            <h3 class="empty-state-title">NENHUM PRODUTO ENCONTRADO</h3>
+            <p class="empty-state-desc">Não localizamos nenhum modelo com os filtros selecionados. Tente ajustar o preço ou limpar os filtros.</p>
+            <button type="button" class="btn btn-primary" onclick="resetAllShopFilters()">
+              REDEFINIR TODOS OS FILTROS
+            </button>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="shop-pagination">
+            <button class="page-num active">1</button>
+            <button class="page-num">2</button>
+            <button class="page-num"><i class="fa-solid fa-angle-right"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contato">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col-brand">
+          <a href="index.html" class="brand-logo">
+            <img src="uploads/logo.png" alt="DRIPP CONCEITO" class="brand-logo-img" onerror="this.style.display='none'; document.getElementById('text-footer-fallback').style.display='flex';">
+            <div id="text-footer-fallback" class="brand-logo-text" style="display: none;">
+              DRIPP<span>CONCEITO</span>
+              <span class="sub">MODA MASCULINA</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            A DRIPP CONCEITO é referência em moda streetwear masculina na cidade de São Carlos e para todo o Brasil.
+          </p>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Av. Regit Arab, 703, São Carlos - SP</span>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">CATEGORIAS</h4>
+          <ul class="footer-links">
+            <li><a href="loja.html?cat=camisetas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Camisetas Oversized</a></li>
+            <li><a href="loja.html?cat=hoodies" class="footer-link"><i class="fa-solid fa-angle-right"></i> Hoodies & Moletons</a></li>
+            <li><a href="loja.html?cat=calcas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Calças Cargo</a></li>
+            <li><a href="loja.html?cat=corta-vento" class="footer-link"><i class="fa-solid fa-angle-right"></i> Corta-Ventos</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">SUPORTE</h4>
+          <ul class="footer-links">
+            <li><a href="conta.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Minha Conta</a></li>
+            <li><a href="conta.html#pedidos" class="footer-link"><i class="fa-solid fa-angle-right"></i> Rastrear Pedido</a></li>
+            <li><a href="carrinho.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Meu Carrinho</a></li>
+            <li><a href="admin/" class="footer-link" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-gauge-high"></i> Painel Administrativo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">ATENDIMENTO VIP</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Dúvidas sobre tamanhos ou frete em São Carlos? Fale no WhatsApp.
+          </p>
+          <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block btn-sm">
+            <i class="fa-brands fa-whatsapp"></i> CONVERSAR AGORA
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 <strong>DRIPP CONCEITO</strong> • São Carlos - SP.</div>
+        <div class="payment-badges">
+          <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" class="pay-badge" style="background: #EE4D2D; color: #FFF; font-weight: 800; text-decoration: none;"><i class="fa-solid fa-bag-shopping"></i> SHOPEE</a>
+          <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" class="pay-badge" style="background: #FFE600; color: #2D3277; font-weight: 800; text-decoration: none;"><i class="fa-solid fa-handshake"></i> MERCADO LIVRE</a>
+          <span class="pay-badge"><i class="fa-brands fa-pix text-gold"></i> PIX (5% OFF)</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-visa"></i> VISA</span>
+          <span class="pay-badge"><i class="fa-brands fa-cc-mastercard"></i> MASTERCARD</span>
+          <span class="pay-badge"><i class="fa-solid fa-barcode"></i> BOLETO</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp VIP Button -->
+  <div class="whatsapp-floating">
+    <div class="whatsapp-tooltip">Atendimento VIP São Carlos</div>
+    <a href="https://chat.whatsapp.com/Em515edEkgbDg0j5ya08lu?mode=gi_t" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="Atendimento WhatsApp DRIPP CONCEITO">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+
+  <!-- Loja Specific Filtering Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const productsGrid = document.getElementById("shop-products-grid");
+      const emptyState = document.getElementById("shop-empty-state");
+      const totalCountEl = document.getElementById("shop-total-count");
+      const sortSelect = document.getElementById("shop-sort-select");
+      const priceSlider = document.getElementById("price-range-slider");
+      const priceSliderLabel = document.getElementById("price-slider-label");
+      const activeFiltersRow = document.getElementById("active-filters-row");
+      const btnReset = document.getElementById("btn-reset-filters");
+
+      // Filter State
+      let filterCategories = [];
+      let maxPrice = 400;
+      let selectedSizes = [];
+      let selectedColors = [];
+      let sortBy = "featured";
+      let searchQuery = "";
+
+      // Check URL parameters for cat or q
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCat = urlParams.get("cat");
+      const urlQ = urlParams.get("q");
+
+      if (urlCat) {
+        filterCategories.push(urlCat.toLowerCase());
+        document.querySelectorAll(".filter-category-input").forEach(cb => {
+          if (cb.value === urlCat.toLowerCase()) cb.checked = true;
+        });
+      }
+
+      if (urlQ) {
+        searchQuery = urlQ.toLowerCase();
+      }
+
+      // Render Products
+      function renderProducts() {
+        let filtered = MOCK_PRODUCTS.filter(p => {
+          // Category
+          if (filterCategories.length > 0 && !filterCategories.includes(p.category.toLowerCase())) {
+            return false;
+          }
+          // Price
+          if (p.price > maxPrice) {
+            return false;
+          }
+          // Size
+          if (selectedSizes.length > 0) {
+            const hasSize = p.sizes.some(s => selectedSizes.includes(s));
+            if (!hasSize) return false;
+          }
+          // Color
+          if (selectedColors.length > 0) {
+            const hasColor = p.colors.some(c => 
+              selectedColors.some(sc => c.name.toLowerCase().includes(sc.toLowerCase()))
+            );
+            if (!hasColor) return false;
+          }
+          // Search query
+          if (searchQuery) {
+            const matchName = p.name.toLowerCase().includes(searchQuery);
+            const matchDesc = p.description.toLowerCase().includes(searchQuery);
+            const matchCat = p.categoryName.toLowerCase().includes(searchQuery);
+            if (!matchName && !matchDesc && !matchCat) return false;
+          }
+          return true;
+        });
+
+        // Sorting
+        if (sortBy === "price-asc") {
+          filtered.sort((a, b) => a.price - b.price);
+        } else if (sortBy === "price-desc") {
+          filtered.sort((a, b) => b.price - a.price);
+        } else if (sortBy === "name-asc") {
+          filtered.sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        // Count
+        totalCountEl.textContent = `${filtered.length} produto(s) encontrado(s)`;
+
+        if (filtered.length === 0) {
+          productsGrid.style.display = "none";
+          emptyState.style.display = "block";
+          return;
+        }
+
+        productsGrid.style.display = "grid";
+        emptyState.style.display = "none";
+
+        productsGrid.innerHTML = filtered.map(p => {
+          const discountPercent = p.comparePrice ? Math.round(((p.comparePrice - p.price) / p.comparePrice) * 100) : 0;
+          return `
+            <div class="product-card">
+              <div class="product-badge-group">
+                ${p.badge ? `<span class="product-badge badge-gold">${p.badge}</span>` : ""}
+                ${discountPercent > 0 ? `<span class="product-badge badge-discount">-${discountPercent}%</span>` : ""}
+              </div>
+              <div class="product-card-thumb">
+                <img src="${p.images[0]}" alt="${p.name}" class="product-card-img img-main">
+                <img src="${p.images[1] || p.images[0]}" alt="${p.name}" class="product-card-img img-hover">
+                <div class="product-card-actions">
+                  <button type="button" class="btn-quick-view" onclick="openQuickView(${p.id})">
+                    <i class="fa-regular fa-eye"></i> ESPIADA RÁPIDA
+                  </button>
+                </div>
+              </div>
+              <div class="product-card-body">
+                <span class="product-card-category">${p.categoryName}</span>
+                <h3 class="product-card-name">
+                  <a href="produto.html?id=${p.id}">${p.name}</a>
+                </h3>
+                <div class="product-card-sizes">
+                  ${p.sizes.map((s, idx) => `
+                    <span class="size-pill ${idx === 0 ? 'active' : ''}" onclick="drippCart.addItem(MOCK_PRODUCTS.find(x => x.id === ${p.id}), '${s}')">${s}</span>
+                  `).join("")}
+                </div>
+                <div class="product-card-price-row">
+                  <span class="product-price-current">${Formatters.currency(p.price)}</span>
+                  ${p.comparePrice ? `<span class="product-price-compare">${Formatters.currency(p.comparePrice)}</span>` : ""}
+                </div>
+                <div class="product-installments">ou 3x de ${Formatters.currency(p.price / 3)} sem juros</div>
+                <button type="button" class="btn btn-primary btn-card-add" onclick="drippCart.addItem(MOCK_PRODUCTS.find(x => x.id === ${p.id}), '${p.sizes[0]}')">
+                  <i class="fa-solid fa-bag-shopping"></i> ADICIONAR
+                </button>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        updateActiveFilterTags();
+      }
+
+      function updateActiveFilterTags() {
+        let tags = [];
+        if (filterCategories.length > 0) {
+          filterCategories.forEach(c => tags.push({ type: 'cat', val: c, label: c.toUpperCase() }));
+        }
+        if (maxPrice < 400) {
+          tags.push({ type: 'price', val: maxPrice, label: `Até R$ ${maxPrice}` });
+        }
+        if (selectedSizes.length > 0) {
+          selectedSizes.forEach(s => tags.push({ type: 'size', val: s, label: `Tam: ${s}` }));
+        }
+        if (selectedColors.length > 0) {
+          selectedColors.forEach(cl => tags.push({ type: 'color', val: cl, label: `Cor: ${cl}` }));
+        }
+        if (searchQuery) {
+          tags.push({ type: 'search', val: searchQuery, label: `Busca: "${searchQuery}"` });
+        }
+
+        if (tags.length > 0) {
+          activeFiltersRow.style.display = "flex";
+          activeFiltersRow.innerHTML = tags.map(t => `
+            <span class="active-filter-tag">
+              ${t.label}
+              <button type="button" onclick="removeSingleFilter('${t.type}', '${t.val}')">&times;</button>
+            </span>
+          `).join("") + `
+            <button type="button" class="btn-clear-all-filters" onclick="resetAllShopFilters()">Limpar todos</button>
+          `;
+        } else {
+          activeFiltersRow.style.display = "none";
+          activeFiltersRow.innerHTML = "";
+        }
+      }
+
+      window.removeSingleFilter = function(type, val) {
+        if (type === 'cat') {
+          filterCategories = filterCategories.filter(c => c !== val);
+          document.querySelectorAll(`.filter-category-input[value="${val}"]`).forEach(cb => cb.checked = false);
+        } else if (type === 'price') {
+          maxPrice = 400;
+          priceSlider.value = 400;
+          priceSliderLabel.textContent = "R$ 400";
+        } else if (type === 'size') {
+          selectedSizes = selectedSizes.filter(s => s !== val);
+          document.querySelectorAll(`.filter-size-btn[data-size="${val}"]`).forEach(btn => btn.classList.remove("active"));
+        } else if (type === 'color') {
+          selectedColors = selectedColors.filter(c => c !== val);
+          document.querySelectorAll(`.filter-color-btn[data-color="${val}"]`).forEach(btn => btn.classList.remove("active"));
+        } else if (type === 'search') {
+          searchQuery = "";
+        }
+        renderProducts();
+      };
+
+      window.resetAllShopFilters = function() {
+        filterCategories = [];
+        maxPrice = 400;
+        selectedSizes = [];
+        selectedColors = [];
+        searchQuery = "";
+        document.querySelectorAll(".filter-category-input").forEach(cb => cb.checked = false);
+        document.querySelectorAll(".filter-size-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelectorAll(".filter-color-btn").forEach(btn => btn.classList.remove("active"));
+        priceSlider.value = 400;
+        priceSliderLabel.textContent = "R$ 400";
+        renderProducts();
+      };
+
+      // Event Listeners for Filters
+      document.querySelectorAll(".filter-category-input").forEach(cb => {
+        cb.addEventListener("change", () => {
+          filterCategories = Array.from(document.querySelectorAll(".filter-category-input:checked")).map(el => el.value);
+          renderProducts();
+        });
+      });
+
+      priceSlider.addEventListener("input", (e) => {
+        maxPrice = parseInt(e.target.value);
+        priceSliderLabel.textContent = `R$ ${maxPrice}`;
+        renderProducts();
+      });
+
+      document.querySelectorAll(".filter-size-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const sz = btn.dataset.size;
+          if (selectedSizes.includes(sz)) {
+            selectedSizes = selectedSizes.filter(s => s !== sz);
+            btn.classList.remove("active");
+          } else {
+            selectedSizes.push(sz);
+            btn.classList.add("active");
+          }
+          renderProducts();
+        });
+      });
+
+      document.querySelectorAll(".filter-color-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const clr = btn.dataset.color;
+          if (selectedColors.includes(clr)) {
+            selectedColors = selectedColors.filter(c => c !== clr);
+            btn.classList.remove("active");
+          } else {
+            selectedColors.push(clr);
+            btn.classList.add("active");
+          }
+          renderProducts();
+        });
+      });
+
+      sortSelect.addEventListener("change", (e) => {
+        sortBy = e.target.value;
+        renderProducts();
+      });
+
+      btnReset.addEventListener("click", resetAllShopFilters);
+
+      // Mobile Filter Drawer
+      const openFilterBtn = document.getElementById("open-filter-drawer-btn");
+      const closeFilterBtn = document.getElementById("close-filter-drawer-btn");
+      const shopSidebar = document.getElementById("shop-sidebar");
+
+      if (openFilterBtn && shopSidebar) {
+        openFilterBtn.addEventListener("click", () => {
+          shopSidebar.classList.add("mobile-open");
+          closeFilterBtn.style.display = "block";
+        });
+        closeFilterBtn.addEventListener("click", () => {
+          shopSidebar.classList.remove("mobile-open");
+        });
+      }
+
+      // Initial Render
+      renderProducts();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Financeiro & Métricas | DRIPP ADMIN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-logo-icon">D</div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">DRIPP</span>
+            <span class="brand-badge">ADMIN</span>
+          </div>
+        </a>
+        <button class="sidebar-toggle-btn" title="Recolher Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <a href="index.html" class="nav-item">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="produtos.html" class="nav-item">
+          <i class="fa-solid fa-shirt"></i>
+          <span class="nav-text">Produtos</span>
+        </a>
+        <a href="pedidos.html" class="nav-item">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="nav-text">Pedidos</span>
+        </a>
+        <a href="clientes.html" class="nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span class="nav-text">Clientes</span>
+        </a>
+
+        <div class="nav-section-title">Gestão</div>
+        <a href="financeiro.html" class="nav-item active">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="nav-text">Financeiro</span>
+        </a>
+        <a href="cupons.html" class="nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span class="nav-text">Cupons</span>
+        </a>
+        <a href="categorias.html" class="nav-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="nav-text">Categorias</span>
+        </a>
+
+        <div class="nav-section-title">Sistema</div>
+        <a href="/index.html" target="_blank" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Ver Loja Virtual</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">DC</div>
+          <div class="user-details">
+            <div class="name">Admin Master</div>
+            <div class="role">DRIPP CONCEITO</div>
+          </div>
+        </div>
+        <button class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Encerrar Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-headline">
+            <div class="page-title">
+              <i class="fa-solid fa-chart-pie"></i>
+              Relatório Financeiro
+            </div>
+            <div class="breadcrumb">
+              <a href="index.html">Admin</a>
+              <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+              <span>Demonstrativo & Indicadores de Vendas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="btn btn-secondary" onclick="window.print()">
+            <i class="fa-solid fa-print"></i>
+            Imprimir
+          </button>
+          <button class="btn btn-gold-outline" onclick="exportFinancialCSV()">
+            <i class="fa-solid fa-file-csv"></i>
+            Exportar CSV
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="admin-content">
+        <!-- FILTER TOOLBAR -->
+        <div class="admin-toolbar">
+          <div class="toolbar-left" style="align-items: center;">
+            <label style="font-size: 0.85rem; font-weight: 600; color: #94a3b8;">
+              <i class="fa-solid fa-calendar-days" style="color: #ffffff; margin-right: 4px;"></i> Período de Análise:
+            </label>
+            <select id="financialDateRange" class="form-select-sm" style="min-width: 180px;">
+              <option value="today">Hoje</option>
+              <option value="7days">Últimos 7 dias</option>
+              <option value="30days" selected>Últimos 30 dias</option>
+              <option value="year">Este Ano (2024)</option>
+              <option value="custom">Personalizado</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- KPI CARDS -->
+        <div class="financial-kpi-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Receita Total Bruta</span>
+              <div class="stat-icon gold">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="finGrossRevenue">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +15.3%
+              </span>
+              <span class="trend-period">faturamento bruto</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Receita Líquida Estimada</span>
+              <div class="stat-icon green">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="finNetRevenue">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-check"></i> Margem 94%
+              </span>
+              <span class="trend-period">após taxas gateway</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Ticket Médio</span>
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="finAvgTicket">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +4.1%
+              </span>
+              <span class="trend-period">gasto médio</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Taxa de Conversão</span>
+              <div class="stat-icon purple">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="finConversionRate">3.65%</div>
+            <div class="stat-footer">
+              <span class="trend-badge up">
+                <i class="fa-solid fa-arrow-trend-up"></i> +0.8%
+              </span>
+              <span class="trend-period">visitas vs pedidos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHARTS ROW 1: RECEITA DIÁRIA & MÉTODOS DE PAGAMENTO -->
+        <div class="charts-row-financial">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  <i class="fa-solid fa-chart-column"></i>
+                  Receita por Período
+                </div>
+                <div class="card-subtitle">Volume diário de vendas faturadas</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="financialRevenueChart"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  <i class="fa-solid fa-chart-pie"></i>
+                  Métodos de Pagamento
+                </div>
+                <div class="card-subtitle">Preferência de checkout dos clientes</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="financialPaymentChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHARTS ROW 2: STATUS DE PEDIDOS & RECEITA POR CATEGORIA -->
+        <div class="charts-row-financial">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  <i class="fa-solid fa-circle-nodes"></i>
+                  Distribuição de Status dos Pedidos
+                </div>
+                <div class="card-subtitle">Andamento operacional das entregas</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="financialStatusChart"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  <i class="fa-solid fa-tags"></i>
+                  Receita por Categoria (R$)
+                </div>
+                <div class="card-subtitle">Categorias mais lucrativas no período</div>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="financialCategoryChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUMMARY CARDS & TRANSACTIONS TABLE -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <i class="fa-solid fa-list-numeric"></i>
+                Resumo Consolidado de Vendas
+              </div>
+              <div class="card-subtitle">Visão geral do faturamento atual</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; margin-bottom: 1.5rem;">
+            <div>
+              <div style="font-size: 0.8rem; color: #94a3b8;">Volume Total:</div>
+              <div id="summaryTotalRevenue" style="font-size: 1.25rem; font-weight: 700; color: #ffffff;"></div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: #94a3b8;">Total de Transações:</div>
+              <div id="summaryTotalOrders" style="font-size: 1.25rem; font-weight: 700; color: #fff;"></div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: #94a3b8;">Pedidos Aprovados:</div>
+              <div id="summaryPaidOrders" style="font-size: 1.25rem; font-weight: 700; color: #10b981;"></div>
+            </div>
+          </div>
+
+          <!-- TRANSACTIONS TABLE -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Data/Hora</th>
+                  <th>Pedido</th>
+                  <th>Cliente</th>
+                  <th>Método de Pagamento</th>
+                  <th>Status</th>
+                  <th>Valor Total</th>
+                </tr>
+              </thead>
+              <tbody id="transactionsTableBody">
+                <!-- Renderizado via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initFinancialPage();
+    });
+  </script>
+</body>
+</html>
+
