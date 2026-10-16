@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel Financeiro & Métricas | DRIPP ADMIN</title>
+  <title>Financeiro & Gráficos de Lucro | DRIPP ADMIN - Streetwear de Luxo</title>
+  <!-- Google Fonts & Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/admin.css">
+  <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
@@ -21,7 +23,7 @@
           </div>
         </a>
         <div style="display: flex; align-items: center; gap: 0.35rem;">
-          <button class="sidebar-toggle-btn" title="Recolher / Fechar Menu Lateral">
+          <button class="sidebar-toggle-btn" title="Recolher Menu">
             <i class="fa-solid fa-chevron-left"></i>
           </button>
           <button class="sidebar-close-btn" title="Fechar Menu">
@@ -40,6 +42,14 @@
           <i class="fa-solid fa-shirt"></i>
           <span class="nav-text">Produtos</span>
         </a>
+        <a href="estoque.html" class="nav-item">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span class="nav-text">Estoque</span>
+        </a>
+        <a href="scanner.html" class="nav-item">
+          <i class="fa-solid fa-qrcode"></i>
+          <span class="nav-text">Leitor QR / PDV</span>
+        </a>
         <a href="pedidos.html" class="nav-item">
           <i class="fa-solid fa-bag-shopping"></i>
           <span class="nav-text">Pedidos</span>
@@ -49,10 +59,21 @@
           <span class="nav-text">Clientes</span>
         </a>
 
-        <div class="nav-section-title">Gestão</div>
+        <div class="nav-section-title">Financeiro & Métricas</div>
         <a href="financeiro.html" class="nav-item active">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="nav-text">Financeiro & Lucro</span>
+          <span class="nav-badge" style="background:#10B981; color:#000;">DRE</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
           <i class="fa-solid fa-chart-pie"></i>
-          <span class="nav-text">Financeiro</span>
+          <span class="nav-text">Cliques & Analytics</span>
+        </a>
+
+        <div class="nav-section-title">Administração</div>
+        <a href="contas.html" class="nav-item">
+          <i class="fa-solid fa-id-badge"></i>
+          <span class="nav-text">Gestão de Contas</span>
         </a>
         <a href="cupons.html" class="nav-item">
           <i class="fa-solid fa-ticket"></i>
@@ -63,7 +84,7 @@
           <span class="nav-text">Categorias</span>
         </a>
 
-        <div class="nav-section-title">Sistema</div>
+        <div class="nav-section-title">Loja Externa</div>
         <a href="/index.html" target="_blank" class="nav-item">
           <i class="fa-solid fa-store"></i>
           <span class="nav-text">Ver Loja Virtual</span>
@@ -72,10 +93,10 @@
 
       <div class="sidebar-footer">
         <div class="user-quick-profile">
-          <div class="user-avatar">DC</div>
+          <div class="user-avatar">AD</div>
           <div class="user-details">
             <div class="name">Admin Master</div>
-            <div class="role">DRIPP CONCEITO</div>
+            <div class="role">DIRETORIA FINANCEIRA</div>
           </div>
         </div>
         <button class="logout-btn">
@@ -90,28 +111,28 @@
       <!-- TOP BAR -->
       <header class="admin-topbar">
         <div class="topbar-left">
-          <button class="admin-sidebar-toggle mobile-sidebar-toggle" id="btn-toggle-sidebar" title="Abrir / Fechar Menu Lateral">
+          <button class="admin-sidebar-toggle mobile-sidebar-toggle" id="btn-toggle-sidebar" title="Abrir / Fechar Menu">
             <i class="fa-solid fa-bars"></i>
           </button>
           <div class="page-headline">
             <div class="page-title">
-              <i class="fa-solid fa-chart-pie"></i>
-              Relatório Financeiro
+              <i class="fa-solid fa-chart-line text-gold"></i>
+              Gestão Financeira & Gráficos de Lucro
             </div>
             <div class="breadcrumb">
               <a href="index.html">Admin</a>
               <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
-              <span>Demonstrativo & Indicadores de Vendas</span>
+              <span>Demonstrativo de Lucros & CMV</span>
             </div>
           </div>
         </div>
 
         <div class="topbar-right">
-          <button class="btn btn-secondary" onclick="window.print()">
+          <button class="btn btn-secondary btn-sm" onclick="window.print()">
             <i class="fa-solid fa-print"></i>
-            Imprimir
+            Imprimir DRE
           </button>
-          <button class="btn btn-gold-outline" onclick="exportFinancialCSV()">
+          <button class="btn btn-primary btn-sm" onclick="exportFinancialCSV()">
             <i class="fa-solid fa-file-csv"></i>
             Exportar CSV
           </button>
@@ -121,196 +142,213 @@
       <!-- CONTENT BODY -->
       <div class="admin-content">
         <!-- FILTER TOOLBAR -->
-        <div class="admin-toolbar">
+        <div class="admin-toolbar" style="margin-bottom: 1.5rem;">
           <div class="toolbar-left" style="align-items: center;">
-            <label style="font-size: 0.85rem; font-weight: 600; color: #94a3b8;">
-              <i class="fa-solid fa-calendar-days" style="color: #ffffff; margin-right: 4px;"></i> Período de Análise:
+            <label style="font-size: 0.85rem; font-weight: 700; color: #FFF;">
+              <i class="fa-solid fa-calendar-days text-gold" style="margin-right: 4px;"></i> Período do Relatório:
             </label>
-            <select id="financialDateRange" class="form-select-sm" style="min-width: 180px;">
+            <select id="financialDateRange" class="form-select-sm" style="min-width: 180px; background: var(--bg-input); color: #FFF; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 6px;">
               <option value="today">Hoje</option>
               <option value="7days">Últimos 7 dias</option>
               <option value="30days" selected>Últimos 30 dias</option>
+              <option value="6months">Últimos 6 meses</option>
               <option value="year">Este Ano (2024)</option>
-              <option value="custom">Personalizado</option>
             </select>
           </div>
         </div>
 
-        <!-- KPI CARDS -->
-        <div class="financial-kpi-grid">
+        <!-- PROFIT & REVENUE KPI CARDS ROW -->
+        <div class="financial-kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+          <!-- Gross Revenue -->
           <div class="stat-card">
             <div class="stat-header">
-              <span class="stat-title">Receita Total Bruta</span>
-              <div class="stat-icon gold">
-                <i class="fa-solid fa-wallet"></i>
+              <span class="stat-title">Faturamento Bruto</span>
+              <div class="stat-icon-wrapper" style="background: rgba(212, 175, 55, 0.15); color: var(--gold-primary);">
+                <i class="fa-solid fa-sack-dollar"></i>
               </div>
             </div>
             <div class="stat-value" id="finGrossRevenue">R$ 0,00</div>
             <div class="stat-footer">
               <span class="trend-badge up">
-                <i class="fa-solid fa-arrow-trend-up"></i> +15.3%
+                <i class="fa-solid fa-arrow-trend-up"></i> Total Vendido
               </span>
-              <span class="trend-period">faturamento bruto</span>
             </div>
           </div>
 
+          <!-- CMV (Cost of Goods) -->
           <div class="stat-card">
             <div class="stat-header">
-              <span class="stat-title">Receita Líquida Estimada</span>
-              <div class="stat-icon green">
-                <i class="fa-solid fa-money-bill-trend-up"></i>
+              <span class="stat-title">Custo Mercadoria (CMV)</span>
+              <div class="stat-icon-wrapper" style="background: rgba(239, 68, 68, 0.15); color: #EF4444;">
+                <i class="fa-solid fa-boxes-packing"></i>
               </div>
             </div>
-            <div class="stat-value" id="finNetRevenue">R$ 0,00</div>
+            <div class="stat-value" style="color: #EF4444;" id="finCMV">R$ 0,00</div>
             <div class="stat-footer">
-              <span class="trend-badge up">
-                <i class="fa-solid fa-check"></i> Margem 94%
-              </span>
-              <span class="trend-period">após taxas gateway</span>
+              <span class="text-muted">Custo de produção / importação</span>
             </div>
           </div>
 
+          <!-- Gross Profit Real -->
+          <div class="stat-card" style="border: 1px solid rgba(16, 185, 129, 0.4);">
+            <div class="stat-header">
+              <span class="stat-title" style="color: #10B981; font-weight: 800;">LUCRO BRUTO REAL</span>
+              <div class="stat-icon-wrapper" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #10B981;" id="finGrossProfit">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="text-muted" id="finProfitMargin">Margem: 0.0%</span>
+            </div>
+          </div>
+
+          <!-- Ticket Médio -->
           <div class="stat-card">
             <div class="stat-header">
               <span class="stat-title">Ticket Médio</span>
-              <div class="stat-icon blue">
+              <div class="stat-icon-wrapper" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6;">
                 <i class="fa-solid fa-receipt"></i>
               </div>
             </div>
             <div class="stat-value" id="finAvgTicket">R$ 0,00</div>
             <div class="stat-footer">
-              <span class="trend-badge up">
-                <i class="fa-solid fa-arrow-trend-up"></i> +4.1%
-              </span>
-              <span class="trend-period">gasto médio</span>
-            </div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-header">
-              <span class="stat-title">Taxa de Conversão</span>
-              <div class="stat-icon purple">
-                <i class="fa-solid fa-bolt"></i>
-              </div>
-            </div>
-            <div class="stat-value" id="finConversionRate">3.65%</div>
-            <div class="stat-footer">
-              <span class="trend-badge up">
-                <i class="fa-solid fa-arrow-trend-up"></i> +0.8%
-              </span>
-              <span class="trend-period">visitas vs pedidos</span>
+              <span class="text-muted" id="finTotalOrdersCount">0 pedidos concluídos</span>
             </div>
           </div>
         </div>
 
-        <!-- CHARTS ROW 1: RECEITA DIÁRIA & MÉTODOS DE PAGAMENTO -->
-        <div class="charts-row-financial">
+        <!-- CHARTS ROW 1: PROFIT COMPARISON & PROFIT BY CATEGORY -->
+        <div class="charts-row-financial" style="grid-template-columns: 2fr 1fr; margin-bottom: 2rem;">
+          <!-- PROFIT VS REVENUE VS COSTS -->
           <div class="card">
             <div class="card-header">
               <div>
                 <div class="card-title">
-                  <i class="fa-solid fa-chart-column"></i>
-                  Receita por Período
+                  <i class="fa-solid fa-chart-column text-gold"></i>
+                  Lucro Real vs Faturamento vs Custos (CMV)
                 </div>
-                <div class="card-subtitle">Volume diário de vendas faturadas</div>
+                <div class="card-subtitle">Evolução financeira consolidada mês a mês</div>
               </div>
             </div>
-            <div class="chart-wrapper">
-              <canvas id="financialRevenueChart"></canvas>
+            <div class="chart-wrapper" style="height: 320px;">
+              <canvas id="financialProfitComboChart"></canvas>
             </div>
           </div>
 
+          <!-- PROFIT BY CATEGORY -->
           <div class="card">
             <div class="card-header">
               <div>
                 <div class="card-title">
-                  <i class="fa-solid fa-chart-pie"></i>
-                  Métodos de Pagamento
+                  <i class="fa-solid fa-chart-pie text-gold"></i>
+                  Lucro por Categoria
                 </div>
-                <div class="card-subtitle">Preferência de checkout dos clientes</div>
+                <div class="card-subtitle">Qual nicho gera maior retorno financeiro</div>
               </div>
             </div>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" style="height: 320px;">
+              <canvas id="financialCategoryProfitChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHARTS ROW 2: FORMAS DE PAGAMENTO & REVENUE DIÁRIO -->
+        <div class="charts-row-financial" style="grid-template-columns: 1fr 1fr; margin-bottom: 2rem;">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">
+                  <i class="fa-solid fa-credit-card text-gold"></i>
+                  Formas de Pagamento (PIX vs Cartão vs Boleto)
+                </div>
+              </div>
+            </div>
+            <div class="chart-wrapper" style="height: 280px;">
               <canvas id="financialPaymentChart"></canvas>
             </div>
           </div>
-        </div>
 
-        <!-- CHARTS ROW 2: STATUS DE PEDIDOS & RECEITA POR CATEGORIA -->
-        <div class="charts-row-financial">
           <div class="card">
             <div class="card-header">
               <div>
                 <div class="card-title">
-                  <i class="fa-solid fa-circle-nodes"></i>
-                  Distribuição de Status dos Pedidos
+                  <i class="fa-solid fa-money-bill-transfer text-gold"></i>
+                  Status Operacional de Pedidos
                 </div>
-                <div class="card-subtitle">Andamento operacional das entregas</div>
               </div>
             </div>
-            <div class="chart-wrapper">
+            <div class="chart-wrapper" style="height: 280px;">
               <canvas id="financialStatusChart"></canvas>
             </div>
           </div>
+        </div>
 
-          <div class="card">
-            <div class="card-header">
-              <div>
-                <div class="card-title">
-                  <i class="fa-solid fa-tags"></i>
-                  Receita por Categoria (R$)
-                </div>
-                <div class="card-subtitle">Categorias mais lucrativas no período</div>
-              </div>
-            </div>
-            <div class="chart-wrapper">
-              <canvas id="financialCategoryChart"></canvas>
-            </div>
+        <!-- DRE SIMPLIFICADO DA LOJA -->
+        <div class="data-card" style="margin-bottom: 2rem;">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fa-solid fa-file-invoice-dollar text-gold"></i> Demonstrativo do Resultado do Exercício (DRE da Loja)
+            </h3>
+            <span class="text-muted" style="font-size: 0.82rem;">Cálculo de margem real em São Carlos</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <tbody>
+                <tr>
+                  <td style="font-weight: 700; width: 60%;">(+) Receita Operacional Bruta de Vendas</td>
+                  <td style="text-align: right; font-weight: 800; font-size: 1.05rem;" id="dre-gross-revenue">R$ 0,00</td>
+                </tr>
+                <tr>
+                  <td style="color: var(--text-muted);">(-) Descontos e Cupons Concedidos</td>
+                  <td style="text-align: right; color: #EF4444;" id="dre-discounts">- R$ 0,00</td>
+                </tr>
+                <tr style="background: rgba(255,255,255,0.03);">
+                  <td style="font-weight: 800;">(=) Receita Operacional Líquida</td>
+                  <td style="text-align: right; font-weight: 800; color: #FFF;" id="dre-net-revenue">R$ 0,00</td>
+                </tr>
+                <tr>
+                  <td style="color: #EF4444;">(-) Custo das Mercadorias Vendidas (CMV)</td>
+                  <td style="text-align: right; color: #EF4444;" id="dre-cmv">- R$ 0,00</td>
+                </tr>
+                <tr style="background: rgba(16, 185, 129, 0.08); border-top: 2px solid rgba(16, 185, 129, 0.4);">
+                  <td style="font-weight: 900; font-size: 1.1rem; color: #10B981;">(=) RESULTADO BRUTO / LUCRO REAL</td>
+                  <td style="text-align: right; font-weight: 900; font-size: 1.25rem; color: #10B981;" id="dre-profit">R$ 0,00</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 700; color: var(--gold-primary);">Margem Bruta Percentual</td>
+                  <td style="text-align: right; font-weight: 800; color: var(--gold-primary);" id="dre-margin">0.0%</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <!-- SUMMARY CARDS & TRANSACTIONS TABLE -->
-        <div class="card" style="margin-bottom: 2rem;">
+        <!-- TRANSACTIONS TABLE -->
+        <div class="data-card">
           <div class="card-header">
-            <div>
-              <div class="card-title">
-                <i class="fa-solid fa-list-numeric"></i>
-                Resumo Consolidado de Vendas
-              </div>
-              <div class="card-subtitle">Visão geral do faturamento atual</div>
-            </div>
+            <h3 class="card-title">
+              <i class="fa-solid fa-list-check text-gold"></i> Transações Recentes & Pedidos Faturados
+            </h3>
           </div>
-
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 8px; margin-bottom: 1.5rem;">
-            <div>
-              <div style="font-size: 0.8rem; color: #94a3b8;">Volume Total:</div>
-              <div id="summaryTotalRevenue" style="font-size: 1.25rem; font-weight: 700; color: #ffffff;"></div>
-            </div>
-            <div>
-              <div style="font-size: 0.8rem; color: #94a3b8;">Total de Transações:</div>
-              <div id="summaryTotalOrders" style="font-size: 1.25rem; font-weight: 700; color: #fff;"></div>
-            </div>
-            <div>
-              <div style="font-size: 0.8rem; color: #94a3b8;">Pedidos Aprovados:</div>
-              <div id="summaryPaidOrders" style="font-size: 1.25rem; font-weight: 700; color: #10b981;"></div>
-            </div>
-          </div>
-
-          <!-- TRANSACTIONS TABLE -->
-          <div class="table-responsive">
+          <div class="table-container">
             <table class="data-table">
               <thead>
                 <tr>
-                  <th>Data/Hora</th>
                   <th>Pedido</th>
+                  <th>Data</th>
                   <th>Cliente</th>
-                  <th>Método de Pagamento</th>
+                  <th>Forma Pagto</th>
+                  <th>Total</th>
                   <th>Status</th>
-                  <th>Valor Total</th>
                 </tr>
               </thead>
-              <tbody id="transactionsTableBody">
-                <!-- Renderizado via JS -->
+              <tbody id="financialTransactionsTable">
+                <tr>
+                  <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    Carregando transações...
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -319,13 +357,7 @@
     </main>
   </div>
 
-  <div class="toast-container"></div>
+  <!-- Admin JS -->
   <script src="js/admin.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      initFinancialPage();
-    });
-  </script>
 </body>
 </html>
-

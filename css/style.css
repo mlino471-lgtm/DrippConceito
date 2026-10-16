@@ -1,18 +1,27 @@
 /* ==========================================================================
-   DRIPP CONCEITO | MODA MASCULINA - URBAN & STREETWEAR
-   Estilo Premium | São Carlos - SP
+   DRIPP CONCEITO | STREETWEAR DE LUXO & LUXURY RAP CULTURE
+   Alta Costura Urbana & Joalheria Street | São Carlos - SP
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800;1,900&family=Space+Grotesk:wght@500;700&display=swap');
 
 /* --- CUSTOM PROPERTIES --- */
 :root {
   --color-primary: #000000;
-  --color-primary-light: #121214;
+  --color-primary-light: #0d0d11;
   --color-secondary: #FFFFFF;
   --color-accent: #FFFFFF;
   --color-accent-hover: #E4E4E7;
   --color-accent-glow: rgba(255, 255, 255, 0.25);
+
+  /* Paleta Luxury Rap & Streetwear de Luxo */
+  --color-gold: #D4AF37;
+  --color-gold-light: #F9E79F;
+  --color-gold-dark: #996515;
+  --color-gold-glow: rgba(212, 175, 55, 0.4);
+  --gold-metallic: linear-gradient(135deg, #FFF1C5 0%, #D4AF37 45%, #AA7C11 100%);
+  --platinum-metallic: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, #94A3B8 100%);
+  --ice-glow: 0 0 25px rgba(212, 175, 55, 0.28), 0 0 50px rgba(255, 255, 255, 0.12);
   
   --color-gray-50: #FAFAFA;
   --color-gray-100: #F4F4F5;
@@ -25,9 +34,9 @@
   --color-gray-800: #27272A;
   --color-gray-900: #18181B;
   
-  --bg-dark: #000000;
-  --bg-surface: #121214;
-  --bg-surface-elevated: #1F1F24;
+  --bg-dark: #070709;
+  --bg-surface: #101015;
+  --bg-surface-elevated: #181820;
   --bg-light: #F4F4F5;
   --bg-light-card: #FFFFFF;
   
@@ -36,17 +45,20 @@
   --text-dark: #09090B;
   --text-dark-muted: #71717A;
   
-  --border-dark: rgba(255, 255, 255, 0.15);
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-gold: rgba(212, 175, 55, 0.35);
   --border-light: rgba(0, 0, 0, 0.1);
   --border-accent: rgba(255, 255, 255, 0.4);
   
   --success: #10B981;
   --error: #EF4444;
   --warning: #F59E0B;
-  --info: #3B82F6;
+  --info: #38BDF8;
   --whatsapp: #25D366;
   
   --font-heading: 'Montserrat', sans-serif;
+  --font-luxury: 'Cinzel', serif;
+  --font-tech: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   
   --header-height: 94px;
@@ -59,7 +71,7 @@
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 0 25px rgba(255, 255, 255, 0.25);
+  --shadow-gold: 0 0 25px rgba(212, 175, 55, 0.35);
   
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-base: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -204,7 +216,60 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-gold {
-  color: var(--color-accent) !important;
+  color: var(--color-gold) !important;
+}
+
+.text-gold-gradient {
+  background: var(--gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-platinum-gradient {
+  background: var(--platinum-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.font-luxury {
+  font-family: var(--font-luxury);
+  letter-spacing: 0.15em;
+}
+
+.font-tech {
+  font-family: var(--font-tech);
+}
+
+.luxury-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: var(--color-gold-light);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-gold {
+  background: var(--gold-metallic);
+  color: #070709 !important;
+  font-weight: 800;
+  border: none;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.35);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
 }
 
 .text-center {
@@ -390,17 +455,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .brand-logo-img {
-  height: 70px;
+  height: 72px;
   width: auto;
-  max-width: 260px;
+  max-width: 270px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 14px rgba(255, 255, 255, 0.25));
+  filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.45)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.2));
   transition: transform var(--transition-fast), filter var(--transition-fast);
 }
 
 .brand-logo:hover .brand-logo-img {
-  transform: scale(1.04);
-  filter: drop-shadow(0 4px 20px rgba(255, 255, 255, 0.4));
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.8)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.45));
 }
 
 .brand-logo-text {
@@ -1211,8 +1276,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-card {
-  background-color: #15151A;
-  border: 1px solid var(--border-dark);
+  background-color: #0F0F14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
   overflow: hidden;
   display: flex;
@@ -1222,9 +1287,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .product-card:hover {
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(212, 175, 55, 0.5);
   transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.18);
 }
 
 .product-card-thumb {
@@ -1279,8 +1344,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .badge-gold {
-  background-color: var(--color-accent);
-  color: #000000;
+  background: var(--gold-metallic);
+  color: #070709;
+  font-weight: 800;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35);
+}
+
+.badge-iced {
+  background: linear-gradient(135deg, #FFFFFF 0%, #BAE6FD 100%);
+  color: #0369A1;
+  font-weight: 800;
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+}
+
+.badge-grail {
+  background: #18181B;
+  color: #D4AF37;
+  border: 1px solid #D4AF37;
+  font-weight: 800;
 }
 
 .badge-black {
@@ -1863,8 +1944,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-col-brand .brand-logo-img {
-  height: 85px;
-  max-width: 280px;
+  height: 90px;
+  max-width: 300px;
+  filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.45)) drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
 }
 
 .footer-col-brand .brand-logo-text {

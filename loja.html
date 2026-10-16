@@ -142,8 +142,8 @@
       <!-- Shop Header Row -->
       <div class="shop-header-row">
         <div>
-          <h1 style="font-size: 2rem; margin-bottom: 0.25rem;">CATÁLOGO STREETWEAR</h1>
-          <div class="shop-total-count" id="shop-total-count">Carregando peças...</div>
+          <h1 style="font-size: 2rem; margin-bottom: 0.25rem;"><span class="text-gold-gradient">THE VAULT</span> • STREETWEAR DE LUXO</h1>
+          <div class="shop-total-count" id="shop-total-count">Carregando catálogo de luxo...</div>
         </div>
 
         <div class="shop-controls">
@@ -153,8 +153,8 @@
 
           <select class="shop-sort-select" id="shop-sort-select">
             <option value="featured">Destaques da Marca</option>
+            <option value="price-desc">Maior Preço (Luxury Drops)</option>
             <option value="price-asc">Menor Preço</option>
-            <option value="price-desc">Maior Preço</option>
             <option value="name-asc">Nome: A - Z</option>
           </select>
         </div>
@@ -163,8 +163,8 @@
       <!-- Marketplace Announcement Strip -->
       <div style="background: #121215; border: 1px solid var(--border-dark); border-radius: 8px; padding: 0.85rem 1.25rem; margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem;">
         <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: #FFF;">
-          <i class="fa-solid fa-store" style="color: #FFFFFF;"></i>
-          <span>Todas as peças do catálogo também disponíveis em pronta entrega na <strong>Shopee</strong> e <strong>Mercado Livre</strong>.</span>
+          <i class="fa-solid fa-crown text-gold"></i>
+          <span>Drops exclusivos, relógios cravejados, bonés de luxo e tênis raros com estoque integrado em São Carlos.</span>
         </div>
         <div style="display: flex; align-items: center; gap: 0.6rem;">
           <a href="https://shopee.com.br" target="_blank" rel="noopener noreferrer" style="background: #EE4D2D; color: #FFF; padding: 0.4rem 0.85rem; border-radius: 4px; font-size: 0.75rem; font-weight: 800; text-decoration: none;">
@@ -193,34 +193,39 @@
             <h4 class="filter-title">Categorias</h4>
             <div class="filter-list">
               <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="relogios" class="filter-category-input">
+                <span>Relógios & Iced Out</span>
+                <span class="filter-count text-gold">👑</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="bones" class="filter-category-input">
+                <span>Bonés & Headwear</span>
+                <span class="filter-count">(3)</span>
+              </label>
+              <label class="filter-checkbox-label">
+                <input type="checkbox" name="category" value="tenis" class="filter-category-input">
+                <span>Sneakers & Tênis</span>
+                <span class="filter-count">(3)</span>
+              </label>
+              <label class="filter-checkbox-label">
                 <input type="checkbox" name="category" value="camisetas" class="filter-category-input">
-                <span>Camisetas Oversized</span>
-                <span class="filter-count">(2)</span>
+                <span>Camisetas Heavyweight</span>
+                <span class="filter-count">(3)</span>
               </label>
               <label class="filter-checkbox-label">
                 <input type="checkbox" name="category" value="hoodies" class="filter-category-input">
-                <span>Hoodies & Moletons</span>
-                <span class="filter-count">(2)</span>
+                <span>Puffers & Hoodies</span>
+                <span class="filter-count">(3)</span>
               </label>
               <label class="filter-checkbox-label">
                 <input type="checkbox" name="category" value="calcas" class="filter-category-input">
-                <span>Calças Cargo</span>
-                <span class="filter-count">(1)</span>
-              </label>
-              <label class="filter-checkbox-label">
-                <input type="checkbox" name="category" value="corta-vento" class="filter-category-input">
-                <span>Corta-Ventos & Jaquetas</span>
-                <span class="filter-count">(1)</span>
-              </label>
-              <label class="filter-checkbox-label">
-                <input type="checkbox" name="category" value="bermudas" class="filter-category-input">
-                <span>Bermudas Street</span>
-                <span class="filter-count">(1)</span>
+                <span>Calças Cargo & Street</span>
+                <span class="filter-count">(2)</span>
               </label>
               <label class="filter-checkbox-label">
                 <input type="checkbox" name="category" value="acessorios" class="filter-category-input">
-                <span>Bonés & Acessórios</span>
-                <span class="filter-count">(2)</span>
+                <span>Jóias & Acessórios</span>
+                <span class="filter-count">(3)</span>
               </label>
             </div>
           </div>
@@ -232,9 +237,9 @@
               <div class="price-range-inputs">
                 <div class="price-input-box">R$ 0</div>
                 <span style="color: var(--text-muted);">até</span>
-                <div class="price-input-box" id="price-slider-label">R$ 400</div>
+                <div class="price-input-box" id="price-slider-label">R$ 2.500</div>
               </div>
-              <input type="range" class="price-range-slider" id="price-range-slider" min="50" max="400" step="10" value="400">
+              <input type="range" class="price-range-slider" id="price-range-slider" min="50" max="2500" step="50" value="2500">
             </div>
           </div>
 

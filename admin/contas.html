@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Contas & Equipe | DRIPP ADMIN - Streetwear de Luxo</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-logo-icon">D</div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">DRIPP</span>
+            <span class="brand-badge">ADMIN</span>
+          </div>
+        </a>
+        <div style="display: flex; align-items: center; gap: 0.35rem;">
+          <button class="sidebar-toggle-btn" title="Recolher Menu">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="sidebar-close-btn" title="Fechar Menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <a href="index.html" class="nav-item">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="produtos.html" class="nav-item">
+          <i class="fa-solid fa-shirt"></i>
+          <span class="nav-text">Produtos</span>
+        </a>
+        <a href="estoque.html" class="nav-item">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span class="nav-text">Estoque</span>
+        </a>
+        <a href="scanner.html" class="nav-item">
+          <i class="fa-solid fa-qrcode"></i>
+          <span class="nav-text">Leitor QR / PDV</span>
+        </a>
+        <a href="pedidos.html" class="nav-item">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="nav-text">Pedidos</span>
+        </a>
+        <a href="clientes.html" class="nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span class="nav-text">Clientes</span>
+        </a>
+
+        <div class="nav-section-title">Financeiro & Métricas</div>
+        <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="nav-text">Financeiro & Lucro</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="nav-text">Cliques & Analytics</span>
+        </a>
+
+        <div class="nav-section-title">Administração</div>
+        <a href="contas.html" class="nav-item active">
+          <i class="fa-solid fa-id-badge"></i>
+          <span class="nav-text">Gestão de Contas</span>
+          <span class="nav-badge" style="background:var(--gold-primary); color:#000;">Equipe</span>
+        </a>
+        <a href="cupons.html" class="nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span class="nav-text">Cupons</span>
+        </a>
+        <a href="categorias.html" class="nav-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="nav-text">Categorias</span>
+        </a>
+
+        <div class="nav-section-title">Loja Externa</div>
+        <a href="/index.html" target="_blank" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Ver Loja Virtual</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">AD</div>
+          <div class="user-details">
+            <div class="name">Admin Master</div>
+            <div class="role">DIRETORIA</div>
+          </div>
+        </div>
+        <button class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Encerrar Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-sidebar-toggle mobile-sidebar-toggle" id="btn-toggle-sidebar" title="Abrir / Fechar Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-headline">
+            <div class="page-title">
+              <i class="fa-solid fa-id-badge text-gold"></i>
+              Gestão de Contas, Usuários & Permissões
+            </div>
+            <div class="breadcrumb">
+              <span>Admin</span>
+              <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+              <span>Equipe & Contas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button class="btn btn-primary btn-sm" onclick="openNewAccountModal()">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Novo Colaborador</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="admin-content">
+        <!-- STATS ROW -->
+        <div class="stats-row" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Total da Equipe</span>
+              <div class="stat-icon-wrapper" style="background: rgba(212, 175, 55, 0.15); color: var(--gold-primary);">
+                <i class="fa-solid fa-user-group"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="cnt-total-staff">0</div>
+            <div class="stat-footer">
+              <span class="text-muted">Usuários com acesso ao painel</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Administradores</span>
+              <div class="stat-icon-wrapper" style="background: rgba(212, 175, 55, 0.15); color: var(--gold-primary);">
+                <i class="fa-solid fa-crown"></i>
+              </div>
+            </div>
+            <div class="stat-value text-gold" id="cnt-admins">0</div>
+            <div class="stat-footer">
+              <span class="text-muted">Acesso total e irrestrito</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Gerentes & Estoque</span>
+              <div class="stat-icon-wrapper" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6;">
+                <i class="fa-solid fa-boxes-packing"></i>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #3B82F6;" id="cnt-managers">0</div>
+            <div class="stat-footer">
+              <span class="text-muted">Produtos e inventário</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Vendedores & Caixas</span>
+              <div class="stat-icon-wrapper" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">
+                <i class="fa-solid fa-cash-register"></i>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #10B981;" id="cnt-sellers">0</div>
+            <div class="stat-footer">
+              <span class="text-muted">Atendimento PDV Showroom</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACCOUNTS TABLE -->
+        <div class="data-card" style="margin-bottom: 2rem;">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fa-solid fa-users-gear text-gold"></i> Membros Cadastrados com Acesso ao Sistema
+            </h3>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Colaborador</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>Função / Cargo</th>
+                  <th>Permissões</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="accounts-table-tbody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    Carregando equipe...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- AUDIT LOGS TABLE -->
+        <div class="data-card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fa-solid fa-shield-halved text-gold"></i> Trilha de Auditoria & Registro de Atividades
+            </h3>
+            <span class="text-muted" style="font-size: 0.82rem;">Histórico de ações da equipe</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Data/Hora</th>
+                  <th>Usuário</th>
+                  <th>Ação Realizada</th>
+                  <th>Detalhes da Operação</th>
+                  <th>IP de Origem</th>
+                </tr>
+              </thead>
+              <tbody id="activity-logs-tbody">
+                <tr>
+                  <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    Carregando logs de auditoria...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: NOVO COLABORADOR -->
+  <div class="modal-backdrop" id="modal-account">
+    <div class="modal-content" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 class="modal-title">
+          <i class="fa-solid fa-user-shield text-gold"></i> Cadastrar Novo Colaborador
+        </h3>
+        <button class="modal-close-btn" onclick="closeAccountModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-new-account" onsubmit="handleAccountSubmit(event)">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label>Nome Completo *</label>
+            <input type="text" id="acc-name" required placeholder="Ex: Felipe Drip" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label>E-mail Corporativo *</label>
+              <input type="email" id="acc-email" required placeholder="nome@dripp.com.br" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+            </div>
+            <div class="form-group">
+              <label>Senha Provisória *</label>
+              <input type="password" id="acc-pass" required placeholder="••••••••" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label>WhatsApp / Telefone</label>
+              <input type="text" id="acc-phone" placeholder="(16) 99999-9999" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+            </div>
+            <div class="form-group">
+              <label>Cargo / Perfil *</label>
+              <select id="acc-role" required style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+                <option value="seller">Vendedor Showroom</option>
+                <option value="manager">Gerente de Loja & Estoque</option>
+                <option value="cashier">Operador de Caixa</option>
+                <option value="admin">Administrador Master</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label style="display: block; margin-bottom: 0.5rem;">Permissões de Acesso:</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.85rem;">
+              <label style="display: flex; align-items: center; gap: 0.4rem;">
+                <input type="checkbox" name="permissions" value="inventory" checked> Controle de Estoque
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.4rem;">
+                <input type="checkbox" name="permissions" value="scanner" checked> Leitor QR / PDV
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.4rem;">
+                <input type="checkbox" name="permissions" value="orders" checked> Gestão de Pedidos
+              </label>
+              <label style="display: flex; align-items: center; gap: 0.4rem;">
+                <input type="checkbox" name="permissions" value="finance"> Relatórios Financeiros
+              </label>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+            <button type="button" class="btn btn-secondary" onclick="closeAccountModal()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Cadastrar Colaborador</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin JS -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

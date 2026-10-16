@@ -42,20 +42,38 @@
           <i class="fa-solid fa-shirt"></i>
           <span class="nav-text">Produtos</span>
         </a>
+        <a href="estoque.html" class="nav-item">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span class="nav-text">Estoque</span>
+          <span class="nav-badge" style="background:#F59E0B; color:#000;" id="sidebar-stock-alert">Alerta</span>
+        </a>
+        <a href="scanner.html" class="nav-item">
+          <i class="fa-solid fa-qrcode"></i>
+          <span class="nav-text">Leitor QR / PDV</span>
+        </a>
         <a href="pedidos.html" class="nav-item">
           <i class="fa-solid fa-bag-shopping"></i>
           <span class="nav-text">Pedidos</span>
-          <span class="nav-badge">Novo</span>
         </a>
         <a href="clientes.html" class="nav-item">
           <i class="fa-solid fa-users"></i>
           <span class="nav-text">Clientes</span>
         </a>
 
-        <div class="nav-section-title">Gestão</div>
+        <div class="nav-section-title">Financeiro & Métricas</div>
         <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="nav-text">Financeiro & Lucro</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
           <i class="fa-solid fa-chart-pie"></i>
-          <span class="nav-text">Financeiro</span>
+          <span class="nav-text">Cliques & Analytics</span>
+        </a>
+
+        <div class="nav-section-title">Administração</div>
+        <a href="contas.html" class="nav-item">
+          <i class="fa-solid fa-id-badge"></i>
+          <span class="nav-text">Gestão de Contas</span>
         </a>
         <a href="cupons.html" class="nav-item">
           <i class="fa-solid fa-ticket"></i>
@@ -75,10 +93,10 @@
 
       <div class="sidebar-footer">
         <div class="user-quick-profile">
-          <div class="user-avatar">DC</div>
+          <div class="user-avatar">AD</div>
           <div class="user-details">
             <div class="name">Admin Master</div>
-            <div class="role">DRIPP CONCEITO</div>
+            <div class="role">DRIPP LUXURY</div>
           </div>
         </div>
         <button class="logout-btn">
@@ -98,13 +116,13 @@
           </button>
           <div class="page-headline">
             <div class="page-title">
-              <i class="fa-solid fa-gauge-high"></i>
-              Painel Geral
+              <i class="fa-solid fa-gauge-high text-gold"></i>
+              Painel Geral & Controle da Loja
             </div>
             <div class="breadcrumb">
               <span>Admin</span>
               <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
-              <span>Dashboard</span>
+              <span>Dashboard Executivo</span>
             </div>
           </div>
         </div>
@@ -112,19 +130,19 @@
         <div class="topbar-center">
           <div class="global-search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Buscar pedido, cliente, produto...">
+            <input type="text" placeholder="Buscar pedido, cliente, produto, SKU ou QR code...">
           </div>
         </div>
 
         <div class="topbar-right">
+          <a href="scanner.html" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <i class="fa-solid fa-qrcode text-gold"></i>
+            <span>Scanner QR</span>
+          </a>
           <a href="/index.html" target="_blank" class="btn-view-store">
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span>Ver Loja</span>
           </a>
-          <button class="topbar-action-btn" title="Notificações">
-            <i class="fa-solid fa-bell"></i>
-            <span class="notification-badge-pulse"></span>
-          </button>
           <div class="user-avatar" style="width: 38px; height: 38px;">AD</div>
         </div>
       </header>
@@ -132,41 +150,50 @@
       <!-- CONTENT BODY -->
       <div class="admin-content">
         <!-- QUICK ACTIONS ROW -->
-        <div class="quick-actions-bar">
+        <div class="quick-actions-bar" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
           <a href="produtos.html?action=new" class="quick-action-card">
             <div class="quick-action-icon">
               <i class="fa-solid fa-plus"></i>
             </div>
             <div class="quick-action-info">
-              <h4>Adicionar Produto</h4>
-              <p>Cadastrar novo drop streetwear</p>
+              <h4>Novo Produto</h4>
+              <p>Cadastrar drop de luxo</p>
             </div>
           </a>
-          <a href="pedidos.html" class="quick-action-card">
-            <div class="quick-action-icon">
-              <i class="fa-solid fa-bag-shopping"></i>
+          <a href="estoque.html" class="quick-action-card">
+            <div class="quick-action-icon" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">
+              <i class="fa-solid fa-boxes-stacked"></i>
             </div>
             <div class="quick-action-info">
-              <h4>Ver Pedidos</h4>
-              <p>Gerenciar entregas e despachos</p>
+              <h4>Controle de Estoque</h4>
+              <p>Alertas e reposição</p>
             </div>
           </a>
-          <a href="financeiro.html" class="quick-action-card">
-            <div class="quick-action-icon">
-              <i class="fa-solid fa-chart-line"></i>
+          <a href="scanner.html" class="quick-action-card">
+            <div class="quick-action-icon" style="background: rgba(212, 175, 55, 0.15); color: var(--gold-primary);">
+              <i class="fa-solid fa-qrcode"></i>
             </div>
             <div class="quick-action-info">
-              <h4>Relatório Financeiro</h4>
-              <p>Análise de receitas e lucros</p>
+              <h4>Leitor QR Code</h4>
+              <p>Conferência rápida PDV</p>
+            </div>
+          </a>
+          <a href="analytics.html" class="quick-action-card">
+            <div class="quick-action-icon" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8;">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
+            <div class="quick-action-info">
+              <h4>Cliques & Funil</h4>
+              <p>Analytics do e-commerce</p>
             </div>
           </a>
         </div>
 
-        <!-- STATS CARDS ROW -->
-        <div class="stats-grid">
+        <!-- STATS CARDS ROW (ENRICHED WITH PROFIT & CLICKS) -->
+        <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));">
           <div class="stat-card">
             <div class="stat-header">
-              <span class="stat-title">Total Vendas</span>
+              <span class="stat-title">Faturamento Total</span>
               <div class="stat-icon gold">
                 <i class="fa-solid fa-sack-dollar"></i>
               </div>
@@ -174,10 +201,49 @@
             <div class="stat-value" id="statTotalSales">R$ 0,00</div>
             <div class="stat-footer">
               <span class="trend-badge up">
-                <i class="fa-solid fa-arrow-trend-up"></i> +18.4%
+                <i class="fa-solid fa-arrow-trend-up"></i> Vendas Pagas
               </span>
-              <span class="trend-period">vs mês anterior</span>
             </div>
+          </div>
+
+          <div class="stat-card" style="border: 1px solid rgba(16, 185, 129, 0.4);">
+            <div class="stat-header">
+              <span class="stat-title" style="color: #10B981; font-weight: 800;">LUCRO BRUTO REAL</span>
+              <div class="stat-icon green">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #10B981;" id="statGrossProfit">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="text-muted" id="statProfitMargin">Margem média: 0.0%</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Cliques no Site</span>
+              <div class="stat-icon blue">
+                <i class="fa-solid fa-mouse-pointer"></i>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #38BDF8;" id="statTotalClicks">0</div>
+            <div class="stat-footer">
+              <span class="text-muted" id="statPageviews">Pageviews rastreados</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Alertas de Estoque</span>
+              <div class="stat-icon" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+            </div>
+            <div class="stat-value text-gold" id="statLowStockCount">0</div>
+            <div class="stat-footer">
+              <span class="text-muted">Modelos com estoque baixo</span>
+            </div>
+          </div>
           </div>
 
           <div class="stat-card">
