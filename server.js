@@ -127,6 +127,51 @@ app.get('/api/categories', (req, res) => {
   }
 });
 
+// Rota pública para rastreamento de cliques e analytics
+app.post('/api/analytics/track', (req, res) => {
+  try {
+    const {
+      event_type,
+      page_url,
+      product_id,
+      product_name,
+      category,
+      session_id,
+      device,
+      referrer,
+      metadata
+    } = req.body;
+
+    if (!event_type) {
+      return res.status(400).json({ success: false, message: 'event_type é obrigatório' });
+    }
+
+    const stmt = db.prepare(`
+      INSERT INTO site_analytics (
+        event_type, page_url, product_id, product_name, category, 
+        session_id, device, referrer, metadata
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    stmt.run(
+      event_type,
+      page_url || '',
+      product_id ? Number(product_id) : null,
+      product_name || null,
+      category || null,
+      session_id || 'guest',
+      device || 'desktop',
+      referrer || '',
+      typeof metadata === 'object' ? JSON.stringify(metadata) : (metadata || null)
+    );
+
+    return res.json({ success: true });
+  } catch (err) {
+    console.error('Erro ao registrar analytics:', err);
+    return res.status(500).json({ success: false });
+  }
+});
+
 // Montagem das rotas da API
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productsRoutes);

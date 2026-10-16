@@ -39,6 +39,15 @@
           <i class="fa-solid fa-shirt"></i>
           <span class="nav-text">Produtos</span>
         </a>
+        <a href="estoque.html" class="nav-item">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span class="nav-text">Estoque</span>
+          <span class="nav-badge" style="background:#F59E0B; color:#000;" id="sidebar-stock-alert">0</span>
+        </a>
+        <a href="scanner.html" class="nav-item">
+          <i class="fa-solid fa-qrcode"></i>
+          <span class="nav-text">Leitor QR / PDV</span>
+        </a>
         <a href="pedidos.html" class="nav-item">
           <i class="fa-solid fa-bag-shopping"></i>
           <span class="nav-text">Pedidos</span>
@@ -48,10 +57,20 @@
           <span class="nav-text">Clientes</span>
         </a>
 
-        <div class="nav-section-title">Gestão</div>
+        <div class="nav-section-title">Financeiro & Métricas</div>
         <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="nav-text">Financeiro & Lucro</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
           <i class="fa-solid fa-chart-pie"></i>
-          <span class="nav-text">Financeiro</span>
+          <span class="nav-text">Cliques & Analytics</span>
+        </a>
+
+        <div class="nav-section-title">Administração</div>
+        <a href="contas.html" class="nav-item">
+          <i class="fa-solid fa-id-badge"></i>
+          <span class="nav-text">Gestão de Contas</span>
         </a>
         <a href="cupons.html" class="nav-item">
           <i class="fa-solid fa-ticket"></i>
@@ -62,7 +81,7 @@
           <span class="nav-text">Categorias</span>
         </a>
 
-        <div class="nav-section-title">Sistema</div>
+        <div class="nav-section-title">Loja Externa</div>
         <a href="/index.html" target="_blank" class="nav-item">
           <i class="fa-solid fa-store"></i>
           <span class="nav-text">Ver Loja Virtual</span>
@@ -231,7 +250,7 @@
             <!-- PREÇO & PREÇO PROMOCIONAL -->
             <div class="form-group">
               <label class="form-label">Preço de Venda (R$) <span class="req">*</span></label>
-              <input type="number" step="0.01" id="productPrice" class="form-input" placeholder="189.90" required>
+              <input type="number" step="0.01" id="productPrice" class="form-input" placeholder="189.90" required oninput="calculateModalProfitMargin()">
             </div>
 
             <div class="form-group">
@@ -239,10 +258,30 @@
               <input type="number" step="0.01" id="productComparePrice" class="form-input" placeholder="229.90">
             </div>
 
-            <!-- ESTOQUE -->
+            <!-- PREÇO DE CUSTO & MARGEM -->
+            <div class="form-group">
+              <label class="form-label">Preço de Custo (R$) <span class="req">*</span></label>
+              <input type="number" step="0.01" id="productCostPrice" class="form-input" placeholder="65.00" oninput="calculateModalProfitMargin()">
+              <div id="modalProfitPreview" style="font-size: 0.75rem; color: #10B981; margin-top: 0.35rem; font-weight: 700;">
+                Margem Estimada: --% (Lucro: R$ --)
+              </div>
+            </div>
+
+            <!-- CÓDIGO QR / SKU -->
+            <div class="form-group">
+              <label class="form-label">Código QR / SKU / Barcode</label>
+              <input type="text" id="productQrCode" class="form-input" placeholder="Ex: DRIPP-WATCH-SKEL-01" style="font-family: monospace;">
+            </div>
+
+            <!-- ESTOQUE & ESTOQUE MÍNIMO -->
             <div class="form-group">
               <label class="form-label">Quantidade em Estoque <span class="req">*</span></label>
               <input type="number" id="productStock" class="form-input" value="20" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Estoque Mínimo de Alerta</label>
+              <input type="number" id="productMinStock" class="form-input" value="5" placeholder="5">
             </div>
 
             <!-- SELETOR DE CORES -->

@@ -246,6 +246,348 @@ const MOCK_PRODUCTS = [
       dimensoes: "20cm x 15cm x 6cm",
       origem: "Brasil"
     }
+  },
+  {
+    id: 9,
+    name: "Relógio DRIPP Skeleton Automatic 18K Gold & Safira",
+    slug: "relogio-dripp-skeleton-automatic-18k-gold",
+    category: "relogios",
+    categoryName: "Relógios de Luxo & Iced Out",
+    price: 1890.00,
+    comparePrice: 2490.00,
+    images: [
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["Único (42mm)"],
+    colors: [
+      { name: "Ouro 18K PVD", code: "#D4AF37" },
+      { name: "Platinum Prata", code: "#E2E8F0" }
+    ],
+    rating: 5.0,
+    reviewsCount: 42,
+    badge: "OURO 18K",
+    isNew: true,
+    isFeatured: true,
+    description: "O ápice do luxo rap internacional. Maquinário automático esqueleto com engrenagens à mostra, caixa esculpida em aço 316L banhada a ouro 18K PVD e cristal de safira anti-riscos.",
+    specs: {
+      mecanismo: "Automático Esqueleto 21 Jewels",
+      resistencia: "5 ATM (50 metros)",
+      material: "Aço Inox 316L Ouro 18K & Safira",
+      origem: "Edição Limitada Numerada"
+    }
+  },
+  {
+    id: 10,
+    name: "Relógio DRIPP Iced Out Baguette Pave Cravejado VVS",
+    slug: "relogio-dripp-iced-out-baguette-pave-vvs",
+    category: "relogios",
+    categoryName: "Relógios de Luxo & Iced Out",
+    price: 2290.00,
+    comparePrice: 2890.00,
+    images: [
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["Único (44mm)"],
+    colors: [
+      { name: "Iced Platinum", code: "#CBD5E1" },
+      { name: "Iced Gold 18K", code: "#EAB308" }
+    ],
+    rating: 5.0,
+    reviewsCount: 67,
+    badge: "ICED OUT",
+    isNew: true,
+    isFeatured: true,
+    description: "Cravado artesanalmente com centenas de pedras lapidação Baguette 5A de brilho estonteante. A assinatura definitiva da cultura Luxury Rap nos palcos e eventos exclusivos.",
+    specs: {
+      pedras: "Zircônias Baguette VVS 5A",
+      caixa: "44mm Aço Platinado",
+      fecho: "Duplo Oculto Butterfly",
+      origem: "Coleção Ice Vault"
+    }
+  },
+  {
+    id: 11,
+    name: "Relógio Cronógrafo DRIPP Matte Carbon Black Edition",
+    slug: "relogio-cronografo-dripp-matte-carbon-black",
+    category: "relogios",
+    categoryName: "Relógios de Luxo & Iced Out",
+    price: 1390.00,
+    comparePrice: 1690.00,
+    images: [
+      "https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["Único (43mm)"],
+    colors: [
+      { name: "All Black Matte", code: "#111115" }
+    ],
+    rating: 4.9,
+    reviewsCount: 28,
+    badge: "STEALTH LUXURY",
+    isNew: true,
+    isFeatured: false,
+    description: "Estética stealth minimalista com acabamento PVD preto fosco acetinado. Três subdials cronógrafos funcionais e pulseira anatômica em silicone vulcanizado resistente.",
+    specs: {
+      mecanismo: "Cronógrafo Quartz Suíço",
+      acabamento: "Black PVD Matte",
+      pulseira: "Silicone Vulcanizado Premium",
+      origem: "Importado Exclusivo"
+    }
+  },
+  {
+    id: 12,
+    name: "Boné Trucker DRIPP Luxury Rap Leather & 3D Gold",
+    slug: "bone-trucker-dripp-luxury-rap-leather",
+    category: "bones",
+    categoryName: "Bonés & Headwear Luxo",
+    price: 219.90,
+    comparePrice: 279.90,
+    images: [
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["Snapback Ajustável"],
+    colors: [
+      { name: "Preto Couro / Dourado", code: "#18181B" },
+      { name: "All Black", code: "#09090B" }
+    ],
+    rating: 4.9,
+    reviewsCount: 51,
+    badge: "DESTAQUE",
+    isNew: true,
+    isFeatured: true,
+    description: "Painel frontal em couro legítimo macio com bordado frontal DRIPP em alto relevo metálico ouro. Tela traseira respirável e fecho de latão regulável com gravação laser.",
+    specs: {
+      material: "Couro Legítimo & Tela Estruturada",
+      aba: "Curva Moldável com Forro Suede",
+      fecho: "Strapback com Fivela de Latão",
+      origem: "São Carlos - SP"
+    }
+  },
+  {
+    id: 13,
+    name: "Boné 5-Panel Velvet Chrome DRIPP Gothic Cross",
+    slug: "bone-5-panel-velvet-chrome-dripp",
+    category: "bones",
+    categoryName: "Bonés & Headwear Luxo",
+    price: 199.90,
+    comparePrice: 249.90,
+    images: [
+      "https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["Strapback Ajustável"],
+    colors: [
+      { name: "Preto Ônix Veludo", code: "#121214" },
+      { name: "Burgundy Vinho", code: "#4C0519" }
+    ],
+    rating: 4.8,
+    reviewsCount: 39,
+    badge: "LIMITED",
+    isNew: true,
+    isFeatured: false,
+    description: "Modelo 5-panel em veludo cotelê denso com medalhão em liga metálica Gothic Cross cromada. Fecho traseiro em fita de gorgurão com fivela preta fosca.",
+    specs: {
+      material: "Veludo Cotelê Pesado 100% Algodão",
+      detalhe: "Cruz Gótica em Liga de Zinco Cromada",
+      origem: "Brasil"
+    }
+  },
+  {
+    id: 14,
+    name: "Boné Fitted DRIPP São Carlos Limited Edition 7 1/4",
+    slug: "bone-fitted-dripp-sao-carlos-limited",
+    category: "bones",
+    categoryName: "Bonés & Headwear Luxo",
+    price: 239.90,
+    comparePrice: 299.90,
+    images: [
+      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["7 1/8", "7 1/4", "7 3/8", "7 1/2"],
+    colors: [
+      { name: "Preto com Aba Cinza", code: "#18181B" }
+    ],
+    rating: 5.0,
+    reviewsCount: 34,
+    badge: "GRAIL",
+    isNew: true,
+    isFeatured: true,
+    description: "Modelagem fitted fechada clássica inspirada nas ligas americanas e adaptada para o cenário do rap nacional. Bordado comemorativo lateral e aba reta estruturada.",
+    specs: {
+      material: "Lã Mista & Sarja 100% Algodão",
+      modelagem: "Fitted 6 Painéis Estruturado",
+      origem: "Edição Especial 016 São Carlos"
+    }
+  },
+  {
+    id: 15,
+    name: "Sneaker DRIPP High 'Phantom Platinum' Leather & Suede",
+    slug: "sneaker-dripp-high-phantom-platinum",
+    category: "tenis",
+    categoryName: "Sneakers & Tênis Hype",
+    price: 899.90,
+    comparePrice: 1199.90,
+    images: [
+      "https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["38", "39", "40", "41", "42", "43", "44"],
+    colors: [
+      { name: "Platinum White / Ice", code: "#E2E8F0" },
+      { name: "Onyx Black / Platinum", code: "#09090B" }
+    ],
+    rating: 5.0,
+    reviewsCount: 88,
+    badge: "HYPEBEAST",
+    isNew: true,
+    isFeatured: true,
+    description: "Cano alto confeccionado à mão em couro nobre integral e recortes em suede aveludado. Detalhes em foil metálico e entressola costurada 360 graus com solado de alta aderência.",
+    specs: {
+      cabedal: "100% Couro Bovino Genuíno & Suede",
+      palmilha: "EVA Anatômica com Gel no Calcanhar",
+      solado: "Borracha Vulcanizada Cupsole",
+      origem: "Fabricação Premium Nacional"
+    }
+  },
+  {
+    id: 16,
+    name: "Sneaker Chunky DRIPP Skate Lux 'Onyx Gold'",
+    slug: "sneaker-chunky-dripp-skate-lux-onyx-gold",
+    category: "tenis",
+    categoryName: "Sneakers & Tênis Hype",
+    price: 789.90,
+    comparePrice: 989.90,
+    images: [
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["38", "39", "40", "41", "42", "43"],
+    colors: [
+      { name: "All Black com Ouro", code: "#0F0F12" }
+    ],
+    rating: 4.9,
+    reviewsCount: 47,
+    badge: "POPULAR",
+    isNew: true,
+    isFeatured: false,
+    description: "Silhueta chunky acolchoada com língua estofada e acabamentos em dourado escovado. Conforto incomparável para o uso diário ou para compor fits oversized impactantes.",
+    specs: {
+      cabedal: "Couro Sintético Nobuck & Mesh Respirável",
+      solado: "Borracha Tratorada Antiderrapante",
+      origem: "Brasil"
+    }
+  },
+  {
+    id: 17,
+    name: "Sneaker Runner DRIPP Bionic Cyber Track 'Triple Black'",
+    slug: "sneaker-runner-dripp-bionic-cyber-track",
+    category: "tenis",
+    categoryName: "Sneakers & Tênis Hype",
+    price: 949.90,
+    comparePrice: 1250.00,
+    images: [
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["39", "40", "41", "42", "43", "44"],
+    colors: [
+      { name: "Triple Black 3M", code: "#050507" }
+    ],
+    rating: 5.0,
+    reviewsCount: 63,
+    badge: "TECHWEAR GRAIL",
+    isNew: true,
+    isFeatured: true,
+    description: "Tênis futurista com exoesqueleto em TPU injetado e fios refletivos 3M que brilham sob a luz dos flashes. Entressola com amortecimento aerodinâmico.",
+    specs: {
+      tecnologia: "Mesh Knit Bionic com Exoesqueleto TPU",
+      seguranca: "Fios Refletivos 3M Scotchlite",
+      origem: "Importado"
+    }
+  },
+  {
+    id: 18,
+    name: "Corrente Cubana DRIPP 14mm Cravejada Ice Gold 18K",
+    slug: "corrente-cubana-dripp-14mm-cravejada-ice-gold",
+    category: "acessorios",
+    categoryName: "Jóias & Acessórios Cravejados",
+    price: 599.90,
+    comparePrice: 799.90,
+    images: [
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["50cm (Choker)", "60cm (Standard)"],
+    colors: [
+      { name: "Ouro 18K Cravejado", code: "#D4AF37" },
+      { name: "Ouro Branco Cravejado", code: "#E2E8F0" }
+    ],
+    rating: 5.0,
+    reviewsCount: 95,
+    badge: "ICED OUT",
+    isNew: true,
+    isFeatured: true,
+    description: "A clássica Miami Cuban Link com elos maciços de 14mm banhados a ouro 18K e cravejados com mais de 800 zircônias cúbicas 5A brilhantes. Fecho duplo com trava de segurança personalizada.",
+    specs: {
+      largura: "14mm",
+      banho: "Ouro 18K (10 Milésimos) + Verniz Cataforético",
+      pedras: "Zircônias Cúbicas 5A Diamond Cut",
+      garantia: "1 Ano de Garantia do Banho"
+    }
+  },
+  {
+    id: 19,
+    name: "Óculos de Sol DRIPP Shield Cyclops Luxury Rap",
+    slug: "oculos-de-sol-dripp-shield-cyclops",
+    category: "acessorios",
+    categoryName: "Jóias & Acessórios Cravejados",
+    price: 349.90,
+    comparePrice: 450.00,
+    images: [
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["Único"],
+    colors: [
+      { name: "Lente Dourada Espelhada", code: "#D4AF37" },
+      { name: "Blackout Total", code: "#000000" }
+    ],
+    rating: 4.8,
+    reviewsCount: 22,
+    badge: "FUTURISTA",
+    isNew: true,
+    isFeatured: false,
+    description: "Lente inteiriça curva com proteção solar UV400 e armação em acetato premium italiano. O acessório predileto de rappers e produtores em todo o país.",
+    specs: {
+      protecao: "100% Proteção UVA / UVB (UV400)",
+      material: "Acetato Italiano & Policarbonato",
+      origem: "Acompanha Case Rígido e Flanela"
+    }
+  },
+  {
+    id: 20,
+    name: "Jaqueta Puffer DRIPP Glossy Vinyl Black Boxy Fit",
+    slug: "jaqueta-puffer-dripp-glossy-vinyl-black",
+    category: "hoodies",
+    categoryName: "Outerwear & Hoodies Luxo",
+    price: 689.90,
+    comparePrice: 890.00,
+    images: [
+      "https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop"
+    ],
+    sizes: ["P", "M", "G", "GG"],
+    colors: [
+      { name: "Preto Vinil Brilhante", code: "#000000" },
+      { name: "Prata Chrome Espelhado", code: "#94A3B8" }
+    ],
+    rating: 5.0,
+    reviewsCount: 76,
+    badge: "WINTER GRAIL",
+    isNew: true,
+    isFeatured: true,
+    description: "Jaqueta acolchoada volumosa inspirada nos vídeos de hip-hop de Nova York e Londres. Acabamento vinílico com brilho molhado, bolsos forrados em fleece e gola alta estruturada.",
+    specs: {
+      enchimento: "Pluma Sintética Térmica Ultra Leve",
+      revestimento: "Vinil Poliéster Impermeável",
+      modelagem: "Boxy Cropped Oversized",
+      origem: "Edição Limitada de Inverno"
+    }
   }
 ];
 
@@ -293,6 +635,60 @@ const Formatters = {
       .replace(/\D/g, "")
       .replace(/^(\d{5})(\d)/, "$1-$2")
       .substring(0, 9);
+  }
+};
+
+// ==========================================================================
+// 2.1 ANALYTICS & CLICK TRACKING SYSTEM
+// ==========================================================================
+const Analytics = {
+  getSessionId() {
+    let sid = sessionStorage.getItem('dripp_sid');
+    if (!sid) {
+      sid = 'sid_' + Math.random().toString(36).substring(2, 9) + '_' + Date.now();
+      sessionStorage.setItem('dripp_sid', sid);
+    }
+    return sid;
+  },
+
+  getDevice() {
+    const ua = navigator.userAgent;
+    if (/mobile/i.test(ua)) return 'mobile';
+    if (/tablet|ipad/i.test(ua)) return 'tablet';
+    return 'desktop';
+  },
+
+  track(eventType, data = {}) {
+    try {
+      const payload = {
+        event_type: eventType,
+        page_url: window.location.pathname + window.location.search,
+        product_id: data.productId ? Number(data.productId) : null,
+        product_name: data.productName || null,
+        category: data.category || null,
+        session_id: this.getSessionId(),
+        device: this.getDevice(),
+        referrer: document.referrer || '',
+        metadata: data.metadata || { time: new Date().toISOString() }
+      };
+
+      // Gravar no localStorage para fallback em standalone/GitHub Pages
+      const cached = JSON.parse(localStorage.getItem('dripp_analytics_events') || '[]');
+      cached.unshift({ ...payload, created_at: new Date().toISOString() });
+      if (cached.length > 200) cached.pop();
+      localStorage.setItem('dripp_analytics_events', JSON.stringify(cached));
+
+      // Enviar para o servidor se online
+      if (window.location.protocol.startsWith('http')) {
+        fetch('/api/analytics/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(() => {});
+      }
+    } catch (e) {
+      // Silencioso para não interromper navegação do usuário
+    }
   }
 };
 
@@ -500,6 +896,12 @@ class CartManager {
     }
 
     this.save();
+    Analytics.track('add_to_cart', {
+      productId: product.id,
+      productName: product.name,
+      category: product.category,
+      metadata: { size: chosenSize, color: chosenColor, price: product.price, quantity }
+    });
     Toast.success("Adicionado ao Carrinho!", `${product.name} (${chosenSize}) foi incluído.`);
     this.openDrawer();
   }
@@ -905,6 +1307,60 @@ document.addEventListener("DOMContentLoaded", () => {
   drippCart.renderDrawer();
   drippAuth.updateUserUI();
 
+  // Rastreamento Automático de Analytics e Cliques do Site
+  Analytics.track('page_view', { pageTitle: document.title });
+
+  document.addEventListener('click', (e) => {
+    // 1. Clique em produto
+    const prodCard = e.target.closest('.product-card, .btn-quick-view, a[href*="produto.html"]');
+    if (prodCard) {
+      let pid = prodCard.dataset ? prodCard.dataset.id : null;
+      if (!pid && prodCard.getAttribute('href')) {
+        const match = prodCard.getAttribute('href').match(/id=(\d+)/);
+        if (match) pid = match[1];
+      }
+      if (pid) {
+        const prod = MOCK_PRODUCTS.find(p => p.id == pid);
+        Analytics.track('product_click', {
+          productId: pid,
+          productName: prod ? prod.name : `Produto #${pid}`,
+          category: prod ? prod.category : null
+        });
+      }
+    }
+
+    // 2. Clique em categoria
+    const catCard = e.target.closest('.category-card, a[href*="cat="]');
+    if (catCard) {
+      const href = catCard.getAttribute('href') || '';
+      const match = href.match(/cat=([^&]+)/);
+      if (match) {
+        Analytics.track('category_click', { category: match[1] });
+      }
+    }
+
+    // 3. Clique no botão de WhatsApp VIP
+    if (e.target.closest('a[href*="whatsapp.com"], .whatsapp-float, .btn-whatsapp-vip')) {
+      Analytics.track('whatsapp_click', { action: 'open_vip_whatsapp' });
+    }
+
+    // 4. Clique em marketplaces (Shopee / Mercado Livre)
+    if (e.target.closest('.marketplace-btn-shopee')) {
+      Analytics.track('marketplace_click', { marketplace: 'Shopee' });
+    }
+    if (e.target.closest('.marketplace-btn-meli')) {
+      Analytics.track('marketplace_click', { marketplace: 'Mercado Livre' });
+    }
+
+    // 5. Início de checkout
+    if (e.target.closest('a[href*="checkout.html"], .btn-checkout-start')) {
+      Analytics.track('begin_checkout', {
+        itemsCount: drippCart.getCount(),
+        total: drippCart.getTotal()
+      });
+    }
+  });
+
   // Header scroll transition
   const header = document.querySelector(".site-header");
   if (header) {
@@ -1142,3 +1598,4 @@ window.api = api;
 window.openQuickView = openQuickView;
 window.closeQuickView = closeQuickView;
 window.selectQuickViewSize = selectQuickViewSize;
+window.Analytics = Analytics;

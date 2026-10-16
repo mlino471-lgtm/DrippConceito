@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Estoque | DRIPP ADMIN - Streetwear de Luxo</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-link">
+          <div class="brand-logo-icon">D</div>
+          <div class="brand-text-wrap">
+            <span class="brand-name">DRIPP</span>
+            <span class="brand-badge">ADMIN</span>
+          </div>
+        </a>
+        <div style="display: flex; align-items: center; gap: 0.35rem;">
+          <button class="sidebar-toggle-btn" title="Recolher Menu">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="sidebar-close-btn" title="Fechar Menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Principal</div>
+        <a href="index.html" class="nav-item">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span class="nav-text">Dashboard</span>
+        </a>
+        <a href="produtos.html" class="nav-item">
+          <i class="fa-solid fa-shirt"></i>
+          <span class="nav-text">Produtos</span>
+        </a>
+        <a href="estoque.html" class="nav-item active">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span class="nav-text">Estoque</span>
+          <span class="nav-badge" style="background:#F59E0B; color:#000;" id="sidebar-stock-alert">0</span>
+        </a>
+        <a href="scanner.html" class="nav-item">
+          <i class="fa-solid fa-qrcode"></i>
+          <span class="nav-text">Leitor QR / PDV</span>
+        </a>
+        <a href="pedidos.html" class="nav-item">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="nav-text">Pedidos</span>
+        </a>
+        <a href="clientes.html" class="nav-item">
+          <i class="fa-solid fa-users"></i>
+          <span class="nav-text">Clientes</span>
+        </a>
+
+        <div class="nav-section-title">Financeiro & Métricas</div>
+        <a href="financeiro.html" class="nav-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span class="nav-text">Financeiro & Lucro</span>
+        </a>
+        <a href="analytics.html" class="nav-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span class="nav-text">Cliques & Analytics</span>
+        </a>
+
+        <div class="nav-section-title">Administração</div>
+        <a href="contas.html" class="nav-item">
+          <i class="fa-solid fa-id-badge"></i>
+          <span class="nav-text">Gestão de Contas</span>
+        </a>
+        <a href="cupons.html" class="nav-item">
+          <i class="fa-solid fa-ticket"></i>
+          <span class="nav-text">Cupons</span>
+        </a>
+        <a href="categorias.html" class="nav-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <span class="nav-text">Categorias</span>
+        </a>
+
+        <div class="nav-section-title">Loja Externa</div>
+        <a href="/index.html" target="_blank" class="nav-item">
+          <i class="fa-solid fa-store"></i>
+          <span class="nav-text">Ver Loja Virtual</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <div class="user-avatar">AD</div>
+          <div class="user-details">
+            <div class="name">Admin Master</div>
+            <div class="role">DRIPP LUXURY</div>
+          </div>
+        </div>
+        <button class="logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Encerrar Sessão</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="admin-sidebar-toggle mobile-sidebar-toggle" id="btn-toggle-sidebar" title="Abrir / Fechar Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-headline">
+            <div class="page-title">
+              <i class="fa-solid fa-boxes-stacked" style="color: var(--gold-primary);"></i>
+              Controle de Estoque & Grade
+            </div>
+            <div class="breadcrumb">
+              <span>Admin</span>
+              <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i>
+              <span>Estoque</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="scanner.html" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-qrcode text-gold"></i>
+            <span>Bipar QR Code</span>
+          </a>
+          <button class="btn btn-primary btn-sm" onclick="openStockEntryModal()">
+            <i class="fa-solid fa-plus"></i>
+            <span>Nova Entrada de Estoque</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- CONTENT BODY -->
+      <div class="admin-content">
+        <!-- KPI METRICS ROW -->
+        <div class="stats-row" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Unidades em Estoque</span>
+              <div class="stat-icon-wrapper" style="background: rgba(212, 175, 55, 0.15); color: var(--gold-primary);">
+                <i class="fa-solid fa-cubes"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="kpi-total-units">0</div>
+            <div class="stat-footer">
+              <span class="text-muted" id="kpi-total-prods">0 modelos ativos</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Alerta Estoque Baixo</span>
+              <div class="stat-icon-wrapper" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+            </div>
+            <div class="stat-value text-gold" id="kpi-low-stock">0</div>
+            <div class="stat-footer">
+              <span class="text-muted">Abaixo do estoque mínimo</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Itens Esgotados</span>
+              <div class="stat-icon-wrapper" style="background: rgba(239, 68, 68, 0.15); color: #EF4444;">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #EF4444;" id="kpi-out-stock">0</div>
+            <div class="stat-footer">
+              <span class="text-muted">Necessita reposição</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Valor a Preço de Custo</span>
+              <div class="stat-icon-wrapper" style="background: rgba(59, 130, 246, 0.15); color: #3B82F6;">
+                <i class="fa-solid fa-receipt"></i>
+              </div>
+            </div>
+            <div class="stat-value" id="kpi-cost-value">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="text-muted">Capital investido</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Valor de Venda (Showroom)</span>
+              <div class="stat-icon-wrapper" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">
+                <i class="fa-solid fa-vault"></i>
+              </div>
+            </div>
+            <div class="stat-value" style="color: #10B981;" id="kpi-retail-value">R$ 0,00</div>
+            <div class="stat-footer">
+              <span class="text-muted" id="kpi-potential-profit">Lucro pot.: R$ 0,00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTER & ACTION BAR -->
+        <div class="data-card" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;">
+            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; flex: 1;">
+              <div class="global-search-box" style="max-width: 340px; width: 100%;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="inventory-search-input" placeholder="Buscar por produto, SKU ou QR Code...">
+              </div>
+              <select id="inventory-filter-category" class="shop-sort-select" style="background: var(--bg-input); color: #FFF; border: 1px solid var(--border-color); padding: 0.6rem 1rem; border-radius: 6px;">
+                <option value="">Todas as Categorias</option>
+                <option value="relogios">Relógios & Iced Out</option>
+                <option value="bones">Bonés & Headwear</option>
+                <option value="tenis">Sneakers & Tênis</option>
+                <option value="camisetas">Camisetas</option>
+                <option value="hoodies">Hoodies & Puffers</option>
+                <option value="calcas">Calças Cargo</option>
+                <option value="acessorios">Jóias & Acessórios</option>
+              </select>
+              <select id="inventory-filter-status" class="shop-sort-select" style="background: var(--bg-input); color: #FFF; border: 1px solid var(--border-color); padding: 0.6rem 1rem; border-radius: 6px;">
+                <option value="">Todos os Status</option>
+                <option value="low_stock">Estoque Baixo</option>
+                <option value="out_of_stock">Esgotados</option>
+                <option value="ok">Estoque Normal</option>
+              </select>
+            </div>
+            <div>
+              <button class="btn btn-secondary btn-sm" onclick="exportStockCSV()">
+                <i class="fa-solid fa-file-csv"></i> Exportar CSV
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRODUCTS INVENTORY TABLE -->
+        <div class="data-card" style="margin-bottom: 2rem;">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fa-solid fa-layer-group text-gold"></i> Posição Atual do Estoque por Peça
+            </h3>
+            <span class="text-muted" style="font-size: 0.82rem;" id="inventory-table-count">Mostrando 0 produtos</span>
+          </div>
+
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Categoria</th>
+                  <th>SKU / QR Code</th>
+                  <th>Preço Custo</th>
+                  <th>Preço Venda</th>
+                  <th>Margem %</th>
+                  <th>Qtd. Atual</th>
+                  <th>Qtd. Mínima</th>
+                  <th>Status</th>
+                  <th style="text-align: right;">Ações</th>
+                </tr>
+              </thead>
+              <tbody id="inventory-table-body">
+                <tr>
+                  <td colspan="10" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Carregando inventário...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- STOCK MOVEMENT HISTORY -->
+        <div class="data-card">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fa-solid fa-clock-rotate-left text-gold"></i> Histórico Recente de Entradas & Saídas
+            </h3>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Data/Hora</th>
+                  <th>Tipo</th>
+                  <th>Produto</th>
+                  <th>Qtd.</th>
+                  <th>Anterior</th>
+                  <th>Novo Estoque</th>
+                  <th>Motivo / Origem</th>
+                  <th>Operador</th>
+                </tr>
+              </thead>
+              <tbody id="movements-table-body">
+                <tr>
+                  <td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    Carregando movimentações...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL: AJUSTE / ENTRADA DE ESTOQUE -->
+  <div class="modal-backdrop" id="modal-stock-movement">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-stock-title">
+          <i class="fa-solid fa-dolly text-gold"></i> Movimentação de Estoque
+        </h3>
+        <button class="modal-close-btn" onclick="closeStockEntryModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-stock-movement" onsubmit="handleStockSubmit(event)">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label>Selecione o Produto *</label>
+            <select id="movement-product-id" required style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+              <option value="">Carregando produtos...</option>
+            </select>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <div class="form-group">
+              <label>Tipo de Operação *</label>
+              <select id="movement-type" required style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+                <option value="entrada">➕ Entrada de Mercadoria</option>
+                <option value="saida">➖ Saída / Retirada</option>
+                <option value="ajuste">⚙️ Balanço / Ajuste Direto</option>
+                <option value="devolucao">↩️ Devolução de Cliente</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Quantidade *</label>
+              <input type="number" id="movement-quantity" min="1" value="1" required style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label>Motivo / Observações</label>
+            <input type="text" id="movement-reason" placeholder="Ex: Lote recebido da confecção, reposição showroom..." style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label>Operador / Responsável</label>
+            <input type="text" id="movement-operator" value="Admin Master" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-color); color: #FFF; padding: 0.65rem; border-radius: 6px;">
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+            <button type="button" class="btn btn-secondary" onclick="closeStockEntryModal()">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Gravar Movimentação</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin JS -->
+  <script src="js/admin.js"></script>
+</body>
+</html>
