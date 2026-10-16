@@ -285,26 +285,28 @@
         <div class="tab-content" id="tab-specs">
           <div style="max-width: 600px;">
             <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
-              <tr style="border-bottom: 1px solid var(--border-dark);">
-                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF; width: 40%;">Composição:</td>
-                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-composicao">100% Algodão Premium</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border-dark);">
-                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Gramatura:</td>
-                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-gramatura">240g a 380g/m²</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border-dark);">
-                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Modelagem:</td>
-                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-modelagem">Boxy Streetwear</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border-dark);">
-                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Origem / Fabricação:</td>
-                <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-origem">São Carlos - SP, Brasil</td>
-              </tr>
-              <tr>
-                <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Cuidados:</td>
-                <td style="padding: 0.75rem 0; color: var(--text-muted);">Lavar do avesso, água fria, não passar ferro sobre estampas.</td>
-              </tr>
+              <tbody id="prod-specs-tbody">
+                <tr style="border-bottom: 1px solid var(--border-dark);">
+                  <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF; width: 40%;">Composição:</td>
+                  <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-composicao">100% Algodão Premium</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-dark);">
+                  <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Gramatura:</td>
+                  <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-gramatura">240g a 380g/m²</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-dark);">
+                  <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Modelagem:</td>
+                  <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-modelagem">Boxy Streetwear</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border-dark);">
+                  <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Origem / Fabricação:</td>
+                  <td style="padding: 0.75rem 0; color: var(--text-muted);" id="spec-origem">São Carlos - SP, Brasil</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Cuidados:</td>
+                  <td style="padding: 0.75rem 0; color: var(--text-muted);">Lavar do avesso, água fria, não passar ferro sobre estampas.</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -340,52 +342,113 @@
 
   <!-- SIZE GUIDE MODAL -->
   <div class="modal-overlay" id="size-guide-modal">
-    <div class="modal-card" style="max-width: 600px; padding: 2rem;">
+    <div class="modal-card" style="max-width: 650px; padding: 2rem;">
       <button class="modal-close-btn" onclick="closeSizeGuideModal()">&times;</button>
-      <h3 style="color:#FFF; margin-bottom: 0.5rem;">TABELA DE MEDIDAS STREETWEAR</h3>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Nossas modelagens seguem o padrão Oversized / Boxy com caimento mais amplo.</p>
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
-        <thead>
-          <tr style="background: #181820; color: var(--color-accent); font-weight: 800;">
-            <th style="padding: 0.75rem;">TAMANHO</th>
-            <th>LARGURA (TÓRAX)</th>
-            <th>COMPRIMENTO</th>
-            <th>MANGA</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px solid var(--border-dark);">
-            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">P</td>
-            <td>56 cm</td>
-            <td>74 cm</td>
-            <td>24 cm</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-dark);">
-            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">M</td>
-            <td>59 cm</td>
-            <td>77 cm</td>
-            <td>25 cm</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-dark);">
-            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">G</td>
-            <td>62 cm</td>
-            <td>80 cm</td>
-            <td>26 cm</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-dark);">
-            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">GG</td>
-            <td>65 cm</td>
-            <td>83 cm</td>
-            <td>27 cm</td>
-          </tr>
-          <tr>
-            <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">XGG</td>
-            <td>68 cm</td>
-            <td>86 cm</td>
-            <td>28 cm</td>
-          </tr>
-        </tbody>
-      </table>
+      <h3 style="color:#FFF; margin-bottom: 0.5rem; letter-spacing: 0.05em;">TABELA DE MEDIDAS & CALIBRES</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">Consulte as referências oficiais da DRIPP CONCEITO para vestuário, calçados e alta relojoaria.</p>
+      
+      <!-- Modal Tabs -->
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-dark); padding-bottom: 0.5rem;">
+        <button type="button" class="btn btn-sm btn-secondary" onclick="switchGuideTab('vestuario', this)" style="border-radius: 4px; font-weight: 700;">Vestuário</button>
+        <button type="button" class="btn btn-sm btn-dark" onclick="switchGuideTab('calcados', this)" style="border-radius: 4px; font-weight: 700;">Tênis (BR)</button>
+        <button type="button" class="btn btn-sm btn-dark" onclick="switchGuideTab('joias', this)" style="border-radius: 4px; font-weight: 700;">Relógios & Joias</button>
+      </div>
+
+      <div id="guide-tab-vestuario" class="guide-tab-content">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
+          <thead>
+            <tr style="background: #181820; color: var(--color-accent); font-weight: 800;">
+              <th style="padding: 0.75rem;">TAMANHO</th>
+              <th>TÓRAX (LARGURA)</th>
+              <th>COMPRIMENTO</th>
+              <th>MANGA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">P</td>
+              <td>56 cm</td>
+              <td>74 cm</td>
+              <td>24 cm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">M</td>
+              <td>59 cm</td>
+              <td>77 cm</td>
+              <td>25 cm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">G</td>
+              <td>62 cm</td>
+              <td>80 cm</td>
+              <td>26 cm</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">GG</td>
+              <td>65 cm</td>
+              <td>83 cm</td>
+              <td>27 cm</td>
+            </tr>
+            <tr>
+              <td style="padding: 0.75rem; font-weight: 700; color:#FFF;">XGG</td>
+              <td>68 cm</td>
+              <td>86 cm</td>
+              <td>28 cm</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="guide-tab-calcados" class="guide-tab-content" style="display: none;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: center;">
+          <thead>
+            <tr style="background: #181820; color: var(--color-accent); font-weight: 800;">
+              <th style="padding: 0.75rem;">BR</th>
+              <th>PALMILHA (CM)</th>
+              <th>US MENS</th>
+              <th>EUR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-dark);"><td style="padding: 0.6rem; color:#FFF; font-weight:700;">39</td><td>25.5 cm</td><td>7.5</td><td>40</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);"><td style="padding: 0.6rem; color:#FFF; font-weight:700;">40</td><td>26.5 cm</td><td>8.5</td><td>41</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);"><td style="padding: 0.6rem; color:#FFF; font-weight:700;">41</td><td>27.5 cm</td><td>9.5</td><td>42</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);"><td style="padding: 0.6rem; color:#FFF; font-weight:700;">42</td><td>28.0 cm</td><td>10.0</td><td>43</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);"><td style="padding: 0.6rem; color:#FFF; font-weight:700;">43</td><td>29.0 cm</td><td>11.0</td><td>44</td></tr>
+            <tr><td style="padding: 0.6rem; color:#FFF; font-weight:700;">44</td><td>30.0 cm</td><td>12.0</td><td>45</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="guide-tab-joias" class="guide-tab-content" style="display: none;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+          <thead>
+            <tr style="background: #181820; color: var(--color-accent); font-weight: 800;">
+              <th style="padding: 0.75rem;">ITEM</th>
+              <th>DIMENSÃO</th>
+              <th>INDICAÇÃO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.6rem; color:#FFF; font-weight:700;">Relógios</td>
+              <td>Caixa 42mm a 44mm</td>
+              <td>Presença imponente no pulso (ajuste de elos incluso)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.6rem; color:#FFF; font-weight:700;">Cuban Link</td>
+              <td>Largura 14mm / Comp. 50cm</td>
+              <td>Caimento clássico clavicular alto</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.6rem; color:#FFF; font-weight:700;">Bonés / Caps</td>
+              <td>56cm a 62cm (Circunferência)</td>
+              <td>Fecho strapback regulável de latão</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div style="margin-top: 1.5rem; text-align: center;">
         <button type="button" class="btn btn-primary btn-sm" onclick="closeSizeGuideModal()">ENTENDI</button>
       </div>
@@ -413,11 +476,13 @@
           </div>
         </div>
         <div>
-          <h4 class="footer-col-title">CATEGORIAS</h4>
+          <h4 class="footer-col-title">COLEÇÕES & DROPS</h4>
           <ul class="footer-links">
+            <li><a href="loja.html?cat=relogios" class="footer-link"><i class="fa-solid fa-angle-right"></i> Relógios Iced Out & Suíços</a></li>
+            <li><a href="loja.html?cat=bones" class="footer-link"><i class="fa-solid fa-angle-right"></i> Bonés & Headwear Luxury</a></li>
+            <li><a href="loja.html?cat=tenis" class="footer-link"><i class="fa-solid fa-angle-right"></i> Tênis & Sneakers Exclusivos</a></li>
+            <li><a href="loja.html?cat=acessorios" class="footer-link"><i class="fa-solid fa-angle-right"></i> Correntes & Joias Ouro 18K</a></li>
             <li><a href="loja.html?cat=camisetas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Camisetas Oversized</a></li>
-            <li><a href="loja.html?cat=hoodies" class="footer-link"><i class="fa-solid fa-angle-right"></i> Hoodies & Moletons</a></li>
-            <li><a href="loja.html?cat=calcas" class="footer-link"><i class="fa-solid fa-angle-right"></i> Calças Cargo</a></li>
           </ul>
         </div>
         <div>
@@ -426,7 +491,7 @@
             <li><a href="conta.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Minha Conta</a></li>
             <li><a href="conta.html#pedidos" class="footer-link"><i class="fa-solid fa-angle-right"></i> Rastrear Pedido</a></li>
             <li><a href="carrinho.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Meu Carrinho</a></li>
-            <li><a href="admin/" class="footer-link" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-gauge-high"></i> Painel Administrativo</a></li>
+            <li><a href="admin/index.html" class="footer-link" style="color: #FFFFFF; font-weight: 700;"><i class="fa-solid fa-gauge-high"></i> Painel Administrativo</a></li>
           </ul>
         </div>
         <div>
@@ -503,11 +568,73 @@
       document.getElementById("tab-desc-text").textContent = currentProduct.description;
 
       // Specs
-      if (currentProduct.specs) {
-        document.getElementById("spec-composicao").textContent = currentProduct.specs.composicao || "100% Algodão";
-        document.getElementById("spec-gramatura").textContent = currentProduct.specs.gramatura || "240g/m²";
-        document.getElementById("spec-modelagem").textContent = currentProduct.specs.modelagem || "Oversized Street";
-        document.getElementById("spec-origem").textContent = currentProduct.specs.origem || "São Carlos - SP";
+      const specsTable = document.getElementById("prod-specs-tbody");
+      if (specsTable && currentProduct.specs) {
+        const specLabelMap = {
+          composicao: "Composição",
+          gramatura: "Gramatura",
+          modelagem: "Modelagem",
+          origem: "Origem / Coleção",
+          mecanismo: "Mecanismo & Calibre",
+          resistencia: "Resistência à Água",
+          material: "Material & Acabamento",
+          pedras: "Cravação / Pedras",
+          caixa: "Caixa / Diâmetro",
+          fecho: "Fecho / Trava",
+          acabamento: "Acabamento da Caixa",
+          pulseira: "Pulseira & Conforto",
+          aba: "Aba / Formato",
+          detalhe: "Detalhe Exclusivo",
+          cabedal: "Cabedal / Exterior",
+          palmilha: "Palmilha & Conforto",
+          solado: "Solado / Tração",
+          tecnologia: "Tecnologia",
+          seguranca: "Elementos Refletivos",
+          largura: "Largura dos Elos",
+          banho: "Banho & Camadas",
+          garantia: "Garantia Oficial",
+          dimensoes: "Dimensões",
+          protecao: "Proteção Solar",
+          enchimento: "Enchimento Térmico",
+          revestimento: "Revestimento Externo"
+        };
+
+        let rowsHtml = "";
+        for (const [key, val] of Object.entries(currentProduct.specs)) {
+          const label = specLabelMap[key] || (key.charAt(0).toUpperCase() + key.slice(1));
+          rowsHtml += `
+            <tr style="border-bottom: 1px solid var(--border-dark);">
+              <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF; width: 40%;">${label}:</td>
+              <td style="padding: 0.75rem 0; color: var(--text-muted);">${val}</td>
+            </tr>
+          `;
+        }
+
+        const isLuxuryAccessory = currentProduct.category === 'relogios' || currentProduct.category === 'acessorios';
+        rowsHtml += `
+          <tr>
+            <td style="padding: 0.75rem 0; font-weight: 700; color: #FFF;">Cuidados & Conservação:</td>
+            <td style="padding: 0.75rem 0; color: var(--text-muted);">
+              ${isLuxuryAccessory ? "Evitar contato direto com perfumes, abrasivos e água salgada. Limpar com flanela de microfibra macia e guardar no case original." : "Lavar pelo avesso em água fria. Não alvejar. Secar à sombra e não passar ferro sobre estampas ou metais."}
+            </td>
+          </tr>
+        `;
+        specsTable.innerHTML = rowsHtml;
+      }
+
+      // SKU & Availability
+      const prodSkuEl = document.getElementById("prod-sku");
+      if (prodSkuEl) {
+        prodSkuEl.textContent = `REF: DRP-${String(currentProduct.id).padStart(3, '0')} • ${currentProduct.badge ? currentProduct.badge + ' • ' : ''}Disponível em São Carlos`;
+      }
+
+      // Analytics View Event
+      if (typeof Analytics !== 'undefined') {
+        Analytics.track("view_product", {
+          productId: currentProduct.id,
+          productName: currentProduct.name,
+          category: currentProduct.categoryName
+        });
       }
 
       // 3. Populate Gallery
@@ -617,7 +744,13 @@
 
       // 10. Related Products
       const relatedGrid = document.getElementById("related-products-grid");
-      const relatedList = MOCK_PRODUCTS.filter(p => p.id !== currentProduct.id).slice(0, 4);
+      let relatedList = MOCK_PRODUCTS.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id);
+      if (relatedList.length < 4) {
+        const others = MOCK_PRODUCTS.filter(p => p.category !== currentProduct.category && p.id !== currentProduct.id);
+        relatedList = [...relatedList, ...others].slice(0, 4);
+      } else {
+        relatedList = relatedList.slice(0, 4);
+      }
       relatedGrid.innerHTML = relatedList.map(p => `
         <div class="product-card">
           <div class="product-card-thumb">
@@ -669,6 +802,19 @@
 
     function closeSizeGuideModal() {
       document.getElementById("size-guide-modal").classList.remove("active");
+    }
+
+    function switchGuideTab(tabKey, btnEl) {
+      document.querySelectorAll(".guide-tab-content").forEach(el => el.style.display = "none");
+      const target = document.getElementById("guide-tab-" + tabKey);
+      if (target) target.style.display = "block";
+      const parent = btnEl.parentElement;
+      if (parent) {
+        parent.querySelectorAll("button").forEach(b => {
+          b.className = "btn btn-sm btn-dark";
+        });
+        btnEl.className = "btn btn-sm btn-secondary";
+      }
     }
   </script>
 </body>
