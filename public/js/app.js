@@ -678,8 +678,9 @@ const Analytics = {
       if (cached.length > 200) cached.pop();
       localStorage.setItem('dripp_analytics_events', JSON.stringify(cached));
 
-      // Enviar para o servidor se online
-      if (window.location.protocol.startsWith('http')) {
+      // Enviar para o servidor se online (evita 404 no console em hosts estáticos como github.io)
+      const isStaticHost = window.location.hostname.includes('github.io');
+      if (!isStaticHost && window.location.protocol.startsWith('http')) {
         fetch('/api/analytics/track', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
